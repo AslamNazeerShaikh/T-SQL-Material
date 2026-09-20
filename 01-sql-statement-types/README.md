@@ -12,6 +12,8 @@
 
 **Interview-ready answer:** *"SQL has five types of commands. DDL builds tables — CREATE, ALTER, DROP, TRUNCATE. DML works on rows — INSERT, UPDATE, DELETE, MERGE. DQL reads data — SELECT. DCL sets rights — GRANT, DENY, REVOKE. TCL ends a deal safe — BEGIN, COMMIT, ROLLBACK. This split is a big help. For one, I can give a user only SELECT rights, with no right to touch the tables."*
 
+> Deep dive: `statements-in-detail.md` — full demo-table examples per family, what/why/how + problems solved, 5-way comparison, limitations, 12 interview Q&A + 6 scenarios.
+
 ## 1. Categories
 
 | Category | Full Form | Purpose | Common Statements |
