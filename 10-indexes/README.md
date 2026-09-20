@@ -77,10 +77,21 @@ CREATE TABLE Orders (
 CREATE CLUSTERED INDEX IX_Orders_Date ON Orders(OrderDate);
 ```
 
+## 7. Composite, covering recap + limits (asked follow-ups)
+
+- Composite = key on 2+ fields: `CREATE NONCLUSTERED INDEX IX ON T(A, B)`.
+  Leftmost law: seeks fly on `A` or `A+B`, never on `B` alone — lead with the
+  most-filtered field.
+- Covering recap: key fields sort/seek, INCLUDE fields ride leaf-only (§2 demo).
+- Max: 999 non-clustered + 1 clustered = 1000 per table (asked number).
+- Heap (no clustered) lookups ride RIDs; forwarded rows rot heaps — a clustered
+  key usually wins for churned tables.
+
 ## Cheat recap
 
 ```text
 Clustered → max 1, row order, range/PK access
 Non-clustered → many, separate key+locator, filters
 PK defaults clustered but PK ≠ clustered. Keep clustered key narrow/static.
+Composite leftmost law | max 999 non-clustered | heaps ride RIDs.
 ```

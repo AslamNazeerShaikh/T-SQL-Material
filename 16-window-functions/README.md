@@ -91,6 +91,11 @@ key added). RANK shares 1,1 then skips to 3. DENSE_RANK shares 1,1 then keeps
 5. "Dup rows, keep one?" → ROW_NUMBER per dup key, delete `rn > 1` through CTE.
 6. "RANK vs DENSE_RANK vs ROW_NUMBER, one line each?" → 1-2-2-4 / 1-2-2-3 / 1-2-3-4.
 
+## 6. NTILE buckets (asked with the rank trio)
+
+`NTILE(n)` cuts ordered rows into n near-even clubs (4 = quartiles) — ties may
+split across clubs (unlike DENSE_RANK, which keeps tie clubs whole).
+
 ## Cheat recap
 
 ```text
@@ -98,4 +103,5 @@ OVER glass | PARTITION BY fresh per team | ORDER BY lines rows up
 ROW_NUMBER 1-2-3 | RANK 1-2-2-4 | DENSE_RANK 1-2-2-3
 Top-N per team rn<=N | Nth pay DENSE ladder | run SUM OVER | gaps LEAD/LAG
 De-dupe: rn per dup key, keep 1 | no window calls in WHERE — CTE first
+NTILE cuts n clubs (ties may split).
 ```

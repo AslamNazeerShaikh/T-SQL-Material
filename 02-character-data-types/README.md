@@ -95,10 +95,29 @@ SELECT @Name;
 4. "Why is NVARCHAR twice the size?" → UTF-16, ~2 bytes/char. Trade-off for Unicode safety.
 5. "When is CHAR better than VARCHAR?" → Fixed-length codes: no length variance, avoids fragmentation subtleties, self-documenting.
 
+## 8. Collation (asked T-SQL follow-up)
+
+Collation = text rulebook: sort order + case/accent sensitivity. The DB default
+rules unless beaten per column or per query with COLLATE.
+
+```sql
+-- Case-sharp hunt (default CI collations blur Asha/asha)
+SELECT * FROM Staff WHERE Name = 'asha' COLLATE Latin1_General_CS_AS;
+-- Accent-sharp: á ≠ a under *_AS; CI_AI blurs case + accent both
+-- Kana/width flags matter Japanese/full-width text only
+```
+
+- `COLLATE` per query beats ALTER for one-off hunts; column-level for law.
+- `#temp` tables inherit tempdb collation — cross-db joins can clash
+  (`Cannot resolve collation conflict`); fix with explicit COLLATE.
+- `_BIN` = byte order (fastest, case-sharp); `_BIN2` = code-point order.
+- String-func output keeps input collation (`20` category doc).
+
 ## Cheat recap
 
 ```text
 CHAR → fixed non-Unicode | VARCHAR → variable non-Unicode | MAX → ~2GB
 N = Unicode. Multilingual → NVARCHAR + N'...' literal.
 Fixed codes → CHAR. Varying text → VARCHAR/NVARCHAR.
+Collation rules case/sort | COLLATE per hunt | tempdb clash → explicit COLLATE.
 ```

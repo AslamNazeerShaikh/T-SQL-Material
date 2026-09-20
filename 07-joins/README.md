@@ -121,6 +121,13 @@ FROM #D d LEFT JOIN #E e ON e.DepartmentId = d.Id WHERE e.Id IS NULL;
 4. "Why did row count explode after joining?" → Duplicate keys / fanout; dedupe or pre-aggregate.
 5. "Employee–manager in one table?" → SELF JOIN with two aliases.
 
+## 6. Non-equi + semi joins (asked follow-ups)
+
+- Non-equi joins match on ranges, not `=`: `ON o.Amt BETWEEN t.Lo AND t.Hi`
+  (band joins — salaries to bands, amounts to slabs).
+- Semi joins test presence: IN / EXISTS keep hits without row fan-out (`15`).
+  Optimizer's own name for match-tests — say it in checks.
+
 ## Cheat recap
 
 ```text

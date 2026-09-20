@@ -42,12 +42,13 @@ Each topic folder contains:
 | 24 | `24-like-pattern-matching/` | LIKE wildcards, ESCAPE, seek vs scan | Easy → Medium |
 | 25 | `25-dynamic-sql-injection/` | sp_executesql + params, QUOTENAME, injection defense | Advanced |
 | 26 | `26-query-optimization/` | Plans, seeks vs scans, sargability, slow-query habits | Advanced |
+| 27 | `27-data-types-numbers-dates/` | Numbers, dates, GUID/ROWVERSION/XML, IDENTITY vs SEQUENCE, bitwise | Easy → Medium |
 
 > Naming convention: `NN-topic-name/` where `NN` is a zero-padded difficulty order. New topics continue as `11-...`, `12-...`, etc.
 
 ## How to study
 
-1. Go in order `00 → 26` the first time.
+1. Go in order `00 → 27` the first time.
 2. For each topic: read `README.md`, run `examples.sql` in SSMS, try the **Scenario questions** without looking.
 3. Use the **Cheat Sheet** at the bottom of each README for last-day revision.
 
@@ -67,7 +68,7 @@ USE master; -- or your practice DB
 -- Open 01-sql-statement-types/examples.sql and execute
 ```
 
-## Cheat sheet (the 27 topics)
+## Cheat sheet (the 28 topics)
 
 ```text
 0. -- → to line end | /* */ → block, nestable
@@ -120,6 +121,7 @@ USE master; -- or your practice DB
 24. % any run | _ one letter | [ab] one of | head-% scans, head-pinned seeks
 25. sp_executesql + params safe | QUOTENAME names | never paste input
 26. Plan first | bare columns seek | no star | match types | prove before/after
+27. Ints by size | DECIMAL money | DATETIME2 sharp | IDENTITY per-table | SEQUENCE shared
 ```
 
 ## Roadmap — Level 2 (all added ✅)

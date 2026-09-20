@@ -17,4 +17,12 @@ GROUP BY CustId;
 -- Type-match matters: int-to-int seeks (watch plan warnings on mismatches)
 SELECT CustId, Amt FROM #Ord26 WHERE CustId = 1;
 
+-- Filtered index: small + sharp (used only when WHERE matches the filter)
+CREATE NONCLUSTERED INDEX IX_Ord26_Big ON #Ord26(CustId) WHERE Amt >= 200;
+SELECT CustId FROM #Ord26 WHERE Amt >= 200 AND CustId = 1;
+DROP INDEX IX_Ord26_Big ON #Ord26;
+UPDATE STATISTICS #Ord26;  -- fresh stats past big loads
+-- Fragment check shape (live on real tables):
+-- SELECT avg_fragmentation_in_percent FROM sys.dm_db_index_physical_stats(DB_ID(), OBJECT_ID('dbo.Ord'), NULL, NULL, 'LIMITED');
+
 DROP TABLE #Ord26;

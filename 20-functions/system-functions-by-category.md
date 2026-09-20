@@ -123,6 +123,8 @@ GROUP BY ROLLUP (Region);
 | JSON_QUERY | object/array out | `JSON_QUERY('{"a":{"b":2}}', '$.a')` = '{"b":2}' |
 | JSON_MODIFY | returns CHANGED text (not in-place!) | `JSON_MODIFY('{"a":1}', '$.a', 2)` |
 | OPENJSON | json → rows (+ WITH schema) | needs compat 130+ |
+| FOR JSON AUTO | query → nested json by join shape | API feeds, zero hand-glue |
+| FOR JSON PATH | query → shaped json (dot-path aliases) | `SELECT Id AS [emp.id] ... FOR JSON PATH` |
 
 ```sql
 DECLARE @J NVARCHAR(MAX) = '{"name":"Asha","tags":["x","y"]}';
@@ -131,6 +133,9 @@ SELECT ISJSON(@J) AS Ok,
        JSON_QUERY(@J, '$.tags') AS Tg,          -- ["x","y"]
        JSON_MODIFY(@J, '$.name', 'Dev') AS New; -- changed TEXT back
 SELECT tag FROM OPENJSON(@J, '$.tags') WITH (tag VARCHAR(20) '$');
+SELECT Id, Salary FROM (VALUES (1,90000)) v(Id, Salary) FOR JSON AUTO;   -- [{"Id":1,...}]
+SELECT Id AS [emp.id], Salary AS [emp.pay]
+FROM (VALUES (1,90000)) v(Id, Salary) FOR JSON PATH;                     -- {"emp":{...}}
 ```
 
 ## 7. Metadata (shape askers)
@@ -185,6 +190,16 @@ SELECT @@ROWCOUNT AS Rows, @@TRANCOUNT AS Deals,     -- state: last-count, open 
 - String collation rule (MS note): text-in → text-out keeps input collation;
   built text uses db default (`02`).
 
+## 11. Message + misc single-liners (asked by name)
+
+| Call (name) | Job (use) | Live example |
+|---|---|---|
+| FORMATMESSAGE | printf-shape messages (ids or text) | `FORMATMESSAGE('Pay %i below %i.', 100, 200)` |
+| SOUNDEX / DIFFERENCE | voice-code / 0–4 likeness (English-tuned) | `SOUNDEX('Asha')`, `DIFFERENCE('Asha','Ashok')` |
+| PARSENAME | 4-part name splitter (1 = rightmost!) | `PARSENAME('db.sch.tbl.col', 1)` = 'col' |
+| HASHBYTES | hash bytes (SHA2_256/512; MD5 dead) | `HASHBYTES('SHA2_256','x')` — salt app-side, never plain |
+| CHOOSE / IIF | index-pick / two-way if (CASE shorthand) | `CHOOSE(2,'a','b')` = 'b'; `IIF(1>2,'y','n')` = 'n' |
+
 ## Cheat recap
 
 ```text
@@ -194,4 +209,5 @@ Convert: CAST CONVERT TRY_CAST TRY_CONVERT TRY_PARSE | Math: ROUND-3rd-cuts CEIL
 GROUPING marks rollup NULLs | JSON: ISJSON VALUE QUERY MODIFY OPENJSON
 Meta: DB_NAME OBJECT_ID COL_LENGTH APP_NAME | Security: SUSER USER ORIGINAL IS_MEMBER HAS_PERMS
 Config/state: @@SERVERNAME @@VERSION @@ROWCOUNT @@TRANCOUNT | cursor/rowset short above
+Msg/misc: FORMATMESSAGE PARSENAME SOUNDEX HASHBYTES CHOOSE IIF | FOR JSON AUTO/PATH feeds
 ```

@@ -55,3 +55,10 @@ SELECT @@SERVERNAME AS Srv, @@SERVICENAME AS Svc,
        @@LANGUAGE AS Lang, @@DATEFIRST AS WeekStart;
 SELECT @@ROWCOUNT AS Rows, @@TRANCOUNT AS Deals,
        @@CONNECTIONS AS Conns, @@CPU_BUSY AS Cpu;
+
+-- 10. Message + misc
+SELECT FORMATMESSAGE('Pay %i below %i.', 100, 200) AS Msg,
+       SOUNDEX('Asha') AS Sdx, DIFFERENCE('Asha','Ashok') AS Diff,
+       PARSENAME('db.sch.tbl.col', 1) AS Part1, PARSENAME('db.sch.tbl.col', 4) AS Part4,
+       HASHBYTES('SHA2_256', 'x') AS H, CHOOSE(2, 'a', 'b') AS Pick, IIF(1 > 2, 'y', 'n') AS If2;
+SELECT Id, Salary AS [emp.pay] FROM (VALUES (1,90000)) v(Id, Salary) FOR JSON PATH;

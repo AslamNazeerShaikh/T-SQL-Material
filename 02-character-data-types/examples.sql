@@ -26,4 +26,8 @@ FROM dbo.DemoStrings_02;
 DECLARE @Json VARCHAR(MAX) = '{"id":1,"tags":["a","b"]}';
 SELECT DATALENGTH(@Json) AS JsonBytes;
 
+-- Collation: case-sharp hunt vs blur default
+SELECT * FROM dbo.DemoStrings_02 WHERE Name = 'sara' COLLATE Latin1_General_CS_AS;  -- zero (Sara ≠ sara)
+SELECT * FROM dbo.DemoStrings_02 WHERE Name = 'sara' COLLATE Latin1_General_CI_AS;  -- Sara row
+
 DROP TABLE dbo.DemoStrings_02;

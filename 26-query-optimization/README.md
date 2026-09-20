@@ -74,9 +74,32 @@ Amt read off leaf (no table trip) → GROUP sums few rows. Wrapped twin
 4. "Star in prod view — harm?" → Blob drag + lookup bloats; name tight columns + covering INCLUDE.
 5. "Prove the win?" → Plan before/after (cost %, seeks), Query Store trend.
 
+## 6. Senior tuning pack (experienced-round asks)
+
+- Sniff fixes: copy params to locals, `OPTION (OPTIMIZE FOR (@p = 5))`,
+  `OPTION (RECOMPILE)` per-call plan (CPU tax), plan guides last resort.
+- Stats + fragments: `UPDATE STATISTICS dbo.T;` past big loads;
+  `sys.dm_db_index_physical_stats` reads rot — REORGANIZE light mess, REBUILD
+  heavy mess (needs ONLINE to dodge locks).
+- Filtered index: `CREATE NONCLUSTERED INDEX IX ON T(A) WHERE A IS NOT NULL;`
+  — small, sharp, used only when the query matches the filter.
+- Partitioning: split giants by date/id — prune scans, swap loads, archive per
+  partition. Columnstore (`CLUSTERED COLUMNSTORE INDEX`) squeezes DW scans ~10x.
+- Plans: estimated (guess, no run) vs actual (run + true rows) — skew between
+  them screams stale stats/data skew. Shifting text bloats plan cache → params.
+  Query Store parks regressions.
+- Minimal logging: SELECT INTO / BULK INSERT / TABLOCK loads skip row-logs.
+- BETWEEN datetime trap: `BETWEEN '2026-01-01' AND '2026-01-31'` misses Jan-31
+  PM rows — half-open ranges (`>=` + `< next`) always.
+- INDEX hints override the optimizer — rarely, briefly, with a comment why.
+- Modern tools: SSMS plans + Query Store + Extended Events (Profiler is dead road).
+- Spills (short memory grants → tempdb), CXPACKET (parallel waits), MAXDOP caps —
+  read the warnings, fix shapes first, knobs last.
+
 ## Cheat recap
 
 ```text
 Plan first (Ctrl+M) | index WHERE-JOIN-ORDER | bare columns seek, funcs fence
 No head-% | no star | match types | fresh stats | prove before/after
+sniff→locals/RECOMPILE | BETWEEN half-open | hints rare | Query Store parks wins.
 ```

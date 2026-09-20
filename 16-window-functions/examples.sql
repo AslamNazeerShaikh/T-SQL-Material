@@ -38,4 +38,8 @@ WITH D AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY Name, Salary ORDER BY Id) A
            FROM #Emp16)
 SELECT * FROM D WHERE rn > 1;  -- zero rows here; DELETE FROM D WHERE rn > 1 to kill dupes
 
+-- NTILE quartiles per team (ties may split clubs)
+SELECT Name, Salary, NTILE(4) OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS Quart
+FROM #Emp16;
+
 DROP TABLE #Emp16;

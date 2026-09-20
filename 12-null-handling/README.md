@@ -73,10 +73,18 @@ holds NULL — hence empty answer. `NOT EXISTS` has no such hole.
 4. "Is NULL same as 0 or ''?" → No. Unknown ≠ zero ≠ blank. Tests prove it.
 5. "Top paid list puts blanks first — want last?" → `ORDER BY CASE WHEN Bonus IS NULL THEN 1 ELSE 0 END, Bonus DESC`.
 
+## 6. Catch-all WHERE caution (asked pattern)
+
+`WHERE Col = COALESCE(@p, Col)` looks clever (skip the filter when @p is blank)
+but: NULL rows never match (`NULL = NULL` is unknown), and the wrap fences seeks
+(`26`). Safe shape: `WHERE (@p IS NULL OR Col = @p)` — the optimizer can still
+seek on Col.
+
 ## Cheat recap
 
 ```text
 NULL = unknown | test IS NULL / IS NOT NULL | = NULL never true
 COALESCE many-input ANSI | ISNULL two-input T-SQL
 NOT IN + NULL = empty → use NOT EXISTS | NULL math = NULL
+catch-all: WHERE (@p IS NULL OR Col = @p), never COALESCE-wrapped.
 ```

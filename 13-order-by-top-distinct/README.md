@@ -70,10 +70,22 @@ one of a kind — ties can swap slots between page reads.
 4. "Same query, new order each run — why?" → No ORDER BY. Add one on a kind key.
 5. "Nth top pay (say 2nd)?" → `OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY` on DESC pay — full Nth-salary craft lives in `16`.
 
+## 6. More list law (asked follow-ups)
+
+- DISTINCT vs GROUP BY: DISTINCT = unique rows, no math. GROUP BY = unique clubs
+  + totals (`11`). Need counts? GROUP BY. Need a bare list? DISTINCT.
+- T-SQL has NO `NULLS FIRST/LAST` — blanks-first needs CASE (`14`):
+  `ORDER BY CASE WHEN x IS NULL THEN 0 ELSE 1 END, x`.
+- DISTINCT melts NULLs to one row (unlike `=` tests, see `12`).
+- Last N rows: flip the sort — `ORDER BY Id DESC OFFSET 0 ROWS FETCH NEXT 5 ROWS ONLY`.
+- `ORDER BY 2` (ordinal) runs but rots on SELECT edits — name fields. Per-query
+  case law: `ORDER BY Name COLLATE Latin1_General_CS_AS` (`02`).
+
 ## Cheat recap
 
 ```text
 ORDER BY col ASC|DESC | no ORDER BY = no promised order
 TOP n [WITH TIES] | OFFSET m FETCH NEXT n (ORDER BY a must)
 DISTINCT full-row de-dupe | page-safe = sort by kind key
+no NULLS FIRST (CASE instead) | DISTINCT melts NULLs | last-N = flipped sort.
 ```

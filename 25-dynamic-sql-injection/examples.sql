@@ -23,4 +23,9 @@ DECLARE @Sort SYSNAME = 'Salary';
 IF @Sort IN ('Id','Name','Salary')
   PRINT 'SELECT * FROM dbo.Emp ORDER BY ' + QUOTENAME(@Sort) + ';';
 
+-- Dynamic PIVOT list: build text, validate vs sys.columns live, print-then-run
+DECLARE @Cols25 NVARCHAR(MAX) = '[10],[20]';
+PRINT 'SELECT * FROM (SELECT DeptId, Salary FROM dbo.Emp) s PIVOT (AVG(Salary) FOR DeptId IN ('
+  + @Cols25 + ')) p;';
+
 DROP TABLE #Emp25;

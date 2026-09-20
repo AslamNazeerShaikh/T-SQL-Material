@@ -36,5 +36,9 @@ GO
 SELECT * FROM dbo.fn_Bands20();
 GO
 
+-- CROSS APPLY (param join, keeps matches) vs OUTER APPLY (keeps all left)
+SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e CROSS APPLY dbo.fn_Team20(e.DeptId) t;
+SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e OUTER APPLY dbo.fn_Team20(e.DeptId) t;
+
 DROP FUNCTION dbo.fn_Bands20; DROP FUNCTION dbo.fn_Team20;
 DROP FUNCTION dbo.fn_Tax20; DROP TABLE dbo.Emp20;

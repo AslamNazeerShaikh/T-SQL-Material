@@ -69,4 +69,5 @@ gap on big tables (see `26`).
 ```text
 % any run | _ one letter | [ab] one of | [^a] not-a | ESCAPE frees mark
 Head-pinned seeks | head-% scans | case = collation | NULL falls out of NOT LIKE
+big-text hunts → full-text CONTAINS/FREETEXT (own index, not LIKE).
 ```

@@ -89,6 +89,12 @@ SELECT * FROM OrgTree;
 4. "Reference CTE in two separate SELECTs?" → No — scope is one statement; use temp table/view.
 5. "Recursion never ends — guard?" → Data cycle; add `OPTION (MAXRECURSION 100)` (or 0 = unlimited, dangerous).
 
+## 6. CTE vs derived table (asked follow-up)
+
+- Derived = subquery in FROM (one-shot, nest-ugly, single use).
+- CTE = named top step (reads clean, twice-readable, recursion-capable).
+- Plans match mostly — pick readability; recursion forces CTE (`15` covers EXISTS twins).
+
 ## Cheat recap
 
 ```text

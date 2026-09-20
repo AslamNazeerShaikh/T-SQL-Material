@@ -87,5 +87,5 @@ lands on ELSE — the silent-NULL-catch most miss in checks.
 ```text
 CASE WHEN t THEN v ELSE d END | simple matches field | searched tests rules
 No hit + no ELSE = NULL | type = top-rank return | WHEN order counts
-Pivot: SUM(CASE...) free-form | PIVOT op fixed-list
+Pivot: SUM(CASE...) free-form | PIVOT op fixed-list | UNPIVOT cols→rows
 ```

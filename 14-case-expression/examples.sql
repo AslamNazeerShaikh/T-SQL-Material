@@ -30,4 +30,9 @@ SELECT [10] AS IT, [20] AS HR FROM
  (SELECT DeptId, Salary FROM #Emp14 WHERE Salary IS NOT NULL) s
 PIVOT (AVG(Salary) FOR DeptId IN ([10],[20])) p;
 
+-- UNPIVOT: columns back to rows (PIVOT mirror)
+SELECT Dept, Yr, Amt FROM
+ (SELECT 'IT' AS Dept, 100 AS Y2025, 120 AS Y2026) s
+UNPIVOT (Amt FOR Yr IN (Y2025, Y2026)) u;
+
 DROP TABLE #Emp14;

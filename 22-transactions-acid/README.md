@@ -78,6 +78,17 @@ XACT_ABORT ON voids both — books never half-move.
 4. "1205 in logs each noon — cure?" → Same-order locks, short deals, index the link fields, retry victims.
 5. "ACID one line each?" → All-or-none / rules kept / solo feel / sealed lasts.
 
+## 6. Ladder explicit + RCSI + lock-vs-latch (asked follow-ups)
+
+- Ladder low→high: READ UNCOMMITTED (lowest, dirt) → READ COMMITTED (default,
+  sealed) → REPEATABLE READ → SERIALIZABLE (highest, solo). SNAPSHOT/RCSI sit
+  apart (versioned reads, no dirt, fewer blocks).
+- READ COMMITTED SNAPSHOT (RCSI): statement-level past views via row versions,
+  DB flag on — readers never wait writers; writers still block writers.
+- Lock = logical claim (row/table, held to seal). Latch = memory-page hug
+  (blink-short, never waited on like locks). Blocking = one waits (auto-clears);
+  deadlock = circle (1205 kills one) — §5 cures both.
+
 ## Cheat recap
 
 ```text

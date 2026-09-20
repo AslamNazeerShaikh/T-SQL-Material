@@ -78,6 +78,12 @@ the cheapest field-level shield before masks/row-locks.
 4. "View on view on view — risk?" → Hidden cost, murky plans. Flatten to one or two.
 5. "View vs CTE vs temp?" → View: saved + shared + rights. CTE: one-query step. Temp: staged rows + indexes (`09`, `17`).
 
+## 6. Cousin: synonym (asked with views)
+
+One-name alias to any object, even cross-db/server (via linked server):
+`CREATE SYNONYM dbo.EmpLive FOR ProdDB.dbo.Emp;` — apps read one still name
+through moves and renames; needs the underlying rights all the same.
+
 ## Cheat recap
 
 ```text

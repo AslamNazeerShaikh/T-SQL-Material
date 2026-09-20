@@ -24,6 +24,8 @@ through joined views. Inside sit inserted and deleted sets — full sets, as one
 blast can touch many rows. Care points: they hide work, so keep them slim,
 set-wise, and logged."*
 
+> Deep dive: `audit-options-temporal-tables.md` + `temporal-tables-examples.sql` — triggers vs temporal vs CDC + retention law.
+
 ## 1. Sample tables
 
 ```sql
@@ -81,6 +83,14 @@ picks with no TOP) break or crawl here — sets only.
 3. "Write through joined view?" → INSTEAD OF splits the write per base table.
 4. "Bulk load crawled past trigger day — why?" → Row-blind shape or heavy per-row work. Slim + set-wise.
 5. "Trigger vs CHECK?" → CHECK for still rules; trigger for logs, cross-row checks, reshapes.
+
+## 6. Nesting + TRIGGER_NESTLEVEL (asked follow-ups)
+
+- Triggers can trip triggers (nest chain) — the server caps depth; loops rot.
+  Recursive triggers (self-trip) stay OFF by law — keep it so.
+- `TRIGGER_NESTLEVEL()` reads current trip depth (NULL past triggers) — guard chains.
+- CDC (log-feed, Agent-fed) beats triggers for downstream pipes; temporal beats both
+  for past-asks — full map in the deep dive above.
 
 ## Cheat recap
 

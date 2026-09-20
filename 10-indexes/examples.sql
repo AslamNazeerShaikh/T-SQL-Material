@@ -27,5 +27,10 @@ CREATE TABLE dbo.Orders_10
 );
 CREATE CLUSTERED INDEX IX_Orders10_Date ON dbo.Orders_10(OrderDate);
 
+-- Composite: seeks on (Id) and (Id,Name); lone-Name seeks need their own index
+CREATE NONCLUSTERED INDEX IX_Employees10_IdName ON dbo.Employees_10(Id, Name);
+SELECT * FROM dbo.Employees_10 WHERE Id = 1 AND Name = 'John';
+DROP INDEX IX_Employees10_IdName ON dbo.Employees_10;
+
 DROP TABLE dbo.Employees_10;
 DROP TABLE dbo.Orders_10;
