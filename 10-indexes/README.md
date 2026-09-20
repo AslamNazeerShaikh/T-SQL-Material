@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without indexes every lookup and every range query (`BETWEEN`, `ORDER BY`, joins) degrades to a full scan. The clustered index additionally gives one ordering that makes range scans contiguous, while non-clustered indexes accelerate filters on other columns — at the cost of maintenance on each write, which is why you index deliberately, not blindly.
 
-**Interview-ready answer:** *"A clustered index defines the table's row order — maximum one per table — so it's ideal for range scans and usually backs the primary key. Non-clustered indexes are separate key-plus-locator structures, many per table, for filter columns. Two things people get wrong: a primary key is not automatically clustered — it just defaults that way and can be declared NONCLUSTERED — and the clustered key is copied into every non-clustered index, so it should be narrow, static, and increasing like an INT IDENTITY."*
+**Interview-ready answer:** *"A clustered index sets the row order of the table — just one per table. So it suits range scans, and most days backs the primary key. Non-clustered tags are side lists — key plus row mark — many per table, for search fields. Two points go wrong oft. One, a primary key need not be clustered — that is just the default. Two, the clustered key is pasted in all side lists — so keep it small, fixed, and on the rise, like INT IDENTITY."*
 
 ## 1. Sample setup
 

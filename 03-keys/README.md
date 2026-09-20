@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without keys you get duplicate employees, orders pointing at deleted customers (orphans), and no safe way to join tables. Keys make duplicates impossible (PK/UNIQUE), make orphans impossible (FK), and give every join a trustworthy meeting point.
 
-**Interview-ready answer:** *"A primary key uniquely identifies each row — unique plus NOT NULL, one per table. A foreign key enforces that a child value exists in the parent table, which guarantees referential integrity. Candidate keys are columns that could serve as the primary key; the one not chosen is the alternate key, usually enforced with UNIQUE; and a composite key spans multiple columns, like StudentId plus CourseId in an enrollment table."*
+**Interview-ready answer:** *"A primary key marks each row as one of a kind — no repeat, no blank. Just one per table. A foreign key links a child row to a real parent row, so no lost links. A new key that can mark rows is a candidate key. The one we do not pick is the alternate key, kept with UNIQUE. A composite key is made of two or more columns — like student plus course in a class join table."*
 
 ## 1. Sample tables
 

@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without the split you'd either average the wrong rows or be unable to express "departments averaging over 50K" at all. Mixing them up gives wrong results silently — filtering groups in WHERE is impossible (aggregates don't exist yet), and filtering rows in HAVING is wasteful (you aggregate rows you never wanted).
 
-**Interview-ready answer:** *"WHERE filters rows before grouping; HAVING filters groups after aggregation. So WHERE Salary > 50000 removes low-paid rows before averages are computed, while HAVING AVG(Salary) > 50000 removes departments whose average is too low. The logical order is FROM, WHERE, GROUP BY, HAVING, SELECT — that's why you can't put an aggregate in WHERE."*
+**Interview-ready answer:** *"WHERE keeps rows first, before groups are made. HAVING keeps groups next, after totals are made. So WHERE pay > 50000 drops low-pay rows first. Then HAVING average pay > 50000 drops weak teams. The steps are FROM, WHERE, GROUP BY, HAVING, SELECT. That is why a total like AVG can not sit in WHERE."*
 
 ## 1. Sample table
 

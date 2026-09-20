@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Picking wrong costs you twice: `CHAR(100)` for names wastes storage on every row, and `VARCHAR` for multilingual names silently corrupts data into `????`. The type system lets you trade storage for correctness per column — `CHAR(6)` for fixed codes, `NVARCHAR` for people's names.
 
-**Interview-ready answer:** *"CHAR is fixed-length non-Unicode, VARCHAR is variable-length non-Unicode, and the NCHAR/NVARCHAR pair are their Unicode equivalents, with MAX variants holding up to about 2 GB. I'd use CHAR for fixed codes like a 6-char employee code, VARCHAR for varying English text, and NVARCHAR with the N-prefix literal for anything multilingual — because VARCHAR physically cannot represent characters outside its code page and corrupts them."*
+**Interview-ready answer:** *"CHAR holds fixed text. VARCHAR holds free-size text. Both are for English text only. NCHAR and NVARCHAR are the same two, but for all world scripts. MAX types hold very big text, near 2 GB. I use CHAR for fixed codes, like a 6-letter staff code. I use NVARCHAR for names, with N put before the text — else Hindi or local text turns into question marks."*
 
 ## 1. The six types
 

@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without it you'd union data in application memory or with temp tables. The operator choice then trades correctness for speed: `UNION` pays for a dedupe pass (sort/hash) so each row appears once, while `UNION ALL` skips that work and is the right pick whenever duplicates are impossible or acceptable.
 
-**Interview-ready answer:** *"UNION and UNION ALL combine two result sets with matching columns — UNION removes duplicates, UNION ALL keeps them. Dedupe costs a sort or hash pass, so UNION ALL is faster and I default to it unless I actually need duplicate elimination, like merging employee and contractor name lists into one distinct list."*
+**Interview-ready answer:** *"UNION and UNION ALL stack two same-shape lists into one. UNION drops repeats. UNION ALL keeps them. Drop of repeats needs more work — a sort step — so UNION ALL is fast. I use UNION ALL by default. I use UNION only when I need one clean list — like staff plus vendor names with no repeats."*
 
 ## 1. Sample tables
 

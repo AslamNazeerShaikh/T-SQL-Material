@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without subqueries you'd compute intermediate results client-side and interpolate them back, which is chatty, racy (data changes between steps), and hard to keep in one transaction. Subqueries keep multi-step logic atomic, server-side, and in a single round trip.
 
-**Interview-ready answer:** *"A query is a SQL statement against the database — in practice usually a SELECT. A subquery is a query nested inside another: a scalar one returns a single value like AVG salary, a multi-row one feeds IN, and a correlated one references the outer query's row, like comparing each employee to their own department's average. They exist so multi-step logic stays in one atomic server-side statement instead of two round trips."*
+**Interview-ready answer:** *"A query is an ask put to the database — most days, a SELECT. A subquery is a query placed in one more query. A one-value type gives a single number, like average pay. A many-row type feeds IN. A linked type uses the outer row — like staff paid more than their own team average. They keep multi-step work in one safe server-side step, not two trips."*
 
 ## 1. Sample tables
 

@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without constraints, invalid data accumulates silently — negative ages, duplicate emails, orders for nonexistent customers — and every report becomes suspect. Constraints reject bad writes at the gate, so the data is trustworthy regardless of which app wrote it.
 
-**Interview-ready answer:** *"Constraints are declarative integrity rules the engine enforces on every write: PRIMARY KEY and UNIQUE guarantee uniqueness, FOREIGN KEY guarantees the parent row exists, NOT NULL mandates a value, CHECK enforces a condition such as Age >= 18, and DEFAULT auto-fills values like GETDATE. I prefer them over app-only validation because data outlives application code — bulk imports and future services hit the same enforcement."*
+**Interview-ready answer:** *"A constraint is a rule the database checks on each write. PRIMARY KEY and UNIQUE stop repeats. FOREIGN KEY checks the parent row is there. NOT NULL means a value is a must. CHECK tests a rule, like age 18 or more. DEFAULT fills a value, like today's date. I like them more than app-side checks. Data lives more than app code — and all ways to add data face the same rules."*
 
 ## 1. Sample table
 

@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without joins you'd either denormalize everything (storing the department name on every employee row, risking inconsistency) or stitch data together in application code row by row. Joins let the engine reassemble related data set-at-a-time, using indexes, inside one query.
 
-**Interview-ready answer:** *"A join reassembles rows from normalized tables using a match condition. INNER returns only matches; LEFT keeps every left row with NULLs where nothing matched — which is also how I find mismatches, with a LEFT JOIN plus WHERE right.key IS NULL, like departments with no employees; FULL keeps both sides' orphans; CROSS is a Cartesian product with no condition; and a self join handles hierarchies like employee–manager in one table."*
+**Interview-ready answer:** *"A join joins rows from clean split tables on a match rule. INNER keeps only matches. LEFT keeps all left rows, with blank where no match. I use this blank side with IS NULL to find lost rows — like teams with no staff. FULL keeps both sides. CROSS makes all pairs, with no rule. A self join joins a table to itself — for boss-staff links kept in one table."*
 
 ## 1. Sample tables
 

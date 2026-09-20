@@ -10,7 +10,7 @@
 
 **What problem it resolves:** It turns a 200-line nested monster into named steps (`HighPaid`, `Ranked`, `Tree`) that read top-to-bottom, and it makes hierarchical traversal possible without loops or temp tables. Note it is not a temp table: it lives for one statement and is generally inlined, not materialized.
 
-**Interview-ready answer:** *"A CTE is a named temporary result defined with WITH for the single statement that follows. I use non-recursive CTEs to break complex queries into readable steps instead of deep nesting, and recursive CTEs — an anchor query plus a UNION ALL recursive member — to traverse hierarchies like an org chart. It doesn't create a physical temp table; it's a query expression the optimizer generally inlines."*
+**Interview-ready answer:** *"A CTE is a named short-term result made with WITH, for the one query just after it. Plain CTEs split big queries into clear steps — no deep nests. Loop CTEs — a base query plus a UNION ALL loop part — walk tree data like an org chart. It makes no real temp table. It is just a named query the engine folds in."*
 
 ## 1. Sample tables
 

@@ -10,7 +10,7 @@
 
 **What problem it resolves:** Without categories you cannot answer "who is allowed to do what" or "what will this statement affect." The split makes it possible to GRANT only `SELECT` (DQL) without allowing `DROP` (DDL), to audit schema changes separately from data changes, and to reason about logging/locking per operation type.
 
-**Interview-ready answer:** *"SQL statements fall into five types: DDL defines structure — CREATE, ALTER, DROP, TRUNCATE; DML manipulates rows — INSERT, UPDATE, DELETE, MERGE; DQL reads data — SELECT; DCL controls permissions — GRANT, DENY, REVOKE; and TCL controls transactions — BEGIN TRAN, COMMIT, ROLLBACK. The split exists so permissions, auditing, and engine behavior can differ per operation — for example I can grant a reporting login only SELECT without giving it any DDL power."*
+**Interview-ready answer:** *"SQL has five types of commands. DDL builds tables — CREATE, ALTER, DROP, TRUNCATE. DML works on rows — INSERT, UPDATE, DELETE, MERGE. DQL reads data — SELECT. DCL sets rights — GRANT, DENY, REVOKE. TCL ends a deal safe — BEGIN, COMMIT, ROLLBACK. This split is a big help. For one, I can give a user only SELECT rights, with no right to touch the tables."*
 
 ## 1. Categories
 
