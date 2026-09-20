@@ -2,6 +2,16 @@
 
 **Goal:** Return correct rows for every join type and find mismatches (anti-join).
 
+## Definition (say this in the interview)
+
+**What it is:** A join combines rows from two tables according to a logical condition, usually equality between a foreign key and a primary key. `INNER` keeps only matches; `LEFT`/`RIGHT` keep all rows from one side plus matches; `FULL OUTER` keeps everything; `CROSS` makes every combination; a self join joins a table to itself with two aliases.
+
+**Why it was introduced:** Relational databases deliberately split data into normalized tables — employees in one, departments in another — to eliminate duplication. But applications need the combined picture, so the language needed an operator that reassembles related rows on demand without storing them redundantly.
+
+**What problem it resolves:** Without joins you'd either denormalize everything (storing the department name on every employee row, risking inconsistency) or stitch data together in application code row by row. Joins let the engine reassemble related data set-at-a-time, using indexes, inside one query.
+
+**Interview-ready answer:** *"A join reassembles rows from normalized tables using a match condition. INNER returns only matches; LEFT keeps every left row with NULLs where nothing matched — which is also how I find mismatches, with a LEFT JOIN plus WHERE right.key IS NULL, like departments with no employees; FULL keeps both sides' orphans; CROSS is a Cartesian product with no condition; and a self join handles hierarchies like employee–manager in one table."*
+
 ## 1. Sample tables
 
 Employees:

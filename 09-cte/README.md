@@ -2,6 +2,16 @@
 
 **Goal:** Structure complex queries with named expressions and write a recursive hierarchy.
 
+## Definition (say this in the interview)
+
+**What it is:** A Common Table Expression is a named temporary result set, declared with `WITH`, that exists only for the single statement that follows it. It comes in two forms: non-recursive, which is essentially a named subquery that makes complex logic readable, and recursive, which references itself to walk hierarchies like org charts.
+
+**Why it was introduced:** Deeply nested subqueries become unreadable — queries inside queries inside queries — and before CTEs there was no standard way to express recursion (employee → manager → CEO traversal) in plain SQL. The CTE gave queries named, composable building blocks plus an anchor-plus-recursive-member pattern for hierarchies.
+
+**What problem it resolves:** It turns a 200-line nested monster into named steps (`HighPaid`, `Ranked`, `Tree`) that read top-to-bottom, and it makes hierarchical traversal possible without loops or temp tables. Note it is not a temp table: it lives for one statement and is generally inlined, not materialized.
+
+**Interview-ready answer:** *"A CTE is a named temporary result defined with WITH for the single statement that follows. I use non-recursive CTEs to break complex queries into readable steps instead of deep nesting, and recursive CTEs — an anchor query plus a UNION ALL recursive member — to traverse hierarchies like an org chart. It doesn't create a physical temp table; it's a query expression the optimizer generally inlines."*
+
 ## 1. Sample tables
 
 ```sql

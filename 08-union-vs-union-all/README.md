@@ -2,6 +2,16 @@
 
 **Goal:** Combine result sets correctly and pick the faster option when dedupe isn't needed.
 
+## Definition (say this in the interview)
+
+**What it is:** `UNION` and `UNION ALL` stack the results of two queries vertically into one result set. Both require the same number of columns with compatible types. The difference: `UNION` removes duplicate rows, `UNION ALL` keeps them.
+
+**Why it was introduced:** Related data often lives in separate but structurally similar places — employees vs contractors, current vs archived orders, regional tables. Reports need them as one list, and running two queries plus merging client-side is wasteful — so SQL got a set operator that concatenates result sets server-side.
+
+**What problem it resolves:** Without it you'd union data in application memory or with temp tables. The operator choice then trades correctness for speed: `UNION` pays for a dedupe pass (sort/hash) so each row appears once, while `UNION ALL` skips that work and is the right pick whenever duplicates are impossible or acceptable.
+
+**Interview-ready answer:** *"UNION and UNION ALL combine two result sets with matching columns — UNION removes duplicates, UNION ALL keeps them. Dedupe costs a sort or hash pass, so UNION ALL is faster and I default to it unless I actually need duplicate elimination, like merging employee and contractor name lists into one distinct list."*
+
 ## 1. Sample tables
 
 Employees: `John, Sara` — Contractors: `Sara, Mike`

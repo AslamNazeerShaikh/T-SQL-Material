@@ -2,6 +2,16 @@
 
 **Goal:** Choose correctly between CHAR / VARCHAR / NCHAR / NVARCHAR (+ MAX) and explain storage + Unicode behavior.
 
+## Definition (say this in the interview)
+
+**What it is:** Character data types declare how text is physically stored — fixed vs variable length, and non-Unicode (1 byte/char, English/ASCII) vs Unicode (2 bytes/char, all languages). `CHAR/NCHAR` always reserve their full length; `VARCHAR/NVARCHAR` store only what you put in; `(MAX)` variants hold up to ~2 GB.
+
+**Why it was introduced:** Early systems only needed English text, so 1-byte-per-char types were enough and cheap. As software went global, the same columns had to hold Hindi, Arabic, Chinese, emoji — so Unicode (`N`-prefixed) types were added. Fixed vs variable exists because padding every value wastes disk and memory, while variable storage needs length overhead.
+
+**What problem it resolves:** Picking wrong costs you twice: `CHAR(100)` for names wastes storage on every row, and `VARCHAR` for multilingual names silently corrupts data into `????`. The type system lets you trade storage for correctness per column — `CHAR(6)` for fixed codes, `NVARCHAR` for people's names.
+
+**Interview-ready answer:** *"CHAR is fixed-length non-Unicode, VARCHAR is variable-length non-Unicode, and the NCHAR/NVARCHAR pair are their Unicode equivalents, with MAX variants holding up to about 2 GB. I'd use CHAR for fixed codes like a 6-char employee code, VARCHAR for varying English text, and NVARCHAR with the N-prefix literal for anything multilingual — because VARCHAR physically cannot represent characters outside its code page and corrupts them."*
+
 ## 1. The six types
 
 ```text

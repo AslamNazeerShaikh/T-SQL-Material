@@ -2,6 +2,16 @@
 
 **Goal:** Classify any T-SQL statement as DDL / DML / DQL / DCL / TCL, and nail DELETE vs TRUNCATE vs DROP.
 
+## Definition (say this in the interview)
+
+**What it is:** SQL statements are grouped into five categories by what they act on — DDL acts on *structure* (tables, indexes), DML on *data rows*, DQL *reads* data, DCL manages *permissions*, TCL manages *transactions*.
+
+**Why it was introduced:** As databases grew from simple file stores into multi-user systems, one flat list of commands became unmanageable. The categories let the engine, tools, and DBAs treat fundamentally different operations differently — e.g. schema changes need stricter locking and permissions than reading rows, and transaction control needs its own commands.
+
+**What problem it resolves:** Without categories you cannot answer "who is allowed to do what" or "what will this statement affect." The split makes it possible to GRANT only `SELECT` (DQL) without allowing `DROP` (DDL), to audit schema changes separately from data changes, and to reason about logging/locking per operation type.
+
+**Interview-ready answer:** *"SQL statements fall into five types: DDL defines structure — CREATE, ALTER, DROP, TRUNCATE; DML manipulates rows — INSERT, UPDATE, DELETE, MERGE; DQL reads data — SELECT; DCL controls permissions — GRANT, DENY, REVOKE; and TCL controls transactions — BEGIN TRAN, COMMIT, ROLLBACK. The split exists so permissions, auditing, and engine behavior can differ per operation — for example I can grant a reporting login only SELECT without giving it any DDL power."*
+
 ## 1. Categories
 
 | Category | Full Form | Purpose | Common Statements |

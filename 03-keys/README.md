@@ -2,6 +2,16 @@
 
 **Goal:** Define every key type cold and create PK / FK / UNIQUE / composite keys.
 
+## Definition (say this in the interview)
+
+**What it is:** A key is a column (or combination) that the database uses to identify rows and link tables. The primary key uniquely identifies every row; the foreign key links a child row to a parent row; unique, candidate, alternate, and composite keys are variations that enforce uniqueness without necessarily being the primary identifier.
+
+**Why it was introduced:** The relational model stores data in separate tables to avoid duplication — but then you need a reliable way to point at "exactly that one row" and to reconnect split tables. Keys are that mechanism: they turn a pile of rows into addressable entities with guaranteed identity and declared relationships.
+
+**What problem it resolves:** Without keys you get duplicate employees, orders pointing at deleted customers (orphans), and no safe way to join tables. Keys make duplicates impossible (PK/UNIQUE), make orphans impossible (FK), and give every join a trustworthy meeting point.
+
+**Interview-ready answer:** *"A primary key uniquely identifies each row — unique plus NOT NULL, one per table. A foreign key enforces that a child value exists in the parent table, which guarantees referential integrity. Candidate keys are columns that could serve as the primary key; the one not chosen is the alternate key, usually enforced with UNIQUE; and a composite key spans multiple columns, like StudentId plus CourseId in an enrollment table."*
+
 ## 1. Sample tables
 
 ```sql

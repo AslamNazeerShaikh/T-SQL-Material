@@ -2,6 +2,16 @@
 
 **Goal:** Enforce data rules declaratively: PK, FK, UNIQUE, NOT NULL, CHECK, DEFAULT.
 
+## Definition (say this in the interview)
+
+**What it is:** A constraint is a rule declared on a table that SQL Server enforces on every INSERT and UPDATE — no application code needed. `NOT NULL` demands a value, `UNIQUE` forbids duplicates, `CHECK` enforces a condition like `Age >= 18`, `DEFAULT` supplies a value when none is given, and PK/FK constraints enforce identity and relationships.
+
+**Why it was introduced:** Application code changes, gets bypassed (bulk loads, ad-hoc scripts, new services), and has bugs. The database needed a last line of defense that holds no matter which client writes the data — so integrity rules moved into the engine itself, declared once alongside the schema.
+
+**What problem it resolves:** Without constraints, invalid data accumulates silently — negative ages, duplicate emails, orders for nonexistent customers — and every report becomes suspect. Constraints reject bad writes at the gate, so the data is trustworthy regardless of which app wrote it.
+
+**Interview-ready answer:** *"Constraints are declarative integrity rules the engine enforces on every write: PRIMARY KEY and UNIQUE guarantee uniqueness, FOREIGN KEY guarantees the parent row exists, NOT NULL mandates a value, CHECK enforces a condition such as Age >= 18, and DEFAULT auto-fills values like GETDATE. I prefer them over app-only validation because data outlives application code — bulk imports and future services hit the same enforcement."*
+
 ## 1. Sample table
 
 ```sql

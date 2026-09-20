@@ -2,6 +2,16 @@
 
 **Goal:** Define query/subquery and write scalar, multi-row, and correlated subqueries.
 
+## Definition (say this in the interview)
+
+**What it is:** A query is a SQL statement that asks the database to do something — most often a `SELECT` that retrieves data. A subquery is a query nested inside another query, whose result the outer query consumes: a scalar subquery returns one value (e.g. an average), a multi-row subquery returns a set used with `IN`, and a correlated subquery references the outer row so it re-evaluates per row.
+
+**Why it was introduced:** Real questions are multi-step — "employees earning above the average" needs the average first, then the comparison. Subqueries let you compose such logic inside a single statement instead of running two queries and ferrying results through application code or temp tables.
+
+**What problem it resolves:** Without subqueries you'd compute intermediate results client-side and interpolate them back, which is chatty, racy (data changes between steps), and hard to keep in one transaction. Subqueries keep multi-step logic atomic, server-side, and in a single round trip.
+
+**Interview-ready answer:** *"A query is a SQL statement against the database — in practice usually a SELECT. A subquery is a query nested inside another: a scalar one returns a single value like AVG salary, a multi-row one feeds IN, and a correlated one references the outer query's row, like comparing each employee to their own department's average. They exist so multi-step logic stays in one atomic server-side statement instead of two round trips."*
+
 ## 1. Sample tables
 
 Employees:

@@ -2,6 +2,16 @@
 
 **Goal:** Never mix them up: WHERE filters rows, HAVING filters groups.
 
+## Definition (say this in the interview)
+
+**What it is:** `WHERE` filters individual rows *before* grouping and aggregation happen; `HAVING` filters the *groups* produced by `GROUP BY` after aggregates like `AVG` or `COUNT` are computed. They operate at two different stages of SQL's logical processing order: `FROM → WHERE → GROUP BY → HAVING → SELECT`.
+
+**Why it was introduced:** Aggregate queries need filtering at two levels and one clause cannot serve both. You must remove irrelevant rows before averaging (otherwise HR salaries pollute the IT average), and you must also drop whole groups after averaging (departments whose average is too low). SQL separates the two so each filter runs at the only stage where its inputs exist.
+
+**What problem it resolves:** Without the split you'd either average the wrong rows or be unable to express "departments averaging over 50K" at all. Mixing them up gives wrong results silently — filtering groups in WHERE is impossible (aggregates don't exist yet), and filtering rows in HAVING is wasteful (you aggregate rows you never wanted).
+
+**Interview-ready answer:** *"WHERE filters rows before grouping; HAVING filters groups after aggregation. So WHERE Salary > 50000 removes low-paid rows before averages are computed, while HAVING AVG(Salary) > 50000 removes departments whose average is too low. The logical order is FROM, WHERE, GROUP BY, HAVING, SELECT — that's why you can't put an aggregate in WHERE."*
+
 ## 1. Sample table
 
 Employees:

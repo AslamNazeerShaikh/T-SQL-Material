@@ -2,6 +2,16 @@
 
 **Goal:** Explain the physical difference, the 1-per-table rule, and PK ≠ clustered.
 
+## Definition (say this in the interview)
+
+**What it is:** An index is an auxiliary structure SQL Server maintains so it can find rows without scanning the whole table. A clustered index dictates the logical order of the table's rows themselves — one per table maximum, since rows have a single order. A non-clustered index is a separate structure holding the key plus a locator to the row — many allowed per table.
+
+**Why it was introduced:** Table scans don't scale: finding one customer among a hundred million rows by reading every page is unusable. Indexes trade extra storage and slower writes for fast seeks — the same reason books have an index instead of requiring you to read every page.
+
+**What problem it resolves:** Without indexes every lookup and every range query (`BETWEEN`, `ORDER BY`, joins) degrades to a full scan. The clustered index additionally gives one ordering that makes range scans contiguous, while non-clustered indexes accelerate filters on other columns — at the cost of maintenance on each write, which is why you index deliberately, not blindly.
+
+**Interview-ready answer:** *"A clustered index defines the table's row order — maximum one per table — so it's ideal for range scans and usually backs the primary key. Non-clustered indexes are separate key-plus-locator structures, many per table, for filter columns. Two things people get wrong: a primary key is not automatically clustered — it just defaults that way and can be declared NONCLUSTERED — and the clustered key is copied into every non-clustered index, so it should be narrow, static, and increasing like an INT IDENTITY."*
+
 ## 1. Sample setup
 
 ```sql
