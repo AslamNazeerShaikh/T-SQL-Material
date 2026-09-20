@@ -23,6 +23,8 @@ SELECT with inputs, like a view with inputs — fast, folds in plans. Multi-step
 table builds with many steps but hides stats, so oft slow. I use inline for
 table work, scalar for plain math, multi-step only when steps truly must stage."*
 
+> Deep dive: `functions-system-vs-user-usability.md` — built-in library tour, determinism bars, where-usable matrix incl. CROSS APPLY.
+
 ## 1. Sample table
 
 ```sql

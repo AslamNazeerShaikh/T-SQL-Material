@@ -23,6 +23,8 @@ plans get reused, tables stay shut, and pasted-text injection dies. I keep
 SET NOCOUNT ON, wrap money steps in TRY-CATCH with deals, and return rows for
 reads, OUTPUT for one back-value, status code for win-or-fail."*
 
+> Deep dive: `procs-system-vs-user-usability.md` — system vs user vs extended procs, param shapes incl. TVP, where-EXEC-allowed matrix, temp scope rules.
+
 ## 1. Sample table
 
 ```sql
