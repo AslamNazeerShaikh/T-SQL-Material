@@ -24,6 +24,7 @@ table builds with many steps but hides stats, so oft slow. I use inline for
 table work, scalar for plain math, multi-step only when steps truly must stage."*
 
 > Deep dive: `functions-system-vs-user-usability.md` — built-in library tour, determinism bars, where-usable matrix incl. CROSS APPLY.
+> Category map: `system-functions-by-category.md` + `system-functions-examples.sql` — popular calls per MS-Learn family with live demos.
 
 ## 1. Sample table
 
