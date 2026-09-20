@@ -6,7 +6,7 @@ No generic SQL. No other engine. Every example is SQL Server / T-SQL specific.
 
 ## How this repo is organized
 
-Each topic lives in its own folder. Folder numbers = **difficulty / understanding level** (01 = foundation, 10 = advanced for this set).
+Each topic lives in its own folder. Folder numbers = **difficulty / understanding level** (00 = start here, 10 = advanced for this set).
 
 Each topic folder contains:
 
@@ -15,6 +15,7 @@ Each topic folder contains:
 
 | # | Folder | Topic | Level |
 |---|--------|-------|-------|
+| 00 | `00-sql-comments/` | SQL Comments (`--`, `/* */`) + traps | Start here |
 | 01 | `01-sql-statement-types/` | Types of SQL / T-SQL Statements (DDL, DML, DQL, DCL, TCL) + DELETE vs TRUNCATE vs DROP | Foundation |
 | 02 | `02-character-data-types/` | Character Data Types (CHAR, VARCHAR, NCHAR, NVARCHAR) | Foundation |
 | 03 | `03-keys/` | Types of Keys (Primary, Foreign, Unique, Candidate, Alternate, Composite) | Foundation |
@@ -30,7 +31,7 @@ Each topic folder contains:
 
 ## How to study
 
-1. Go in order `01 → 10` the first time.
+1. Go in order `00 → 10` the first time.
 2. For each topic: read `README.md`, run `examples.sql` in SSMS, try the **Scenario questions** without looking.
 3. Use the **Cheat Sheet** at the bottom of each README for last-day revision.
 
@@ -50,9 +51,10 @@ USE master; -- or your practice DB
 -- Open 01-sql-statement-types/examples.sql and execute
 ```
 
-## Cheat sheet (the 10 topics)
+## Cheat sheet (the 11 topics)
 
 ```text
+0. -- → to line end | /* */ → block, nestable
 1. DDL → CREATE, ALTER, DROP, TRUNCATE
    DML → INSERT, UPDATE, DELETE, MERGE
    DQL → SELECT
