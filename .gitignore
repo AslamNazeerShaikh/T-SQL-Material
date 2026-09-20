@@ -1,0 +1,55 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editors / IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.vs/
+*.user
+*.suo
+
+# SQL Server / SQL tools
+*.bak
+*.trn
+*.mdf
+*.ldf
+*.ndf
+*.bacpac
+*.dacpac
+*.sqlplan
+*.queryanalysis
+sqlproj.user
+
+# SSMS / Azure Data Studio
+*.dbmdl
+
+# .NET (for full-stack follow-ups)
+bin/
+obj/
+*.dll
+*.exe
+*.pdb
+TestResults/
+coverage*.xml
+coverage*.json
+
+# Node (for full-stack follow-ups)
+node_modules/
+dist/
+.next/
+out/
+.env
+.env.*
+npm-debug.log*
+
+# Logs / temp
+*.log
+*.tmp
+*.temp
+tmp/
+temp/

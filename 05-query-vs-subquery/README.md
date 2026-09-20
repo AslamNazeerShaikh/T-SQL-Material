@@ -1,0 +1,101 @@
+# 05 — Query vs Subquery
+
+**Goal:** Define query/subquery and write scalar, multi-row, and correlated subqueries.
+
+## 1. Sample tables
+
+Employees:
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 1 | John | 80000 | 10 |
+| 2 | Sara | 90000 | 10 |
+| 3 | Mike | 45000 | 20 |
+
+Departments:
+
+| Id | Location |
+|---:|---|
+| 10 | Pune |
+| 20 | Mumbai |
+
+## 2. Definitions
+
+Query — a SQL statement against the DB. In interviews, usually means `SELECT`:
+
+```sql
+SELECT * FROM Employees;
+```
+
+Subquery — a query nested inside another query (in `WHERE`, `SELECT`, `FROM`, `HAVING`).
+
+```sql
+SELECT *
+FROM Employees
+WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+```
+
+Inner query = subquery. Outer query consumes its result.
+
+## 3. Three types + examples
+
+Scalar — one value:
+
+```sql
+SELECT *
+FROM Employees
+WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+```
+
+Multi-row — many rows, use `IN`:
+
+```sql
+SELECT *
+FROM Employees
+WHERE DepartmentId IN (
+    SELECT Id FROM Departments WHERE Location = 'Pune'
+);
+```
+
+Correlated — inner references outer, re-evaluates per row:
+
+```sql
+SELECT e1.*
+FROM Employees e1
+WHERE Salary > (
+    SELECT AVG(e2.Salary)
+    FROM Employees e2
+    WHERE e2.DepartmentId = e1.DepartmentId
+);
+-- "employees earning above their own department average"
+```
+
+## 4. Query breakdown (correlated example)
+
+1. Outer scans `e1` row by row (John, Sara, Mike).
+2. For John's row (`Dept 10`), inner computes `AVG` over Dept 10 only.
+3. Compare John's salary to that average; keep/discard.
+4. Repeat per row → correlated = row-dependent, often slower; EXISTS/JOIN may beat it (Level 2 topic).
+
+## 5. Edge cases
+
+- Scalar subquery returning 2+ rows → error ("returned more than one value"). Enforce single-row (aggregate / `TOP 1`) or switch to `IN`.
+- `IN (SELECT ...)` with NULLs in the list → `NOT IN` turns UNKNOWN and filters everything. Prefer `NOT EXISTS` for anti-joins.
+- Uncorrelated runs once; correlated runs per outer row — watch plans on large tables.
+- Alias scoping: inner can see outer tables; outer cannot see inner aliases.
+- Subquery in SELECT list must be scalar per row — accidental multi-row breaks the query.
+
+## 6. Interview scenario questions
+
+1. "Above-average earners?" → Scalar subquery with `AVG`.
+2. "Employees in Pune?" → `IN` multi-row subquery on Departments.
+3. "Above their *own department* average?" → Correlated subquery on `e2.DepartmentId = e1.DepartmentId`.
+4. "Subquery vs CTE?" → Subquery is inline/nested; CTE is a named expression before the statement — better for readability, multi-step logic, recursion.
+5. "Scalar subquery errors with multiple rows — fix?" → Add aggregation/`TOP 1` with `ORDER BY`, or rewrite as `IN`/`EXISTS`/JOIN.
+
+## Cheat recap
+
+```text
+Query → statement (usually SELECT)
+Subquery → nested query: scalar (1 value) | IN (many) | correlated (refs outer)
+```
