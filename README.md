@@ -26,12 +26,28 @@ Each topic folder contains:
 | 08 | `08-union-vs-union-all/` | UNION vs UNION ALL | Medium |
 | 09 | `09-cte/` | CTE — Common Table Expression (incl. recursive) | Medium → Advanced |
 | 10 | `10-indexes/` | Clustered vs Non-Clustered Index | Advanced |
+| 11 | `11-group-by-aggregates/` | GROUP BY + Aggregates (COUNT/SUM/AVG, dup-spotting, ROLLUP) | Easy → Medium |
+| 12 | `12-null-handling/` | NULL, IS NULL, ISNULL vs COALESCE, NOT IN trap | Easy → Medium |
+| 13 | `13-order-by-top-distinct/` | ORDER BY, TOP vs OFFSET-FETCH paging, DISTINCT | Easy → Medium |
+| 14 | `14-case-expression/` | CASE (simple/searched), PIVOT rows→cols | Medium |
+| 15 | `15-exists-vs-in/` | EXISTS vs IN vs JOIN, NULL-safe anti-joins | Medium |
+| 16 | `16-window-functions/` | ROW_NUMBER/RANK/DENSE_RANK, running totals, LEAD/LAG, Nth salary | Medium → Advanced |
+| 17 | `17-temp-tables-vs-variables/` | #temp vs ##temp vs @var vs CTE, SELECT INTO | Medium |
+| 18 | `18-views/` | Views as saved queries + rights wall | Medium |
+| 19 | `19-stored-procedures/` | Procs with params/OUTPUT/TRY-CATCH, cursors last-resort | Medium → Advanced |
+| 20 | `20-functions/` | Scalar vs inline TVF vs multi-statement TVF | Advanced |
+| 21 | `21-triggers/` | AFTER vs INSTEAD OF, inserted/deleted, audit + veto | Advanced |
+| 22 | `22-transactions-acid/` | ACID, isolation levels, NOLOCK, deadlocks | Advanced |
+| 23 | `23-normalization/` | 1NF/2NF/3NF + denormalize-when | Medium |
+| 24 | `24-like-pattern-matching/` | LIKE wildcards, ESCAPE, seek vs scan | Easy → Medium |
+| 25 | `25-dynamic-sql-injection/` | sp_executesql + params, QUOTENAME, injection defense | Advanced |
+| 26 | `26-query-optimization/` | Plans, seeks vs scans, sargability, slow-query habits | Advanced |
 
 > Naming convention: `NN-topic-name/` where `NN` is a zero-padded difficulty order. New topics continue as `11-...`, `12-...`, etc.
 
 ## How to study
 
-1. Go in order `00 → 10` the first time.
+1. Go in order `00 → 26` the first time.
 2. For each topic: read `README.md`, run `examples.sql` in SSMS, try the **Scenario questions** without looking.
 3. Use the **Cheat Sheet** at the bottom of each README for last-day revision.
 
@@ -51,7 +67,7 @@ USE master; -- or your practice DB
 -- Open 01-sql-statement-types/examples.sql and execute
 ```
 
-## Cheat sheet (the 11 topics)
+## Cheat sheet (the 27 topics)
 
 ```text
 0. -- → to line end | /* */ → block, nestable
@@ -87,28 +103,48 @@ USE master; -- or your practice DB
 
 10. Clustered → max 1/table, defines row order
     Non-clustered → many/table, separate structure
+
+11. GROUP BY clubs rows, aggregates boil to one number
+12. NULL = unknown | IS NULL tests | COALESCE/ISNULL fills | NOT IN + NULL = empty
+13. ORDER BY sorts | TOP caps | OFFSET-FETCH pages | DISTINCT de-dupes
+14. CASE = if-then per row | SUM(CASE) / PIVOT turn rows to columns
+15. IN tests list | EXISTS stops early | NOT EXISTS NULL-safe anti
+16. ROW_NUMBER 1-2-3 | RANK 1-2-2-4 | DENSE_RANK 1-2-2-3 | LEAD/LAG peek
+17. #temp big/indexed | @var tiny | CTE one query | SELECT INTO WHERE 1=2 clones shape
+18. View = saved SELECT, no rows | rights on view, base shut
+19. Proc = named work + params/OUTPUT | TRY-CATCH deals | SET NOCOUNT ON
+20. Scalar one value | inline TVF fast | multi-step TVF stats-blind
+21. AFTER audits | INSTEAD OF vetoes/reshapes | inserted/deleted are sets
+22. Deal wins whole | rungs UNCOMMITTED→SERIALIZABLE | NOLOCK dirt | 1205 retry
+23. 1NF atomic | 2NF no half-key lean | 3NF no non-key lean | de-split for reads
+24. % any run | _ one letter | [ab] one of | head-% scans, head-pinned seeks
+25. sp_executesql + params safe | QUOTENAME names | never paste input
+26. Plan first | bare columns seek | no star | match types | prove before/after
 ```
 
-## Roadmap — Level 2 (to be added)
+## Roadmap — Level 2 (all added ✅)
 
-Grouped for a 6+ year .NET backend / full-stack interview. Priority marked ★:
+Former roadmap, now built. Priority marked ★:
 
-1. `GROUP BY` + aggregates ★
-2. `ORDER BY`, `DISTINCT`, `CASE`
-3. `NULL`, `IS NULL`, `COALESCE`, `ISNULL`
-4. Subqueries vs `EXISTS` vs `IN` ★
-5. CTE vs temp table vs table variable ★
-6. Window functions — `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `LEAD`, `LAG` ★
-7. Stored procedures ★
-8. Functions — scalar, inline TVF, multi-statement TVF
-9. Views
-10. Triggers
-11. Transactions + ACID ★
-12. Isolation levels + locking ★
-13. Deadlocks ★
-14. Indexes + execution plans ★
-15. Query optimization ★
-16. Pagination + Nth / highest salary
+1. `GROUP BY` + aggregates ★ → `11-group-by-aggregates/` ✅
+2. `ORDER BY`, `DISTINCT`, `CASE` → `13-order-by-top-distinct/` + `14-case-expression/` ✅
+3. `NULL`, `IS NULL`, `COALESCE`, `ISNULL` → `12-null-handling/` ✅
+4. Subqueries vs `EXISTS` vs `IN` ★ → `15-exists-vs-in/` ✅
+5. CTE vs temp table vs table variable ★ → `17-temp-tables-vs-variables/` ✅
+6. Window functions — `ROW_NUMBER`, `RANK`, `DENSE_RANK`, `LEAD`, `LAG` ★ → `16-window-functions/` ✅
+7. Stored procedures ★ → `19-stored-procedures/` ✅
+8. Functions — scalar, inline TVF, multi-statement TVF → `20-functions/` ✅
+9. Views → `18-views/` ✅
+10. Triggers → `21-triggers/` ✅
+11. Transactions + ACID ★ → `22-transactions-acid/` ✅
+12. Isolation levels + locking ★ → `22-transactions-acid/` ✅
+13. Deadlocks ★ → `22-transactions-acid/` ✅
+14. Indexes + execution plans ★ → `10-indexes/` + `26-query-optimization/` ✅
+15. Query optimization ★ → `26-query-optimization/` ✅
+16. Pagination + Nth / highest salary → `13-order-by-top-distinct/` + `16-window-functions/` ✅
+
+Extras added beyond the roadmap: `23-normalization/`, `24-like-pattern-matching/`,
+`25-dynamic-sql-injection/`, `08` set-ops detail (`INTERSECT`/`EXCEPT`).
 
 ## Contributing
 

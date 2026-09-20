@@ -12,6 +12,8 @@
 
 **Interview-ready answer:** *"WHERE keeps rows first, before groups are made. HAVING keeps groups next, after totals are made. So WHERE pay > 50000 drops low-pay rows first. Then HAVING average pay > 50000 drops weak teams. The steps are FROM, WHERE, GROUP BY, HAVING, SELECT. That is why a total like AVG can not sit in WHERE."*
 
+> Next step: `11-group-by-aggregates/` — totals, dup-spotting, ROLLUP.
+
 ## 1. Sample table
 
 Employees:

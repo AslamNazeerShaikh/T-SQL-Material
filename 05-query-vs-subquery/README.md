@@ -12,6 +12,8 @@
 
 **Interview-ready answer:** *"A query is an ask put to the database — most days, a SELECT. A subquery is a query placed in one more query. A one-value type gives a single number, like average pay. A many-row type feeds IN. A linked type uses the outer row — like staff paid more than their own team average. They keep multi-step work in one safe server-side step, not two trips."*
 
+> Next step: `15-exists-vs-in/` — EXISTS vs IN vs JOIN, NULL-safe anti-joins.
+
 ## 1. Sample tables
 
 Employees:

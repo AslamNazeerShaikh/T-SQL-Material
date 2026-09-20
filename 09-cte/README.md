@@ -12,6 +12,8 @@
 
 **Interview-ready answer:** *"A CTE is a named short-term result made with WITH, for the one query just after it. Plain CTEs split big queries into clear steps — no deep nests. Loop CTEs — a base query plus a UNION ALL loop part — walk tree data like an org chart. It makes no real temp table. It is just a named query the engine folds in."*
 
+> Next step: `17-temp-tables-vs-variables/` — when the step needs a real table.
+
 ## 1. Sample tables
 
 ```sql

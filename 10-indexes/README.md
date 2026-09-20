@@ -12,6 +12,8 @@
 
 **Interview-ready answer:** *"A clustered index sets the row order of the table — just one per table. So it suits range scans, and most days backs the primary key. Non-clustered tags are side lists — key plus row mark — many per table, for search fields. Two points go wrong oft. One, a primary key need not be clustered — that is just the default. Two, the clustered key is pasted in all side lists — so keep it small, fixed, and on the rise, like INT IDENTITY."*
 
+> Next step: `26-query-optimization/` — plans, seeks, sargability.
+
 ## 1. Sample setup
 
 ```sql
