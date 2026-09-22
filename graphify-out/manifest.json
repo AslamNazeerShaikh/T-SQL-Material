@@ -102,15 +102,15 @@
     "semantic_hash": ""
   },
   "00-sql-comments/README.md": {
-    "mtime": 1789927614.0881796,
-    "seen": 1789936117.9313211,
-    "ast_hash": "ebb131b7bded5fa0fff29830ed4528e1",
+    "mtime": 1790100911.7540646,
+    "seen": 1790101430.3218691,
+    "ast_hash": "63debbd0eef3951dc3fbefccf19689e0",
     "semantic_hash": ""
   },
   "01-sql-statement-types/README.md": {
-    "mtime": 1789934754.5649426,
-    "seen": 1789936117.9313211,
-    "ast_hash": "ddc026aff65b6bb0050bcc1202924f4a",
+    "mtime": 1790101336.446565,
+    "seen": 1790101430.32187,
+    "ast_hash": "8f7b244df54a7abb4412a939a3034eb2",
     "semantic_hash": ""
   },
   "01-sql-statement-types/modern-syntax-and-session-settings.md": {
@@ -126,45 +126,45 @@
     "semantic_hash": ""
   },
   "02-character-data-types/README.md": {
-    "mtime": 1789934709.6008468,
-    "seen": 1789936117.931322,
-    "ast_hash": "0e31dd445465fd69e46f2a54d7044fe7",
+    "mtime": 1790101167.3973343,
+    "seen": 1790101430.321871,
+    "ast_hash": "6b132d1ce5699d2f97d9aeff9d2e0bba",
     "semantic_hash": ""
   },
   "03-keys/README.md": {
-    "mtime": 1789926035.054535,
-    "seen": 1789936117.9313228,
-    "ast_hash": "a75fc2eafda2a26b73d6f0b43c6744ba",
+    "mtime": 1790101179.970453,
+    "seen": 1790101430.3218718,
+    "ast_hash": "dfef4d3a7935022662360084024afe7b",
     "semantic_hash": ""
   },
   "04-constraints/README.md": {
-    "mtime": 1789926035.0571277,
-    "seen": 1789936117.9313228,
-    "ast_hash": "c9bbfb50d1f28c2158b87f77e02601fc",
+    "mtime": 1790101189.749695,
+    "seen": 1790101430.3218718,
+    "ast_hash": "8cb99c1f6236899b65787bbf9efb149a",
     "semantic_hash": ""
   },
   "05-query-vs-subquery/README.md": {
-    "mtime": 1789929002.7123868,
-    "seen": 1789936117.9313228,
-    "ast_hash": "580fa025e4e25f8eebe66f985c1b8053",
+    "mtime": 1790101003.841171,
+    "seen": 1790101430.3218718,
+    "ast_hash": "227a51aebc8116110e29e5eeb23a0f3f",
     "semantic_hash": ""
   },
   "06-where-vs-having/README.md": {
-    "mtime": 1789929002.712529,
-    "seen": 1789936117.931324,
-    "ast_hash": "8496694136c7aa2016af19c9111f4769",
+    "mtime": 1790101007.126674,
+    "seen": 1790101430.321873,
+    "ast_hash": "b86dd689820c7526add7d6e57ef9a3c8",
     "semantic_hash": ""
   },
   "07-joins/README.md": {
-    "mtime": 1789934754.5571663,
-    "seen": 1789936117.931324,
-    "ast_hash": "95b9d5a88bc569f3a89a6f0c1c3468f6",
+    "mtime": 1790101033.8109696,
+    "seen": 1790101430.321873,
+    "ast_hash": "0119fb401351c920036d65400a8c21cd",
     "semantic_hash": ""
   },
   "08-union-vs-union-all/README.md": {
-    "mtime": 1789926046.23684,
-    "seen": 1789936117.931324,
-    "ast_hash": "7135ccf291a84978c7a4cbf68044f0de",
+    "mtime": 1790100417.770595,
+    "seen": 1790101430.321873,
+    "ast_hash": "a27ccd601528a26144eedf3722d23eef",
     "semantic_hash": ""
   },
   "08-union-vs-union-all/set-ops-intersect-except.md": {
@@ -174,69 +174,69 @@
     "semantic_hash": ""
   },
   "09-cte/README.md": {
-    "mtime": 1789934741.8995223,
-    "seen": 1789936117.9313412,
-    "ast_hash": "cef7654db5a60ad41a81bb4ce4aed450",
+    "mtime": 1790101029.7881176,
+    "seen": 1790101430.321874,
+    "ast_hash": "5ba022e72ed9e22f59734c6230e2f6c8",
     "semantic_hash": ""
   },
   "10-indexes/README.md": {
-    "mtime": 1789934709.6010633,
-    "seen": 1789936117.931354,
-    "ast_hash": "2ebbb34f0760ad4a291aa58849f7129a",
+    "mtime": 1790101039.1166792,
+    "seen": 1790101430.321874,
+    "ast_hash": "60281192017cc200388efa431099e4a3",
     "semantic_hash": ""
   },
   "11-group-by-aggregates/README.md": {
-    "mtime": 1789928768.2832403,
-    "seen": 1789936117.931356,
-    "ast_hash": "19ac3bbeaf7cfbb1c581af3362df9cd3",
+    "mtime": 1790101083.0270975,
+    "seen": 1790101430.3218749,
+    "ast_hash": "7d9780c1b527dc70ae191c5d06d91294",
     "semantic_hash": ""
   },
   "12-null-handling/README.md": {
-    "mtime": 1789934724.5673368,
-    "seen": 1789936117.931367,
-    "ast_hash": "12abcb7d38d07af3c755fb778079ecd2",
+    "mtime": 1790101091.6661108,
+    "seen": 1790101430.3218749,
+    "ast_hash": "f778a2bc8fa87abb6984d2648b99f981",
     "semantic_hash": ""
   },
   "13-order-by-top-distinct/README.md": {
-    "mtime": 1789934724.567244,
-    "seen": 1789936117.9313679,
-    "ast_hash": "e12fe7e6e57dd9ebb4e701dc4d3de219",
+    "mtime": 1790101125.6581492,
+    "seen": 1790101430.3218749,
+    "ast_hash": "ecaf9fc4a46f413519f78b3e7a36b641",
     "semantic_hash": ""
   },
   "14-case-expression/README.md": {
-    "mtime": 1789934724.5573013,
-    "seen": 1789936117.931369,
-    "ast_hash": "f75d7a8fe03ddc0766a212d1733f305b",
+    "mtime": 1790101100.8048916,
+    "seen": 1790101430.321876,
+    "ast_hash": "4075816268ab1d957a506c37c636723d",
     "semantic_hash": ""
   },
   "15-exists-vs-in/README.md": {
-    "mtime": 1789928807.1225,
-    "seen": 1789936117.93137,
-    "ast_hash": "0cadbf1a0ea9cf45738585c7c34d8777",
+    "mtime": 1790101108.3225412,
+    "seen": 1790101430.321876,
+    "ast_hash": "bb5e00736174761b7262e51cc7150d72",
     "semantic_hash": ""
   },
   "16-window-functions/README.md": {
-    "mtime": 1789934733.6114032,
-    "seen": 1789936117.93137,
-    "ast_hash": "c4ab3ed1fdccc1f7efa8ddad1c82fe8d",
+    "mtime": 1790101151.6591322,
+    "seen": 1790101430.321876,
+    "ast_hash": "473cc8ed66da47ff2848be5c949cdb8c",
     "semantic_hash": ""
   },
   "17-temp-tables-vs-variables/README.md": {
-    "mtime": 1789928850.560487,
-    "seen": 1789936117.931371,
-    "ast_hash": "bb067839128517c5d78dcf18ce26db51",
+    "mtime": 1790101279.898831,
+    "seen": 1790101430.321877,
+    "ast_hash": "1c8fc1e7dee9950409dce4550326c7a5",
     "semantic_hash": ""
   },
   "18-views/README.md": {
-    "mtime": 1789934741.8994071,
-    "seen": 1789936117.931371,
-    "ast_hash": "971f5f4eb159d40146db98c6024cf8e6",
+    "mtime": 1790101346.4019468,
+    "seen": 1790101430.321877,
+    "ast_hash": "1dce8aa99f3ef78cf29309beb7814ab7",
     "semantic_hash": ""
   },
   "19-stored-procedures/README.md": {
-    "mtime": 1789934754.5650334,
-    "seen": 1789936117.931371,
-    "ast_hash": "78f99fae8b126666eb054891c58af35c",
+    "mtime": 1790101343.2206204,
+    "seen": 1790101430.321877,
+    "ast_hash": "d9d541ef963ec13d2c88fe5d2c833d05",
     "semantic_hash": ""
   },
   "19-stored-procedures/error-handling-try-catch.md": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "20-functions/README.md": {
-    "mtime": 1789933877.5567381,
-    "seen": 1789936117.9313731,
-    "ast_hash": "25ff0268529c80cd8dcb76dd0976f0a5",
+    "mtime": 1790101224.7536974,
+    "seen": 1790101430.321878,
+    "ast_hash": "0f6def7c5a9fdc901102f1398c0eb9d5",
     "semantic_hash": ""
   },
   "20-functions/functions-system-vs-user-usability.md": {
@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "21-triggers/README.md": {
-    "mtime": 1789934741.9106367,
-    "seen": 1789936117.931374,
-    "ast_hash": "dac58fb51bd0d5d9ffce1db2fdb9f256",
+    "mtime": 1790101240.755479,
+    "seen": 1790101430.32188,
+    "ast_hash": "445b2c07099424f16d376bc4e6d2f8ff",
     "semantic_hash": ""
   },
   "21-triggers/audit-options-temporal-tables.md": {
@@ -282,39 +282,39 @@
     "semantic_hash": ""
   },
   "22-transactions-acid/README.md": {
-    "mtime": 1789934741.8954492,
-    "seen": 1789936117.931375,
-    "ast_hash": "c7a5ae727730dc84aecff926ba0f9ec7",
+    "mtime": 1790101247.7298753,
+    "seen": 1790101430.32188,
+    "ast_hash": "804ac4371e686894d76b12e3ac81811d",
     "semantic_hash": ""
   },
   "23-normalization/README.md": {
-    "mtime": 1789928983.2237048,
-    "seen": 1789936117.931375,
-    "ast_hash": "04ae0d91d975328d487f20053d60037e",
+    "mtime": 1790101288.2567337,
+    "seen": 1790101430.321881,
+    "ast_hash": "1a34adeddd528102a3dcc99a4bd3f2c7",
     "semantic_hash": ""
   },
   "24-like-pattern-matching/README.md": {
-    "mtime": 1789934741.8976245,
-    "seen": 1789936117.9313762,
-    "ast_hash": "539364a5a383bbd80c263a8b24e3d08a",
+    "mtime": 1790101135.4495795,
+    "seen": 1790101430.321881,
+    "ast_hash": "17a0f82ba55223e751c936c35299edc5",
     "semantic_hash": ""
   },
   "25-dynamic-sql-injection/README.md": {
-    "mtime": 1789928983.2341998,
-    "seen": 1789936117.9313762,
-    "ast_hash": "b2b5565087fc0469a046808bbad1a017",
+    "mtime": 1790101311.1779938,
+    "seen": 1790101430.321881,
+    "ast_hash": "80c9a9182c6dc891a6e75c3dc667ad7e",
     "semantic_hash": ""
   },
   "26-query-optimization/README.md": {
-    "mtime": 1789934754.5667028,
-    "seen": 1789936117.931377,
-    "ast_hash": "0c703a8f69f035fbe59ef2e87670f37f",
+    "mtime": 1790101258.0234013,
+    "seen": 1790101430.321882,
+    "ast_hash": "643ce0db4428dbda5a0da4d23c36b246",
     "semantic_hash": ""
   },
   "27-data-types-numbers-dates/README.md": {
-    "mtime": 1789934534.4882724,
-    "seen": 1789936117.931377,
-    "ast_hash": "881ca93c47ca26ff958ff99a781c2d56",
+    "mtime": 1790101270.0216198,
+    "seen": 1790101430.321882,
+    "ast_hash": "a262ab2a1dd41dd25f95b02df75eee90",
     "semantic_hash": ""
   },
   "AGENTS.md": {
@@ -519,6 +519,12 @@
     "mtime": 1789934551.153976,
     "seen": 1789936170.7769291,
     "ast_hash": "3afea417e0f87da2bb5c38df0785f3c4",
+    "semantic_hash": ""
+  },
+  "SECURITY.md": {
+    "mtime": 1789936934.201175,
+    "seen": 1790101430.321884,
+    "ast_hash": "3aa0a9d7605f9ad04f1e2c705d3b3585",
     "semantic_hash": ""
   }
 }

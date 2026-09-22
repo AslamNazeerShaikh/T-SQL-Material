@@ -15,13 +15,13 @@
 ## 1. Sample table
 
 ```sql
-CREATE TABLE Employees
+CREATE TABLE dbo.Employees
 (
     EmployeeId INT PRIMARY KEY,
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(200) UNIQUE,
     Age INT CHECK (Age >= 18),
-    DepartmentId INT FOREIGN KEY REFERENCES Departments(Id),
+    DepartmentId INT FOREIGN KEY REFERENCES dbo.Departments(Id),
     CreatedDate DATETIME2 DEFAULT GETDATE()
 );
 ```
@@ -34,17 +34,100 @@ Seed:
 
 ## 2. Examples
 
-```sql
-EmployeeId INT PRIMARY KEY          -- unique + NOT NULL
-FOREIGN KEY (DepartmentId) REFERENCES Departments(Id)  -- integrity
-Email VARCHAR(200) UNIQUE           -- no dupes
-Name VARCHAR(100) NOT NULL          -- value required
-Age INT CHECK (Age >= 18)           -- rule
-CreatedDate DATETIME2 DEFAULT GETDATE()  -- auto value
+Input `dbo.Employees`:
 
-INSERT INTO Employees (EmployeeId, Name) VALUES (1, 'John');
--- CreatedDate auto-supplied by DEFAULT
+| EmployeeId | Name | Email | Age | DepartmentId | CreatedDate |
+|---:|---|---|---:|---:|---|
+| 1 | John | j@x.com | 30 | 10 | auto-filled (SYSUTCDATETIME at INSERT) |
+
+Example 1 — `PRIMARY KEY`:
+
+```sql
+EmployeeId INT PRIMARY KEY
 ```
+
+Input:
+
+| EmployeeId | Name |
+|---:|---|
+| 1 | John |
+
+Duplicate `1` output:
+
+| Result |
+|---|
+| Msg 2627 PK violation, rejected |
+
+Example 2 — `FOREIGN KEY`:
+
+```sql
+FOREIGN KEY (DepartmentId) REFERENCES dbo.Departments(Id)
+```
+
+Input `dbo.Departments`:
+
+| Id | DeptName |
+|---:|---|
+| 10 | IT |
+
+`INSERT Dept 99` output:
+
+| Result |
+|---|
+| Msg 547 FK conflict, rejected |
+
+Example 3 — `UNIQUE`:
+
+```sql
+Email VARCHAR(200) UNIQUE
+```
+
+Input: `j@x.com` taken.
+
+`INSERT j@x.com` output:
+
+| Result |
+|---|
+| Msg 2627 UNIQUE violation, rejected |
+
+Example 4 — `NOT NULL`:
+
+```sql
+Name VARCHAR(100) NOT NULL
+```
+
+`INSERT (3) NULL Name` output:
+
+| Result |
+|---|
+| Msg 515 NULL into Name, rejected |
+
+Example 5 — `CHECK`:
+
+```sql
+Age INT CHECK (Age >= 18)
+```
+
+`INSERT (2,'Kid',15)` output:
+
+| Result |
+|---|
+| Msg 547 CHECK Age>=18, rejected |
+
+Example 6 — `DEFAULT`:
+
+```sql
+CreatedDate DATETIME2 DEFAULT SYSUTCDATETIME()
+INSERT INTO dbo.Employees (EmployeeId, Name) VALUES (1, 'John');
+```
+
+Input: `(1, John, Age 30)`.
+
+Output (1 row):
+
+| EmployeeId | Name | CreatedDate |
+|---:|---|---|
+| 1 | John | <non-NULL current UTC> |
 
 ## 3. Query breakdown
 

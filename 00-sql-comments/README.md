@@ -36,8 +36,8 @@ with no close eats the full query after it."*
 SELECT 1 AS One; -- this note ends with the line
 
 /* Hide full blocks while testing:
-   SELECT * FROM Demo_Emp WHERE Salary < 0;
-   SELECT * FROM Demo_Dept;
+   SELECT * FROM dbo.Demo_Emp WHERE Salary < 0;
+   SELECT * FROM dbo.Demo_Dept;
 */
 SELECT 2 AS Two;
 
@@ -49,25 +49,200 @@ SELECT 2 AS Two;
 
 ## 2. Examples
 
+No base tables — every example below uses literals. Input = the literal in the query.
+
+Example 1 — line comment:
+
+```sql
+SELECT 1 AS One; -- this note ends with the line
+```
+
+Input: none (constant `1`).
+
+Output (1 row):
+
+| One |
+|---:|
+| 1 |
+
+Example 2 — block hides selects:
+
+```sql
+/* Hide full blocks while testing:
+   SELECT * FROM dbo.Demo_Emp WHERE Salary < 0;
+*/
+SELECT 2 AS Two;
+```
+
+Input: none (constant `2`).
+
+Output (1 row):
+
+| Two |
+|---:|
+| 2 |
+
+Example 3 — nested blocks:
+
+```sql
+/* Blocks can sit in blocks:
+   /* inner note */
+   SELECT 3 AS Three;
+*/
+```
+
+Input: none (constant `3`).
+
+Output (1 row):
+
+| Three |
+|---:|
+| 3 |
+
+Example 4 — `5--2` trap:
+
+```sql
+SELECT 5--2 AS TrapResult;
+```
+
+Input: literals `5`, `2` (dashes eat `2`).
+
+Output (1 row):
+
+| (No column name) |
+|---:|
+| 5 |
+
+> **Not 3.**
+
+Example 5 — spaced math:
+
+```sql
+SELECT 5 - -2 AS RealMath;
+```
+
+Input: literals `5`, `-2`.
+
+Output (1 row):
+
+| RealMath |
+|---:|
+| 7 |
+
+Example 6 — markers in quotes are data:
+
+```sql
+SELECT '--' AS DashText, '/*' AS BlockText;
+```
+
+Input: strings `'--'`, `'/*'`.
+
+Output (1 row):
+
+| DashText | BlockText |
+|---|---|
+| -- | /* |
+
+Example 7 — toggle filter:
+
+```sql
+SELECT COUNT(*) AS EmpCount FROM (SELECT 1 AS x UNION ALL SELECT 2) t WHERE 1 = 1 /* AND 1 = 2 */;
+```
+
+Input `t(x)`:
+
+| x |
+|---:|
+| 1 |
+| 2 |
+
+Output (1 row):
+
+| EmpCount |
+|---:|
+| 2 |
+
+Example 8 — trailing filter eaten:
+
+```sql
+SELECT 'full-set' AS What; -- WHERE 1 = 2
+```
+
+Input: literal `'full-set'`.
+
+Output (1 row):
+
+| What |
+|---|
+| full-set |
+
+Example 9 — proc header + `/* GO */`:
+
+```sql
+/* GO */
+SELECT 'header-ok' AS Header;
+```
+
+Input: literal `'header-ok'`.
+
+Output (1 row):
+
+| Header |
+|---|
+| header-ok |
+
 ```sql
 -- Note at top: why this odd filter sits here
 SELECT EmpId, Name
-FROM Demo_Emp
+FROM dbo.Demo_Emp
 WHERE Salary > 0;   -- junk rows hold -1 from old load
+```
 
+Input `dbo.Demo_Emp`:
+
+| EmpId | Name | Salary |
+|---:|---|---:|
+| 1 | John | 100 |
+| 2 | Junk | -1 |
+
+Output (1 row):
+
+| EmpId | Name |
+|---:|---|
+| 1 | John |
+
+```sql
 -- Kill one line fast while testing (add/remove the dashes)
 /* AND DeptId = 10 */
-SELECT COUNT(*) FROM Demo_Emp WHERE 1 = 1 /* AND DeptId = 10 */;
+SELECT COUNT(*) AS EmpCount FROM dbo.Demo_Emp WHERE 1 = 1 /* AND DeptId = 10 */;
+```
 
+Input `dbo.Demo_Emp`: 2 rows above.
+
+Output (1 row):
+
+| EmpCount |
+|---:|
+| 2 |
+
+```sql
 -- Proc header pattern: who, why, when
 /* =============================================
-   Proc:   usp_GetITStaff
+   Proc:   dbo.usp_GetITStaff
    Owner:  AppTeam
    Why:    List IT staff for the home page
    Date:   2026-09-20
    Change: 2026-09-21 - added JoinDate
 ============================================= */
 ```
+
+Input: none (metadata only).
+
+Output: no result set.
+
+| Result |
+|---|
+| Commands completed successfully |
 
 ## 3. Query breakdown (how the engine reads them)
 

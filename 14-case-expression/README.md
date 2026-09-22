@@ -31,33 +31,105 @@ INSERT INTO #Emp VALUES (1,'Asha',120000,10),(2,'Dev',80000,10),
 
 ## 2. Examples
 
+Input `#Emp` used by every example below:
+
+| Id | Name | Salary | DeptId |
+|---:|---|---:|---:|
+| 1 | Asha | 120000 | 10 |
+| 2 | Dev | 80000 | 10 |
+| 3 | Ravi | 45000 | 20 |
+| 4 | Kiran | NULL | 20 |
+
+Example 1 — searched bands:
+
 ```sql
--- Searched CASE: pay bands (ELSE catches NULLs too — NULL matches no WHEN)
 SELECT Name, Salary,
   CASE WHEN Salary >= 100000 THEN 'High'
        WHEN Salary >= 60000  THEN 'Med'
        ELSE 'Low' END AS Band
 FROM #Emp;
+```
 
--- Simple CASE: one field, fixed matches
+Input: 4 rows above.
+
+Output (4 rows):
+
+| Name | Salary | Band |
+|---|---|---|
+| Asha | 120000 | High |
+| Dev | 80000 | Med |
+| Ravi | 45000 | Low |
+| Kiran | NULL | Low |
+
+Example 2 — simple decode:
+
+```sql
 SELECT Name, CASE DeptId WHEN 10 THEN 'IT' WHEN 20 THEN 'HR' ELSE 'Other' END AS Dept
 FROM #Emp;
+```
 
--- CASE in ORDER BY: blanks last, then top pay
+Input: 4 rows above.
+
+Output (4 rows):
+
+| Name | Dept |
+|---|---|
+| Asha | IT |
+| Dev | IT |
+| Ravi | HR |
+| Kiran | HR |
+
+Example 3 — blanks last:
+
+```sql
 SELECT * FROM #Emp
 ORDER BY CASE WHEN Salary IS NULL THEN 1 ELSE 0 END, Salary DESC;
+```
 
--- Pivot rows→cols, poor-man's form (works alltown)
+Input: 4 rows above.
+
+Output (4 rows in order):
+
+| Id | Name | Salary | DeptId |
+|---:|---|---:|---:|
+| 1 | Asha | 120000 | 10 |
+| 2 | Dev | 80000 | 10 |
+| 3 | Ravi | 45000 | 20 |
+| 4 | Kiran | NULL | 20 |
+
+Example 4 — pivot `SUM(CASE)`:
+
+```sql
 SELECT DeptId,
   SUM(CASE WHEN Salary >= 100000 THEN 1 ELSE 0 END) AS HighCnt,
   COUNT(*) AS Total
 FROM #Emp GROUP BY DeptId;
+```
 
--- T-SQL PIVOT operator form (fixed column list a must)
+Input: 4 rows above.
+
+Output (2 rows):
+
+| DeptId | HighCnt | Total |
+|---:|---:|---:|
+| 10 | 1 | 2 |
+| 20 | 0 | 2 |
+
+Example 5 — `PIVOT` operator:
+
+```sql
 SELECT [10] AS IT, [20] AS HR FROM
  (SELECT DeptId, Salary FROM #Emp WHERE Salary IS NOT NULL) s
 PIVOT (AVG(Salary) FOR DeptId IN ([10],[20])) p;
 ```
+
+Input: 3 non-NULL rows.
+
+Output (1 row):
+
+| IT | HR |
+|---:|---:|
+| 100000 | 45000 |
 
 ## 3. Query breakdown (band CASE)
 

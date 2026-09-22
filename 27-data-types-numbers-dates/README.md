@@ -72,18 +72,164 @@ GETDATE() = old local DATETIME. SYSDATETIME() = sharp DATETIME2. SYSUTCDATETIME(
 
 ## 4. Examples
 
+Example 1 — money exact vs float guess:
+
 ```sql
--- Money exact vs float guess
 SELECT CAST(0.1 + 0.2 AS DECIMAL(10,2)) AS Exact, CAST(0.1 + 0.2 AS FLOAT) AS Guess;
--- Stamps: old blur vs sharp vs UTC
-SELECT GETDATE() AS OldLocal, SYSDATETIME() AS Sharp, SYSUTCDATETIME() AS Utc;
--- XML teeth + pre-2017 glue trick
-DECLARE @X XML = '<r><i>Asha</i><i>Dev</i></r>';
-SELECT @X.value('(/r/i)[1]', 'VARCHAR(20)') AS First, @X.exist('/r/i') AS Has;
-SELECT (SELECT Name + ',' FROM (VALUES ('Asha'),('Dev')) v(Name) FOR XML PATH('')) AS Glue;
--- Bits: flag pack check (4 = 100b; 5&4=4 set, 2&4=0 clear)
-SELECT 5 & 4 AS HasPaid, 2 & 4 AS HasShip, 5 | 2 AS Both, ~5 AS Flip;
 ```
+
+Input: literals `0.1`, `0.2`.
+
+Output (1 row):
+
+| Exact | Guess |
+|---:|---:|
+| 0.30 | 0.3 |
+
+Example 2 — stamps:
+
+```sql
+SELECT GETDATE() AS OldLocal, SYSDATETIME() AS Sharp, SYSUTCDATETIME() AS Utc;
+```
+
+Input: system clock.
+
+Output (1 row — all execution-time, non-deterministic):
+
+| OldLocal | Sharp | Utc |
+|---|---|---|
+| <DATETIME local> | <DATETIME2> | <UTC> |
+
+Example 3 — `IDENTITY(100,5)`:
+
+```sql
+INSERT INTO dbo.Key27(Name) VALUES ('Asha'),('Dev');
+SELECT * FROM dbo.Key27;
+```
+
+Input: `('Asha'),('Dev')`.
+
+Output (2 rows):
+
+| Id | Name |
+|---:|---|
+| 100 | Asha |
+| 105 | Dev |
+
+```sql
+DELETE FROM dbo.Key27 WHERE Id = 105;
+INSERT INTO dbo.Key27(Name) VALUES ('Ravi');
+SELECT * FROM dbo.Key27;
+```
+
+Input: delete 105, add Ravi.
+
+Output (2 rows):
+
+| Id | Name |
+|---:|---|
+| 100 | Asha |
+| 110 | Ravi |
+
+```sql
+SELECT IDENT_CURRENT('dbo.Key27') AS AnyScope, IDENT_INCR('dbo.Key27') AS Step, IDENT_SEED('dbo.Key27') AS Seed;
+```
+
+Output (1 row):
+
+| AnyScope | Step | Seed |
+|---:|---:|---:|
+| 110 | 5 | 100 |
+
+```sql
+SET IDENTITY_INSERT dbo.Key27 ON;
+INSERT INTO dbo.Key27(Id,Name) VALUES (1,'Hand');
+SET IDENTITY_INSERT dbo.Key27 OFF;
+SELECT * FROM dbo.Key27;
+```
+
+Output (3 rows):
+
+| Id | Name |
+|---:|---|
+| 1 | Hand |
+| 100 | Asha |
+| 110 | Ravi |
+
+Example 4 — `SEQUENCE`:
+
+```sql
+SELECT NEXT VALUE FOR dbo.Seq27 AS S1, NEXT VALUE FOR dbo.Seq27 AS S2;
+```
+
+Input: `dbo.Seq27 START 1000 STEP 10`.
+
+Output (1 row):
+
+| S1 | S2 |
+|---:|---:|
+| 1000 | 1010 |
+
+Example 5 — XML teeth:
+
+```sql
+DECLARE @X XML = '<r><i>Asha</i><i>Dev</i></r>';
+SELECT @X.value('(/r/i)[1]', 'VARCHAR(20)') AS First, @X.exist('/r/i[text()="Dev"]') AS HasDev;
+```
+
+Input `@X`:
+
+| @X |
+|---|
+| `<r><i>Asha</i><i>Dev</i></r>` |
+
+Output (1 row):
+
+| First | HasDev |
+|---|---:|
+| Asha | 1 |
+
+```sql
+SELECT Dev.query('.') FROM @X.nodes('/r/i') D(Dev);
+```
+
+Output (2 rows):
+
+| (No column name) |
+|---|
+| `<i>Asha</i>` |
+| `<i>Dev</i>` |
+
+```sql
+SELECT (SELECT Name + ',' FROM (VALUES ('Asha'),('Dev')) v(Name) FOR XML PATH('')) AS Glue;
+```
+
+Input:
+
+| Name |
+|---|
+| Asha |
+| Dev |
+
+Output (1 row):
+
+| Glue |
+|---|
+| Asha,Dev, |
+
+Example 6 — bits:
+
+```sql
+SELECT 5 & 4 AS HasPaid, 2 & 4 AS HasShip, 5 | 2 AS Both, 5 ^ 1 AS Toggle, ~5 AS Flip;
+```
+
+Input: literals `5`, `4`, `2`.
+
+Output (1 row):
+
+| HasPaid | HasShip | Both | Toggle | Flip |
+|---:|---:|---:|---:|---:|
+| 4 | 0 | 7 | 4 | -6 |
 
 ## 5. Edge cases
 

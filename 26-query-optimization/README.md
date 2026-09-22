@@ -33,23 +33,73 @@ CREATE NONCLUSTERED INDEX IX_Ord_Cust ON #Ord(CustId) INCLUDE (Amt);
 
 ## 2. Examples
 
+Input `#Ord` used by every example below (+ `IX_Ord_Cust(CustId) INCLUDE(Amt)`):
+
+| Id | CustId | Amt | ODate |
+|---:|---:|---:|---|
+| 1 | 1 | 100 | 2026-01-05 |
+| 2 | 1 | 200 | 2026-02-05 |
+| 3 | 2 | 150 | 2026-01-20 |
+
+Example 1 — seek-friendly:
+
 ```sql
--- Seek-friendly: bare column, ranged dates, tight list (rides IX_Ord_Cust)
 SELECT CustId, SUM(Amt) AS Total FROM #Ord
 WHERE CustId = 1 AND ODate >= '2026-01-01' AND ODate < '2026-03-01'
 GROUP BY CustId;
-
--- Fenced (slow twins): func on column, head-%, star drag
--- WHERE YEAR(ODate) = 2026        -- fence: use ranged dates above
--- WHERE Name LIKE '%sh%'          -- fence: head-pin or full-text (see 24)
--- SELECT *                        -- drag: name tight columns
-
--- Type-mismatch fence: '1' (text) vs INT column forces converts per row — match types
-SELECT * FROM #Ord WHERE CustId = 1;        -- int to int: seeks
--- SELECT * FROM #Ord WHERE CustId = '1';   -- text to int: convert fence (demo in test DB)
-
--- Prove it: SSMS Ctrl+M shows plan (seek vs scan), Query Store parks regressions
 ```
+
+Input: 3 rows above.
+
+Output (1 row):
+
+| CustId | Total |
+|---:|---:|
+| 1 | 300 |
+
+Example 2 — fenced twins (same logic, full scan):
+
+```sql
+-- WHERE YEAR(ODate) = 2026
+-- WHERE Name LIKE '%sh%'
+-- SELECT *
+```
+
+Input: same 3 rows.
+
+Output: same logical rows, but full scan + per-row converts (slow).
+
+| Result |
+|---|
+| Same rows, higher cost (scan vs seek) |
+
+Example 3 — type-matched seek:
+
+```sql
+SELECT * FROM #Ord WHERE CustId = 1;
+```
+
+Input: 3 rows above.
+
+Output (2 rows):
+
+| Id | CustId | Amt | ODate |
+|---:|---:|---:|---|
+| 1 | 1 | 100 | 2026-01-05 |
+| 2 | 1 | 200 | 2026-02-05 |
+
+```sql
+-- SELECT * FROM #Ord WHERE CustId = '1';
+```
+
+Input: same.
+
+Output (2 rows — same data, convert fence + plan warning):
+
+| Id | CustId | Amt | ODate |
+|---:|---:|---:|---|
+| 1 | 1 | 100 | 2026-01-05 |
+| 2 | 1 | 200 | 2026-02-05 |
 
 ## 3. Query breakdown (seek path)
 

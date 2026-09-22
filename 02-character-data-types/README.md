@@ -27,7 +27,7 @@ NVARCHAR(MAX)  large variable,   Unicode (~2 GB / ~1B chars)
 ## 2. Sample table
 
 ```sql
-CREATE TABLE DemoStrings
+CREATE TABLE dbo.DemoStrings
 (
     Code    CHAR(6),          -- 'EMP001' always 6 chars
     Name    VARCHAR(100),     -- varying English names
@@ -42,19 +42,86 @@ CREATE TABLE DemoStrings
 
 ## 3. Examples
 
+Input `dbo.DemoStrings`:
+
+| Code (CHAR(6)) | Name (VARCHAR) | UniName (NVARCHAR) |
+|---|---|---|
+| EMP001 | John | John |
+| EMP002 | Sara | अस्लम |
+
+Example 1 — storage shapes:
+
 ```sql
-CHAR(10)          -- 'ABC' stored padded to 10 chars
-VARCHAR(100)      -- 'ABC' stored as 3 chars + overhead
-VARCHAR(MAX)      -- JSON / XML / large payloads up to ~2 GB
-
-NCHAR(10)         -- fixed Unicode
-NVARCHAR(100)     -- variable Unicode (multilingual default)
-NVARCHAR(MAX)     -- large Unicode text
-
-DECLARE @Name NVARCHAR(100);
-SET @Name = N'अस्लम';  -- N prefix = Unicode literal
-SELECT @Name;
+SELECT DATALENGTH(CAST('ABC' AS CHAR(10))) AS Char10Bytes,
+       LEN('ABC') AS LenAbc,
+       DATALENGTH('{"id":1,"tags":["a","b"]}') AS JsonBytes;
 ```
+
+Input: literals `'ABC'`, `'{"id":1,"tags":["a","b"]}'` (25 chars).
+
+Output (1 row):
+
+| Char10Bytes | LenAbc | JsonBytes |
+|---:|---:|---:|
+| 10 | 3 | 25 |
+
+Example 2 — Unicode literal:
+
+```sql
+DECLARE @Name NVARCHAR(100);
+SET @Name = N'अस्लम';
+SELECT @Name AS UniName;
+```
+
+Input: literal `N'अस्लम'`.
+
+Output (1 row):
+
+| UniName |
+|---|
+| अस्लम |
+
+Without `N`:
+
+```sql
+SELECT 'अस्लम' AS Mangled;
+```
+
+Input: non-Unicode literal.
+
+Output (1 row):
+
+| Mangled |
+|---|
+| ????? |
+
+Example 3 — case-sharp hunt (0 rows):
+
+```sql
+SELECT * FROM dbo.DemoStrings WHERE Name = 'sara' COLLATE Latin1_General_CS_AS;
+```
+
+Input: 2 rows above.
+
+Output: 0 rows.
+
+| Code | Name | UniName |
+|---|---|---|
+| *(no rows)* | | |
+
+Example 4 — case-insensitive (1 row):
+
+```sql
+SELECT * FROM dbo.DemoStrings WHERE Name = 'sara' COLLATE Latin1_General_CI_AS;
+```
+
+Input: 2 rows above.
+
+Output (1 row):
+
+| Code | Name | UniName |
+|---|---|---|
+| EMP002 | Sara | अस्लम |
 
 ## 4. Query breakdown
 
@@ -102,7 +169,7 @@ rules unless beaten per column or per query with COLLATE.
 
 ```sql
 -- Case-sharp hunt (default CI collations blur Asha/asha)
-SELECT * FROM Staff WHERE Name = 'asha' COLLATE Latin1_General_CS_AS;
+SELECT * FROM dbo.Staff WHERE Name = 'asha' COLLATE Latin1_General_CS_AS;
 -- Accent-sharp: á ≠ a under *_AS; CI_AI blurs case + accent both
 -- Kana/width flags matter Japanese/full-width text only
 ```

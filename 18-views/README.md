@@ -34,27 +34,88 @@ INSERT INTO dbo.Emp18 VALUES (1,'Asha',90000,10),(2,'Dev',80000,10),(3,'Ravi',45
 
 ## 2. Examples
 
+Input used below:
+
+`dbo.Dept18`:
+
+| Id | Name |
+|---:|---|
+| 10 | IT |
+| 20 | HR |
+
+`dbo.Emp18`:
+
+| Id | Name | Salary | DeptId |
+|---:|---|---:|---:|
+| 1 | Asha | 90000 | 10 |
+| 2 | Dev | 80000 | 10 |
+| 3 | Ravi | 45000 | 20 |
+
+Example 1 — view hides pay:
+
 ```sql
--- View: IT staff, pay hidden from readers
-CREATE VIEW vw_ITStaff AS
+CREATE VIEW dbo.vw_ITStaff AS
 SELECT e.Id, e.Name, d.Name AS Dept
 FROM dbo.Emp18 e JOIN dbo.Dept18 d ON d.Id = e.DeptId WHERE e.DeptId = 10;
-SELECT * FROM vw_ITStaff;   -- reads like a table
+SELECT * FROM dbo.vw_ITStaff;
+```
 
--- Rights wall: readers get the view only
--- GRANT SELECT ON vw_ITStaff TO ReportLogin;
+Input: 3 emp + 2 dept above.
 
--- Change once, all move: add field in one place
-ALTER VIEW vw_ITStaff AS
+Output (2 rows):
+
+| Id | Name | Dept |
+|---:|---|---|
+| 1 | Asha | IT |
+| 2 | Dev | IT |
+
+Example 2 — rights wall (no result set):
+
+```sql
+GRANT SELECT ON dbo.vw_ITStaff TO ReportLogin;
+```
+
+Input: permissions.
+
+Output: no result set.
+
+| Result |
+|---|
+| Commands completed successfully |
+
+Example 3 — `ALTER` adds field:
+
+```sql
+ALTER VIEW dbo.vw_ITStaff AS
 SELECT e.Id, e.Name, d.Name AS Dept, e.Salary
 FROM dbo.Emp18 e JOIN dbo.Dept18 d ON d.Id = e.DeptId WHERE e.DeptId = 10;
-
-DROP VIEW vw_ITStaff;
+SELECT * FROM dbo.vw_ITStaff;
 ```
+
+Input: same 3 + 2 rows.
+
+Output (2 rows):
+
+| Id | Name | Dept | Salary |
+|---:|---|---|---:|
+| 1 | Asha | IT | 90000 |
+| 2 | Dev | IT | 80000 |
+
+```sql
+DROP VIEW dbo.vw_ITStaff;
+```
+
+Input: view exists.
+
+Output: no result set.
+
+| Result |
+|---|
+| Commands completed successfully |
 
 ## 3. Query breakdown (rights wall)
 
-Reader hits `vw_ITStaff` → engine runs the saved join → base `Emp18` pay field
+Reader hits `dbo.vw_ITStaff` → engine runs the saved join → base `dbo.Emp18` pay field
 never named, never seen. GRANT sits on the view; base tables stay shut. This is
 the cheapest field-level shield before masks/row-locks.
 

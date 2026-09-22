@@ -25,14 +25,39 @@ INSERT INTO #Con VALUES ('Sara'),('Mike');
 
 ## 2. Examples
 
+Input used by every example below:
+
+`#Emp`:
+
+| Name |
+|---|
+| John |
+| Sara |
+
+`#Con`:
+
+| Name |
+|---|
+| Sara |
+| Mike |
+
 UNION — dedupes:
 
 ```sql
 SELECT Name FROM #Emp
 UNION
 SELECT Name FROM #Con;
--- John | Sara | Mike   (Sara once)
 ```
+
+Input: `#Emp` + `#Con` above.
+
+Output (3 rows):
+
+| Name |
+|---|
+| John |
+| Sara |
+| Mike |
 
 UNION ALL — keeps dupes:
 
@@ -40,16 +65,38 @@ UNION ALL — keeps dupes:
 SELECT Name FROM #Emp
 UNION ALL
 SELECT Name FROM #Con;
--- John | Sara | Sara | Mike
 ```
 
-Multi-column (column count must match):
+Input: `#Emp` + `#Con` above.
+
+Output (4 rows):
+
+| Name |
+|---|
+| John |
+| Sara |
+| Sara |
+| Mike |
+
+Multi-column (column count must match) + source label, ordered:
+
+Input: same tables plus literal `'Emp'` / `'Con'`.
 
 ```sql
-SELECT Id, Name FROM Employees
+SELECT Name, 'Emp' AS Src FROM #Emp
 UNION ALL
-SELECT Id, Name FROM Contractors;
+SELECT Name, 'Con' FROM #Con
+ORDER BY Name;
 ```
+
+Output (4 rows, ordered by `Name`):
+
+| Name | Src |
+|---|---|
+| John | Emp |
+| Mike | Con |
+| Sara | Emp |
+| Sara | Con |
 
 ## 3. Query breakdown
 

@@ -39,21 +39,56 @@ INSERT INTO #D VALUES (10,'IT'),(20,'HR'),(40,'Finance');
 
 ## 2. Examples
 
+Input used by every example below (unless noted):
+
+`#E`:
+
+| Id | Name | DepartmentId |
+|---:|---|---:|
+| 1 | John | 10 |
+| 2 | Sara | 20 |
+| 3 | Mike | 30 |
+
+`#D`:
+
+| Id | Department |
+|---:|---|
+| 10 | IT |
+| 20 | HR |
+| 40 | Finance |
+
 INNER — only matches:
 
 ```sql
 SELECT e.Name, d.Department
 FROM #E e INNER JOIN #D d ON e.DepartmentId = d.Id;
--- John IT | Sara HR   (Mike 30 unmatched, Finance 40 employeeless)
 ```
+
+Input: `#E` + `#D` above.
+
+Output (2 rows):
+
+| Name | Department |
+|---|---|
+| John | IT |
+| Sara | HR |
 
 LEFT — all left + matches:
 
 ```sql
 SELECT e.Name, d.Department
 FROM #E e LEFT JOIN #D d ON e.DepartmentId = d.Id;
--- John IT | Sara HR | Mike NULL
 ```
+
+Input: `#E` + `#D` above.
+
+Output (3 rows):
+
+| Name | Department |
+|---|---|
+| John | IT |
+| Sara | HR |
+| Mike | NULL |
 
 Anti-join — departments with NO employees:
 
@@ -61,38 +96,88 @@ Anti-join — departments with NO employees:
 SELECT d.Department
 FROM #D d LEFT JOIN #E e ON e.DepartmentId = d.Id
 WHERE e.Id IS NULL;
--- Finance
 ```
+
+Input: `#E` + `#D` above.
+
+Output (1 row):
+
+| Department |
+|---|
+| Finance |
 
 RIGHT — all right + matches:
 
 ```sql
 SELECT e.Name, d.Department
 FROM #E e RIGHT JOIN #D d ON e.DepartmentId = d.Id;
--- John IT | Sara HR | NULL Finance
 -- (Prefer LEFT JOIN with swapped order for readability.)
 ```
+
+Input: `#E` + `#D` above.
+
+Output (3 rows):
+
+| Name | Department |
+|---|---|
+| John | IT |
+| Sara | HR |
+| NULL | Finance |
 
 FULL OUTER — everything:
 
 ```sql
 SELECT e.Name, d.Department
 FROM #E e FULL OUTER JOIN #D d ON e.DepartmentId = d.Id;
--- John IT | Sara HR | Mike NULL | NULL Finance
 ```
+
+Input: `#E` + `#D` above.
+
+Output (4 rows):
+
+| Name | Department |
+|---|---|
+| John | IT |
+| Sara | HR |
+| Mike | NULL |
+| NULL | Finance |
 
 CROSS — Cartesian, no ON:
 
 ```sql
-SELECT * FROM #E CROSS JOIN #D;  -- 3 x 3 = 9 rows
+SELECT COUNT(*) AS CrossCount FROM #E CROSS JOIN #D;  -- 3 x 3 = 9 rows
 ```
+
+Input: `#E` (3 rows) × `#D` (3 rows).
+
+Output (1 row):
+
+| CrossCount |
+|---:|
+| 9 |
 
 SELF — manager hierarchy:
 
+Input `Employees`:
+
+| Id | Name | ManagerId |
+|---:|---|---:|
+| 1 | CEO | NULL |
+| 2 | MgrA | 1 |
+| 3 | Emp1 | 2 |
+
 ```sql
 SELECT e.Name AS Employee, m.Name AS Manager
-FROM Employees e LEFT JOIN Employees m ON e.ManagerId = m.Id;
+FROM dbo.Employees e LEFT JOIN dbo.Employees m ON e.ManagerId = m.Id;
 ```
+
+Output (3 rows):
+
+| Employee | Manager |
+|---|---|
+| CEO | NULL |
+| MgrA | CEO |
+| Emp1 | MgrA |
 
 ## 3. Query breakdown (LEFT + anti-join)
 

@@ -35,18 +35,48 @@ INSERT INTO #Emp VALUES (1,'Asha',90000,10),(2,'Dev',80000,10);
 
 ## 2. Examples (shape — run in your test DB, #temp shown for shape only)
 
+Input `#Emp` before hire:
+
+| Id | Name | Salary | DeptId |
+|---:|---|---:|---:|
+| 1 | Asha | 90000 | 10 |
+| 2 | Dev | 80000 | 10 |
+
+Input after `dbo.usp_Hire 'Ravi',75000`:
+
+| Id | Name | Salary | DeptId |
+|---:|---|---:|---:|
+| 1 | Asha | 90000 | 10 |
+| 2 | Dev | 80000 | 10 |
+| 3 | Ravi | 75000 | NULL |
+
+Example 1 — read proc with default:
+
 ```sql
--- Read proc: filter with default (call with or without team)
-CREATE PROC usp_GetStaff @DeptId INT = NULL AS
+CREATE PROC dbo.usp_GetStaff @DeptId INT = NULL AS
 BEGIN
   SET NOCOUNT ON;
   SELECT Id, Name, Salary FROM #Emp
   WHERE @DeptId IS NULL OR DeptId = @DeptId;
 END;
--- EXEC usp_GetStaff;  EXEC usp_GetStaff @DeptId = 10;
+```
 
--- Write proc: OUTPUT back-value + TRY-CATCH deal (money-safe shape)
-CREATE PROC usp_Hire
+```sql
+EXEC dbo.usp_GetStaff;
+EXEC dbo.usp_GetStaff @DeptId = 10;
+```
+
+Input: 2 rows above. Both calls output (2 rows):
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 90000 |
+| 2 | Dev | 80000 |
+
+Example 2 — write proc with `OUTPUT` + `TRY-CATCH`:
+
+```sql
+CREATE PROC dbo.usp_Hire
   @Name VARCHAR(50), @Salary INT, @NewId INT OUTPUT AS
 BEGIN
   SET NOCOUNT ON;
@@ -59,14 +89,30 @@ BEGIN
   END TRY
   BEGIN CATCH
     IF @@TRANCOUNT > 0 ROLLBACK;
-    THROW;  -- keeps true error, line included
+    THROW;
   END CATCH;
 END;
 ```
 
+Input: 2 rows + `@Name = Ravi`, `@Salary = 75000`.
+
+`EXEC` output (1 row):
+
+| Status | NewId |
+|---:|---:|
+| 0 | 3 |
+
+Post-hire output `SELECT * FROM #Emp;` (3 rows):
+
+| Id | Name | Salary | DeptId |
+|---:|---|---:|---:|
+| 1 | Asha | 90000 | 10 |
+| 2 | Dev | 80000 | 10 |
+| 3 | Ravi | 75000 | NULL |
+
 ## 3. Query breakdown (safe call flow)
 
-App calls `usp_Hire` with values → engine reuses saved plan → TRY opens deal →
+App calls `dbo.usp_Hire` with values → engine reuses saved plan → TRY opens deal →
 INSERT lands → COMMIT seals → OUTPUT id back, status 0. Any blast → CATCH rolls
 back, THROW keeps the true error. No pasted text ever reaches the engine.
 
@@ -82,7 +128,7 @@ back, THROW keeps the true error. No pasted text ever reaches the engine.
 
 ## 5. Interview scenario questions
 
-1. "Same hire flow in web + job + import — one truth?" → `usp_Hire`, all call it.
+1. "Same hire flow in web + job + import — one truth?" → `dbo.usp_Hire`, all call it.
 2. "Slow first run, fast later — why?" → Plan made + reused. That's the win.
 3. "Half-hire on blast — stop it?" → TRY-CATCH + deal, THROW keeps true error.
 4. "Row-by-row fee fix — cursor?" → Last resort only; set UPDATE first, cursor FAST_FORWARD if truly serial.

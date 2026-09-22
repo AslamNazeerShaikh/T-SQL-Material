@@ -85,5 +85,6 @@
   "83": "24-like-pattern-matching/examples.sql",
   "84": "25-dynamic-sql-injection/examples.sql",
   "85": "00-sql-comments/examples.sql",
-  "86": "system-functions-examples.sql"
+  "86": "system-functions-examples.sql",
+  "87": "Security Policy"
 }

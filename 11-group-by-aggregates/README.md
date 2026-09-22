@@ -32,21 +32,85 @@ INSERT INTO #Sales VALUES
 
 ## 2. Examples
 
+Input `#Sales` used by every example below:
+
+| Region | Seller | Amt |
+|---|---|---:|
+| East | Asha | 100 |
+| East | Asha | 200 |
+| East | Dev | NULL |
+| West | Ravi | 300 |
+| West | Ravi | 300 |
+| West | NULL | 150 |
+
+Example 1 — totals per region (NULL amts skipped):
+
 ```sql
--- Totals per region (NULL amts skipped by SUM/AVG/COUNT-col)
 SELECT Region, COUNT(*) AS Rows, COUNT(Amt) AS Priced,
        SUM(Amt) AS Total, AVG(Amt * 1.0) AS AvgAmt,
        MIN(Amt) AS Lo, MAX(Amt) AS Hi
 FROM #Sales GROUP BY Region;
+```
 
--- Spot dupes: keys seen more than once (classic interview task)
+Input: 6 rows above.
+
+Output (2 rows):
+
+| Region | Rows | Priced | Total | AvgAmt | Lo | Hi |
+|---|---|---:|---:|---:|---:|---:|
+| East | 3 | 2 | 300 | 150.0 | 100 | 200 |
+| West | 3 | 3 | 750 | 250.0 | 150 | 300 |
+
+Example 2 — dupes (`HAVING COUNT(*) > 1`):
+
+```sql
 SELECT Seller, COUNT(*) AS Times
 FROM #Sales GROUP BY Seller HAVING COUNT(*) > 1;
+```
 
--- Multi-field groups + rollup grand total (senior touch)
+Input: 6 rows above.
+
+Output (2 rows):
+
+| Seller | Times |
+|---|---:|
+| Asha | 2 |
+| Ravi | 2 |
+
+Example 3 — empty-set aggregate:
+
+```sql
+SELECT SUM(Amt) AS SumNone, COUNT(*) AS CntNone FROM #Sales WHERE 1 = 2;
+```
+
+Input: 0 rows (filter kills all).
+
+Output (1 row):
+
+| SumNone | CntNone |
+|---|---:|
+| NULL | 0 |
+
+Example 4 — `ROLLUP` grand total:
+
+```sql
 SELECT Region, Seller, SUM(Amt) AS Total
 FROM #Sales GROUP BY ROLLUP (Region, Seller);
 ```
+
+Input: 6 rows above.
+
+Output (7 rows):
+
+| Region | Seller | Total |
+|---|---|---:|
+| East | Asha | 300 |
+| East | Dev | NULL |
+| East | NULL | 300 |
+| West | Ravi | 600 |
+| West | NULL | 150 |
+| West | NULL | 750 |
+| NULL | NULL | 1050 |
 
 ## 3. Query breakdown (dup-spotter)
 

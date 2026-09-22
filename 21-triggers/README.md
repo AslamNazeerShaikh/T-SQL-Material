@@ -36,9 +36,23 @@ INSERT INTO #Emp VALUES (1,'Asha',90000),(2,'Dev',80000);
 
 ## 2. Examples (shapes — triggers can't sit on #temp; make in test DB)
 
+Input `dbo.Emp`:
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 90000 |
+| 2 | Dev | 80000 |
+
+Input `dbo.Audit`: 0 rows initially.
+
+| Id | Note | WhenAt |
+|---|---|---|
+| *(empty)* | — | — |
+
+Example 1 — `AFTER` audit:
+
 ```sql
--- AFTER: log all pay shifts (set-wise — one blast, many rows, one run)
-CREATE TRIGGER trg_Emp_Audit ON dbo.Emp
+CREATE TRIGGER dbo.trg_Emp_Audit ON dbo.Emp
 AFTER INSERT, UPDATE, DELETE AS
 BEGIN
   SET NOCOUNT ON;
@@ -47,9 +61,42 @@ BEGIN
   UNION ALL
   SELECT CONCAT('del:', d.Id) FROM deleted d;
 END;
+```
 
--- INSTEAD OF: veto pay cuts (reshape the write, then do it yourself)
-CREATE TRIGGER trg_Emp_NoCut ON dbo.Emp
+Demo:
+
+```sql
+UPDATE dbo.Emp SET Salary = 95000 WHERE Id = 1;
+INSERT INTO dbo.Emp VALUES (3,'Ravi',70000);
+SELECT * FROM dbo.Audit;
+```
+
+Input: 2 emp + 0 audit.
+
+Output `dbo.Audit` (3 rows):
+
+| Id | Note | WhenAt |
+|---:|---|---|
+| 1 | ins:1 | <fire-time UTC> |
+| 2 | del:1 | <fire-time UTC> |
+| 3 | ins:3 | <fire-time UTC> |
+
+```sql
+SELECT Id, Name, Salary FROM dbo.Emp;
+```
+
+Output (3 rows):
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 95000 |
+| 2 | Dev | 80000 |
+| 3 | Ravi | 70000 |
+
+Example 2 — `INSTEAD OF` veto:
+
+```sql
+CREATE TRIGGER dbo.trg_Emp_NoCut ON dbo.Emp
 INSTEAD OF UPDATE AS
 BEGIN
   SET NOCOUNT ON;
@@ -60,6 +107,29 @@ BEGIN
   FROM dbo.Emp e JOIN inserted i ON i.Id = e.Id;
 END;
 ```
+
+Demo (passes):
+
+```sql
+UPDATE dbo.Emp SET Salary = 96000 WHERE Id = 1;
+SELECT Id, Name, Salary FROM dbo.Emp;
+```
+
+Input: 3 emp above.
+
+Output (3 rows):
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 96000 |
+| 2 | Dev | 80000 |
+| 3 | Ravi | 70000 |
+
+Blocked variant output:
+
+| Result |
+|---|
+| Msg 50000 Pay cuts blocked, ROLLBACK, 0 rows changed |
 
 ## 3. Query breakdown (audit AFTER)
 

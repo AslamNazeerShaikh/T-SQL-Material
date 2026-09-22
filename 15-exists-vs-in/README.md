@@ -34,21 +34,111 @@ INSERT INTO #Ord VALUES (101,1),(102,NULL);  -- NULL row arms the trap
 
 ## 2. Examples
 
+Input used below:
+
+`#Cust`:
+
+| Id | Name |
+|---:|---|
+| 1 | Asha |
+| 2 | Dev |
+| 3 | Ravi |
+
+`#Ord`:
+
+| Id | CustId |
+|---:|---:|
+| 101 | 1 |
+| 102 | NULL |
+
+Example 1 — `IN` match:
+
 ```sql
--- Match tests: buyers with orders (same answer, IN vs EXISTS)
 SELECT * FROM #Cust WHERE Id IN (SELECT CustId FROM #Ord WHERE CustId IS NOT NULL);
+```
+
+Input: 3 cust + list `{1}`.
+
+Output (1 row):
+
+| Id | Name |
+|---:|---|
+| 1 | Asha |
+
+Example 2 — `EXISTS` match:
+
+```sql
 SELECT c.* FROM #Cust c WHERE EXISTS (SELECT 1 FROM #Ord o WHERE o.CustId = c.Id);
+```
 
--- Anti-join, three forms (NOT EXISTS = safe pick)
+Input: 3 cust + 2 ord.
+
+Output (1 row):
+
+| Id | Name |
+|---:|---|
+| 1 | Asha |
+
+Example 3 — `NOT EXISTS` anti-join (safe):
+
+```sql
 SELECT * FROM #Cust c
-WHERE NOT EXISTS (SELECT 1 FROM #Ord o WHERE o.CustId = c.Id);   -- Dev, Ravi
-SELECT c.* FROM #Cust c LEFT JOIN #Ord o ON o.CustId = c.Id
-WHERE o.Id IS NULL;                                              -- Dev, Ravi
-SELECT * FROM #Cust WHERE Id NOT IN (SELECT CustId FROM #Ord);   -- EMPTY! NULL trap
+WHERE NOT EXISTS (SELECT 1 FROM #Ord o WHERE o.CustId = c.Id);
+```
 
--- IN with still list (fine, no subquery NULLs)
+Input: 3 cust + 2 ord.
+
+Output (2 rows):
+
+| Id | Name |
+|---:|---|
+| 2 | Dev |
+| 3 | Ravi |
+
+Example 4 — `LEFT JOIN + IS NULL` anti-join:
+
+```sql
+SELECT c.* FROM #Cust c LEFT JOIN #Ord o ON o.CustId = c.Id
+WHERE o.Id IS NULL;
+```
+
+Input: same.
+
+Output (2 rows):
+
+| Id | Name |
+|---:|---|
+| 2 | Dev |
+| 3 | Ravi |
+
+Example 5 — `NOT IN` trap:
+
+```sql
+SELECT * FROM #Cust WHERE Id NOT IN (SELECT CustId FROM #Ord);
+```
+
+Input: list `{1, NULL}`.
+
+Output: 0 rows.
+
+| Id | Name |
+|---|---|
+| *(no rows)* | |
+
+Example 6 — still-list `IN`:
+
+```sql
 SELECT * FROM #Cust WHERE Id IN (1, 3);
 ```
+
+Input: 3 cust.
+
+Output (2 rows):
+
+| Id | Name |
+|---:|---|
+| 1 | Asha |
+| 3 | Ravi |
 
 ## 3. Query breakdown (EXISTS short-circuit)
 

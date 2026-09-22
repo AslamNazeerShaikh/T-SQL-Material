@@ -31,23 +31,115 @@ INSERT INTO #Staff VALUES (1,'Asha',100),(2,'Dev',NULL),(3,'Ravi',200);
 
 ## 2. Examples
 
-```sql
--- Right tests (note: WHERE Bonus = NULL gives ZERO rows, always)
-SELECT * FROM #Staff WHERE Bonus IS NULL;      -- Dev
-SELECT * FROM #Staff WHERE Bonus IS NOT NULL;  -- Asha, Ravi
+Input `#Staff` used by every example below:
 
--- Fill-ins: first non-NULL wins
+| Id | Name | Bonus |
+|---:|---|---:|
+| 1 | Asha | 100 |
+| 2 | Dev | NULL |
+| 3 | Ravi | 200 |
+
+Example 1 — `IS NULL`:
+
+```sql
+SELECT * FROM #Staff WHERE Bonus IS NULL;
+```
+
+Input: 3 rows above.
+
+Output (1 row):
+
+| Id | Name | Bonus |
+|---:|---|---:|
+| 2 | Dev | NULL |
+
+Example 2 — `IS NOT NULL`:
+
+```sql
+SELECT * FROM #Staff WHERE Bonus IS NOT NULL;
+```
+
+Input: 3 rows above.
+
+Output (2 rows):
+
+| Id | Name | Bonus |
+|---:|---|---:|
+| 1 | Asha | 100 |
+| 3 | Ravi | 200 |
+
+Example 3 — trap `= NULL`:
+
+```sql
+SELECT * FROM #Staff WHERE Bonus = NULL;
+```
+
+Input: 3 rows above.
+
+Output: 0 rows (UNKNOWN never true).
+
+| Id | Name | Bonus |
+|---|---|---|
+| *(no rows)* | | |
+
+Example 4 — `COALESCE` / `ISNULL`:
+
+```sql
 SELECT Name, COALESCE(Bonus, 0) AS SafeBonus FROM #Staff;
 SELECT Name, ISNULL(Bonus, 0) AS SafeBonus FROM #Staff;
+```
 
--- NULL poisons math and concat (result: NULL)
+Input: 3 rows above.
+
+Output (3 rows, both queries):
+
+| Name | SafeBonus |
+|---|---:|
+| Asha | 100 |
+| Dev | 0 |
+| Ravi | 200 |
+
+Example 5 — NULL poisons math:
+
+```sql
 SELECT NULL + 100 AS M, 'Hi ' + NULL AS C;
+```
 
--- NOT IN + NULL = empty answer (the classic trap)
-SELECT * FROM #Staff WHERE Id NOT IN (1, NULL);  -- zero rows!
-SELECT s.* FROM #Staff s                          -- safe form
+Input: none (literals).
+
+Output (1 row):
+
+| M | C |
+|---|---|
+| NULL | NULL |
+
+Example 6 — `NOT IN` trap vs safe `NOT EXISTS`:
+
+```sql
+SELECT * FROM #Staff WHERE Id NOT IN (1, NULL);
+```
+
+Input: 3 rows above, list `(1, NULL)`.
+
+Output: 0 rows.
+
+| Id | Name | Bonus |
+|---|---|---|
+| *(no rows)* | | |
+
+```sql
+SELECT s.* FROM #Staff s
 WHERE NOT EXISTS (SELECT 1 FROM (VALUES (1)) v(x) WHERE v.x = s.Id);
 ```
+
+Input: 3 rows above.
+
+Output (2 rows):
+
+| Id | Name | Bonus |
+|---:|---|---:|
+| 2 | Dev | NULL |
+| 3 | Ravi | 200 |
 
 ## 3. Query breakdown (NOT IN wipeout)
 

@@ -31,15 +31,149 @@ full-text for those."*
 
 ## 2. Examples
 
+Input `#Emp` used by every example below:
+
+| Id | Name | Mail |
+|---:|---|---|
+| 1 | Asha | asha@x.com |
+| 2 | Ashok | ashok@y.com |
+| 3 | Dev | dev@x.com |
+| 4 | 100%Sure | s@z.com |
+
+Example 1 — starts `Ash%` (seeks):
+
 ```sql
-SELECT * FROM #Emp WHERE Name LIKE 'Ash%';     -- starts Ash: Asha, Ashok (seeks)
-SELECT * FROM #Emp WHERE Name LIKE '%sh%';     -- holds sh: Asha, Ashok (scans)
-SELECT * FROM #Emp WHERE Name LIKE '___';      -- 3-letter names: Dev
-SELECT * FROM #Emp WHERE Name LIKE '[AD]%';    -- starts A or D
-SELECT * FROM #Emp WHERE Name LIKE '[^A]%';    -- not starting A
-SELECT * FROM #Emp WHERE Mail LIKE '%.com';    -- ends .com
-SELECT * FROM #Emp WHERE Name LIKE '100\%%' ESCAPE '\';  -- real percent mark
+SELECT * FROM #Emp WHERE Name LIKE 'Ash%';
 ```
+
+Input: 4 rows above.
+
+Output (2 rows):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 1 | Asha | asha@x.com |
+| 2 | Ashok | ashok@y.com |
+
+Example 2 — holds `%sh%` (scans):
+
+```sql
+SELECT * FROM #Emp WHERE Name LIKE '%sh%';
+```
+
+Input: 4 rows above.
+
+Output (2 rows):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 1 | Asha | asha@x.com |
+| 2 | Ashok | ashok@y.com |
+
+Example 3 — exactly 3 `___`:
+
+```sql
+SELECT * FROM #Emp WHERE Name LIKE '___';
+```
+
+Input: 4 rows above.
+
+Output (1 row):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 3 | Dev | dev@x.com |
+
+Example 4 — `Ash_k`:
+
+```sql
+SELECT * FROM #Emp WHERE Name LIKE 'Ash_k';
+```
+
+Input: 4 rows above.
+
+Output (1 row):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 2 | Ashok | ashok@y.com |
+
+Example 5 — `[AD]%`:
+
+```sql
+SELECT * FROM #Emp WHERE Name LIKE '[AD]%';
+```
+
+Input: 4 rows above.
+
+Output (3 rows):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 1 | Asha | asha@x.com |
+| 2 | Ashok | ashok@y.com |
+| 3 | Dev | dev@x.com |
+
+Example 6 — `[^A]%`:
+
+```sql
+SELECT * FROM #Emp WHERE Name LIKE '[^A]%';
+```
+
+Input: 4 rows above.
+
+Output (2 rows):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 3 | Dev | dev@x.com |
+| 4 | 100%Sure | s@z.com |
+
+Example 7 — `%.com`:
+
+```sql
+SELECT * FROM #Emp WHERE Mail LIKE '%.com';
+```
+
+Input: 4 rows above.
+
+Output (4 rows):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 1 | Asha | asha@x.com |
+| 2 | Ashok | ashok@y.com |
+| 3 | Dev | dev@x.com |
+| 4 | 100%Sure | s@z.com |
+
+Example 8 — escaped `%`:
+
+```sql
+SELECT * FROM #Emp WHERE Name LIKE '100\%%' ESCAPE '\';
+```
+
+Input: 4 rows above.
+
+Output (1 row):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 4 | 100%Sure | s@z.com |
+
+Example 9 — `NOT LIKE 'A%'`:
+
+```sql
+SELECT * FROM #Emp WHERE Name NOT LIKE 'A%';
+```
+
+Input: 4 rows above.
+
+Output (2 rows):
+
+| Id | Name | Mail |
+|---:|---|---|
+| 3 | Dev | dev@x.com |
+| 4 | 100%Sure | s@z.com |
 
 ## 3. Query breakdown (seek vs scan)
 

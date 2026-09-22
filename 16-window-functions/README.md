@@ -34,38 +34,147 @@ INSERT INTO #Emp VALUES (1,'Asha',10,90000),(2,'Dev',10,90000),(3,'Ravi',10,8000
 
 ## 2. Examples
 
+Input `#Emp` used by every example below:
+
+| Id | Name | DeptId | Salary |
+|---:|---|---:|---:|
+| 1 | Asha | 10 | 90000 |
+| 2 | Dev | 10 | 90000 |
+| 3 | Ravi | 10 | 80000 |
+| 4 | Kiran | 20 | 70000 |
+| 5 | Meena | 20 | 70000 |
+| 6 | Tom | 20 | 60000 |
+
+Example 1 — rank trio, fresh per team:
+
 ```sql
--- Rank trio, fresh per team
 SELECT Name, DeptId, Salary,
   ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rn,
   RANK()       OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rnk,
   DENSE_RANK() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS drnk
 FROM #Emp;
--- Asha/Dev tie: rn 1,2 | rnk 1,1 | drnk 1,1 ; Ravi next: rn 3 | rnk 3 | drnk 2
+```
 
--- Top 1 per team (ties: swap rn→drnk to keep full tie club)
+Input: 6 rows above.
+
+Output (6 rows):
+
+| Name | DeptId | Salary | rn | rnk | drnk |
+|---|---|---:|---:|---:|---:|
+| Asha | 10 | 90000 | 1 | 1 | 1 |
+| Dev | 10 | 90000 | 2 | 1 | 1 |
+| Ravi | 10 | 80000 | 3 | 3 | 2 |
+| Kiran | 20 | 70000 | 1 | 1 | 1 |
+| Meena | 20 | 70000 | 2 | 1 | 1 |
+| Tom | 20 | 60000 | 3 | 3 | 2 |
+
+Example 2 — top 1 per team:
+
+```sql
 WITH R AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rn
            FROM #Emp)
 SELECT * FROM R WHERE rn = 1;
+```
 
--- Nth top pay, distinct ladder (2nd top = 80000 here)
+Input: 6 rows above.
+
+Output (2 rows — tie pick nondet):
+
+| Id | Name | DeptId | Salary |
+|---:|---|---:|---:|
+| 1 | Asha | 10 | 90000 |
+| 4 | Kiran | 20 | 70000 |
+
+Example 3 — 2nd top distinct pay:
+
+```sql
 WITH D AS (SELECT Salary, DENSE_RANK() OVER (ORDER BY Salary DESC) AS dr FROM #Emp)
 SELECT DISTINCT Salary FROM D WHERE dr = 2;
+```
 
--- Run total per team in pay order
+Input pays: 90000, 90000, 80000, 70000, 70000, 60000.
+
+Output (1 row):
+
+| Salary |
+|---:|
+| 80000 |
+
+Example 4 — running total:
+
+```sql
 SELECT Name, Salary, SUM(Salary) OVER (PARTITION BY DeptId ORDER BY Salary) AS RunTotal
 FROM #Emp;
+```
 
--- Shift check: pay gap vs next staff (no self-join)
+Input: 6 rows above.
+
+Output (6 rows):
+
+| Name | Salary | RunTotal |
+|---|---|---:|
+| Ravi | 80000 | 80000 |
+| Asha | 90000 | 260000 |
+| Dev | 90000 | 260000 |
+| Tom | 60000 | 60000 |
+| Kiran | 70000 | 200000 |
+| Meena | 70000 | 200000 |
+
+Example 5 — grand total:
+
+```sql
+SELECT Name, Salary, SUM(Salary) OVER () AS GrandTotal FROM #Emp;
+```
+
+Input: 6 rows above.
+
+Output (6 rows — every row `GrandTotal` 460000):
+
+| Name | Salary | GrandTotal |
+|---|---|---:|
+| Asha | 90000 | 460000 |
+| Dev | 90000 | 460000 |
+| Ravi | 80000 | 460000 |
+| Kiran | 70000 | 460000 |
+| Meena | 70000 | 460000 |
+| Tom | 60000 | 460000 |
+
+Example 6 — `LEAD` / `LAG` gaps:
+
+```sql
 SELECT Name, Salary,
   LEAD(Salary)  OVER (ORDER BY Salary DESC) AS NextPay,
   Salary - LAG(Salary, 1, Salary) OVER (ORDER BY Salary DESC) AS GapVsPrev
 FROM #Emp;
+```
 
--- Kill dupes, keep one (dup key = same Name+Salary)
+Input: 6 rows above.
+
+Output (6 rows):
+
+| Name | Salary | NextPay | GapVsPrev |
+|---|---|---:|---:|---:|
+| Asha | 90000 | 90000 | 0 |
+| Dev | 90000 | 80000 | 0 |
+| Ravi | 80000 | 70000 | -10000 |
+| Kiran | 70000 | 70000 | -10000 |
+| Meena | 70000 | 60000 | 0 |
+| Tom | 60000 | NULL | -10000 |
+
+Example 7 — de-dupe dry run:
+
+```sql
 -- WITH D AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY Name, Salary ORDER BY Id) AS rn FROM #Emp)
 -- DELETE FROM D WHERE rn > 1;
 ```
+
+Input: 6 rows above (all pairs unique).
+
+Output: 0 rows.
+
+| Id | Name | DeptId | Salary | rn |
+|---|---|---|---|---|
+| *(no rows)* | | | | |
 
 ## 3. Query breakdown (rank trio on Asha/Dev tie)
 

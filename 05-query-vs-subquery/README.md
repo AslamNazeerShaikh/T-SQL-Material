@@ -16,7 +16,7 @@
 
 ## 1. Sample tables
 
-Employees:
+dbo.Employees:
 
 | Id | Name | Salary | DepartmentId |
 |---:|---|---:|---:|
@@ -24,7 +24,7 @@ Employees:
 | 2 | Sara | 90000 | 10 |
 | 3 | Mike | 45000 | 20 |
 
-Departments:
+dbo.Departments:
 
 | Id | Location |
 |---:|---|
@@ -36,51 +36,96 @@ Departments:
 Query — a SQL statement against the DB. In interviews, usually means `SELECT`:
 
 ```sql
-SELECT * FROM Employees;
+SELECT * FROM dbo.Employees;
 ```
 
 Subquery — a query nested inside another query (in `WHERE`, `SELECT`, `FROM`, `HAVING`).
 
 ```sql
 SELECT *
-FROM Employees
-WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+FROM dbo.Employees
+WHERE Salary > (SELECT AVG(Salary) FROM dbo.Employees);
 ```
 
 Inner query = subquery. Outer query consumes its result.
 
 ## 3. Three types + examples
 
-Scalar — one value:
+Input used by every example below:
+
+`dbo.Employees`:
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 1 | John | 80000 | 10 |
+| 2 | Sara | 90000 | 10 |
+| 3 | Mike | 45000 | 20 |
+
+`dbo.Departments`:
+
+| Id | Location |
+|---:|---|
+| 10 | Pune |
+| 20 | Mumbai |
+
+Company `AVG(Salary)` = 71666.666666. Dept 10 avg = 85000.0. Dept 20 avg = 45000.0.
+
+Scalar — one value (above company average):
 
 ```sql
 SELECT *
-FROM Employees
-WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+FROM dbo.Employees
+WHERE Salary > (SELECT AVG(Salary) FROM dbo.Employees);
 ```
 
-Multi-row — many rows, use `IN`:
+Input: `dbo.Employees` above.
+
+Output (2 rows):
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 1 | John | 80000 | 10 |
+| 2 | Sara | 90000 | 10 |
+
+Multi-row — many rows, use `IN` (employees in Pune):
 
 ```sql
 SELECT *
-FROM Employees
+FROM dbo.Employees
 WHERE DepartmentId IN (
-    SELECT Id FROM Departments WHERE Location = 'Pune'
+    SELECT Id FROM dbo.Departments WHERE Location = 'Pune'
 );
 ```
 
-Correlated — inner references outer, re-evaluates per row:
+Input: `dbo.Employees` + `dbo.Departments` above.
+
+Output (2 rows):
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 1 | John | 80000 | 10 |
+| 2 | Sara | 90000 | 10 |
+
+Correlated — inner references outer, re-evaluates per row (above own-dept average):
 
 ```sql
 SELECT e1.*
-FROM Employees e1
+FROM dbo.Employees e1
 WHERE Salary > (
     SELECT AVG(e2.Salary)
-    FROM Employees e2
+    FROM dbo.Employees e2
     WHERE e2.DepartmentId = e1.DepartmentId
 );
 -- "employees earning above their own department average"
 ```
+
+Input: `dbo.Employees` above.
+
+Output (1 row):
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 2 | Sara | 90000 | 10 |
 
 ## 4. Query breakdown (correlated example)
 

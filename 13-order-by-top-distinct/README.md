@@ -31,21 +31,174 @@ INSERT INTO #Emp VALUES (1,'Asha',90000,'Pune'),(2,'Dev',80000,'Pune'),
 
 ## 2. Examples
 
+Input `#Emp` used by every example below:
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 1 | Asha | 90000 | Pune |
+| 2 | Dev | 80000 | Pune |
+| 3 | Ravi | 90000 | Mumbai |
+| 4 | Kiran | 70000 | Pune |
+| 5 | Meena | 80000 | Mumbai |
+
+Example 1 — sort two keys:
+
 ```sql
--- Sort: two keys, mixed ways
 SELECT * FROM #Emp ORDER BY Salary DESC, Name ASC;
-
--- Cap: TOP n (+ WITH TIES keeps pay-ties), percent form
-SELECT TOP 3 * FROM #Emp ORDER BY Salary DESC;
-SELECT TOP 1 WITH TIES * FROM #Emp ORDER BY Salary DESC;  -- Asha + Ravi (tie)
-
--- Page: rows 3-4 (ANSI, ORDER BY a must)
-SELECT * FROM #Emp ORDER BY Id OFFSET 2 ROWS FETCH NEXT 2 ROWS ONLY;
-
--- De-dupe: one-of-a-kind cities; count of same
-SELECT DISTINCT City FROM #Emp;
-SELECT City, COUNT(*) AS Times FROM #Emp GROUP BY City;  -- de-dupe + counts
 ```
+
+Input: 5 rows above.
+
+Output (5 rows in order):
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 1 | Asha | 90000 | Pune |
+| 3 | Ravi | 90000 | Mumbai |
+| 2 | Dev | 80000 | Pune |
+| 5 | Meena | 80000 | Mumbai |
+| 4 | Kiran | 70000 | Pune |
+
+Example 2 — `TOP 3`:
+
+```sql
+SELECT TOP 3 * FROM #Emp ORDER BY Salary DESC;
+```
+
+Input: 5 rows above.
+
+Output (3 rows — third pick nondet without 2nd key):
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 1 | Asha | 90000 | Pune |
+| 3 | Ravi | 90000 | Mumbai |
+| 2 | Dev | 80000 | Pune |
+
+Example 3 — `WITH TIES`:
+
+```sql
+SELECT TOP 1 WITH TIES * FROM #Emp ORDER BY Salary DESC;
+```
+
+Input: 5 rows above.
+
+Output (2 rows):
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 1 | Asha | 90000 | Pune |
+| 3 | Ravi | 90000 | Mumbai |
+
+Example 4 — `TOP 40 PERCENT` (40% of 5 = 2):
+
+```sql
+SELECT TOP 40 PERCENT * FROM #Emp ORDER BY Salary DESC;
+```
+
+Input: 5 rows above.
+
+Output (2 rows):
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 1 | Asha | 90000 | Pune |
+| 3 | Ravi | 90000 | Mumbai |
+
+Example 5 — paging rows 3–4:
+
+```sql
+SELECT * FROM #Emp ORDER BY Id OFFSET 2 ROWS FETCH NEXT 2 ROWS ONLY;
+```
+
+Input: 5 rows above.
+
+Output (2 rows):
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 3 | Ravi | 90000 | Mumbai |
+| 4 | Kiran | 70000 | Pune |
+
+Example 6 — 2nd pay:
+
+```sql
+SELECT Salary FROM #Emp ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
+```
+
+Input pays: 90000, 90000, 80000, 80000, 70000.
+
+Output (1 row):
+
+| Salary |
+|---:|
+| 90000 |
+
+Example 7 — last 2 by `Id DESC`:
+
+```sql
+SELECT * FROM #Emp ORDER BY Id DESC OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY;
+```
+
+Input: 5 rows above.
+
+Output (2 rows):
+
+| Id | Name | Salary | City |
+|---:|---|---:|---|
+| 5 | Meena | 80000 | Mumbai |
+| 4 | Kiran | 70000 | Pune |
+
+Example 8 — `DISTINCT` cities:
+
+```sql
+SELECT DISTINCT City FROM #Emp;
+```
+
+Input: 5 rows above.
+
+Output (2 rows):
+
+| City |
+|---|
+| Pune |
+| Mumbai |
+
+Example 9 — counts:
+
+```sql
+SELECT City, COUNT(*) AS Times FROM #Emp GROUP BY City;
+```
+
+Input: 5 rows above.
+
+Output (2 rows):
+
+| City | Times |
+|---|---:|
+| Pune | 3 |
+| Mumbai | 2 |
+
+Example 10 — `DISTINCT` melts NULLs:
+
+```sql
+SELECT DISTINCT x FROM (VALUES (1),(NULL),(NULL)) v(x);
+```
+
+Input:
+
+| x |
+|---:|
+| 1 |
+| NULL |
+| NULL |
+
+Output (2 rows):
+
+| x |
+|---:|
+| 1 |
+| NULL |
 
 ## 3. Query breakdown (paging)
 

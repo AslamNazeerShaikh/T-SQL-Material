@@ -38,18 +38,77 @@ CREATE TABLE #Staff (StaffId INT PRIMARY KEY, Name VARCHAR(30), TeamId INT);
 
 ## 2. Examples
 
+Input `#City`:
+
+| CityId | City | Pin |
+|---:|---|---|
+| 1 | Pune | 411001 |
+| 2 | Mumbai | 400001 |
+
+Input `#Team`:
+
+| TeamId | TeamName | CityId |
+|---:|---|---:|
+| 10 | IT | 1 |
+| 20 | HR | 2 |
+
+Input `#Staff`:
+
+| StaffId | Name | TeamId |
+|---:|---|---:|
+| 1 | Asha | 10 |
+| 2 | Dev | 10 |
+| 3 | Ravi | 20 |
+
+Input `#Phone` (1NF child):
+
+| StaffId | Phone |
+|---:|---|
+| 1 | 98111 |
+| 1 | 98222 |
+| 2 | 98333 |
+
+Example 1 — 1NF child table:
+
 ```sql
--- 1NF: atomic cells + key (phone clubs banned — child table instead)
 CREATE TABLE #Phone (StaffId INT, Phone VARCHAR(15),
-  PRIMARY KEY (StaffId, Phone));  -- repeat club moved out, keyed
-
--- 2NF: TeamName leaned on half of (TaskId,StaffId) key → moved to #Team
--- TaskStaff(TaskId, StaffId, Hours) + Team(TeamId, TeamName) + Staff(StaffId, TeamId)
-
--- 3NF: CityPin leaned on City (non-key) → moved to #City keyed by CityId
-INSERT INTO #City VALUES (1,'Pune','411001');
--- Staff → Team → City rejoins on reads; each fact edited once
+  PRIMARY KEY (StaffId, Phone));
 ```
+
+Input: Asha 2 phones, Dev 1, Ravi 0.
+
+Output `#Phone` (3 rows): same as input table above.
+
+Example 2 — 2NF (no half-key lean):
+
+```sql
+-- TaskStaff(TaskId, StaffId, Hours) + #Team(TeamId, TeamName) + #Staff(StaffId, TeamId)
+```
+
+Input: flat repeat `TeamName` per task.
+
+Output `#Team` (2 rows): same as input table above.
+
+Example 3 — 3NF rebuild + edit-once:
+
+```sql
+INSERT INTO #City VALUES (1,'Pune','411001');
+UPDATE #City SET City = 'Pune City' WHERE CityId = 1;
+SELECT s.Name, t.TeamName, c.City, c.Pin, p.Phone
+FROM #Staff s JOIN #Team t ON t.TeamId = s.TeamId
+JOIN #City c ON c.CityId = t.CityId LEFT JOIN #Phone p ON p.StaffId = s.StaffId;
+```
+
+Input: tables above.
+
+Output (4 rows):
+
+| Name | TeamName | City | Pin | Phone |
+|---|---|---|---|---|
+| Asha | IT | Pune City | 411001 | 98111 |
+| Asha | IT | Pune City | 411001 | 98222 |
+| Dev | IT | Pune City | 411001 | 98333 |
+| Ravi | HR | Mumbai | 400001 | NULL |
 
 ## 3. Query breakdown (city rename)
 

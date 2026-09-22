@@ -17,32 +17,70 @@
 ## 1. Sample tables
 
 ```sql
-CREATE TABLE Employees (Id INT, Name VARCHAR(50), Salary INT, DepartmentId INT);
-INSERT INTO Employees VALUES (1,'John',80000,10),(2,'Sara',120000,10),(3,'Mike',45000,20);
+CREATE TABLE dbo.Employees (Id INT, Name VARCHAR(50), Salary INT, DepartmentId INT);
+INSERT INTO dbo.Employees VALUES (1,'John',80000,10),(2,'Sara',120000,10),(3,'Mike',45000,20);
 
-CREATE TABLE Org (Id INT, Name VARCHAR(20), ManagerId INT NULL);
-INSERT INTO Org VALUES (1,'CEO',NULL),(2,'MgrA',1),(3,'MgrB',1),(4,'Emp1',2),(5,'Emp2',2),(6,'Emp3',3);
+CREATE TABLE dbo.Org (Id INT, Name VARCHAR(20), ManagerId INT NULL);
+INSERT INTO dbo.Org VALUES (1,'CEO',NULL),(2,'MgrA',1),(3,'MgrB',1),(4,'Emp1',2),(5,'Emp2',2),(6,'Emp3',3);
 ```
 
 ## 2. Examples
+
+Input used below:
+
+`Employees`:
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 1 | John | 80000 | 10 |
+| 2 | Sara | 120000 | 10 |
+| 3 | Mike | 45000 | 20 |
+
+`Org`:
+
+| Id | Name | ManagerId |
+|---:|---|---:|
+| 1 | CEO | NULL |
+| 2 | MgrA | 1 |
+| 3 | MgrB | 1 |
+| 4 | Emp1 | 2 |
+| 5 | Emp2 | 2 |
+| 6 | Emp3 | 3 |
 
 Basic CTE:
 
 ```sql
 WITH EmployeeCTE AS (
-    SELECT Id, Name, Salary FROM Employees WHERE Salary > 50000
+    SELECT Id, Name, Salary FROM dbo.Employees WHERE Salary > 50000
 )
 SELECT * FROM EmployeeCTE;
 ```
+
+Input: `Employees` above (Mike 45000 filtered).
+
+Output (2 rows):
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | John | 80000 |
+| 2 | Sara | 120000 |
 
 Multi-step (vs nested mess):
 
 ```sql
 WITH HighPaid AS (
-    SELECT * FROM Employees WHERE Salary > 100000
+    SELECT * FROM dbo.Employees WHERE Salary > 100000
 )
 SELECT * FROM HighPaid WHERE DepartmentId = 10;
 ```
+
+Input: `Employees` above.
+
+Output (1 row):
+
+| Id | Name | Salary | DepartmentId |
+|---:|---|---:|---:|
+| 2 | Sara | 120000 | 10 |
 
 Chained CTEs:
 
@@ -52,18 +90,33 @@ SecondCTE AS (SELECT ... FROM FirstCTE ...)
 SELECT ... FROM SecondCTE;
 ```
 
+Input: output of `FirstCTE` feeds `SecondCTE`. Output = whatever final `SELECT` returns (shape follows `SecondCTE`).
+
 Recursive (org hierarchy):
 
 ```sql
 WITH OrgTree AS (
     SELECT Id, Name, ManagerId, 0 AS Lvl
-    FROM Org WHERE ManagerId IS NULL          -- anchor: CEO
+    FROM dbo.Org WHERE ManagerId IS NULL          -- anchor: CEO
     UNION ALL
     SELECT o.Id, o.Name, o.ManagerId, t.Lvl + 1
-    FROM Org o JOIN OrgTree t ON o.ManagerId = t.Id  -- recursive: reports
+    FROM dbo.Org o JOIN OrgTree t ON o.ManagerId = t.Id  -- recursive: reports
 )
-SELECT * FROM OrgTree;
+SELECT * FROM OrgTree ORDER BY Lvl, Id;
 ```
+
+Input: `Org` above.
+
+Output (6 rows):
+
+| Id | Name | ManagerId | Lvl |
+|---:|---|---:|---:|
+| 1 | CEO | NULL | 0 |
+| 2 | MgrA | 1 | 1 |
+| 3 | MgrB | 1 | 1 |
+| 4 | Emp1 | 2 | 2 |
+| 5 | Emp2 | 2 | 2 |
+| 6 | Emp3 | 3 | 2 |
 
 ## 3. Query breakdown (recursive)
 

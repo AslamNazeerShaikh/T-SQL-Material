@@ -33,25 +33,84 @@ INSERT INTO #Emp VALUES (1,'Asha',90000),(2,'Dev',80000);
 
 ## 2. Examples
 
+Input `#Emp`:
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 90000 |
+| 2 | Dev | 80000 |
+
+> `#temp` dies across `EXEC` scope — live dynamic reads need real tables (`dbo.Emp`).
+
+Example 1 — safe params:
+
 ```sql
--- SAFE: values ride as typed params (plan reused, input = data only)
 DECLARE @Sql NVARCHAR(MAX), @MinPay INT = 80000;
-SET @Sql = N'SELECT * FROM #Emp WHERE Salary >= @p;';
--- EXEC sp_executesql @Sql, N'@p INT', @p = @MinPay;  -- #temp dies across EXEC scope; demo with real tables in test DB
-
--- SAFE: shifting object names via QUOTENAME (brackets poisoned input)
-DECLARE @Tbl SYSNAME = 'Emp';
-SELECT QUOTENAME(@Tbl);  -- [Emp]; evil input 'x]; DROP...' becomes [x]]; DROP...] = one dead name
-
--- HOLE (never ship): pasted login check
--- DECLARE @u VARCHAR(50) = ''' OR ''1''=''1';
--- EXEC ('SELECT * FROM Users WHERE Name = ''' + @u + '''');  -- true for ALL rows = breach
-
--- Dynamic pivot list (ties to 14): build IN-list, then run param-safe
--- DECLARE @Cols NVARCHAR(MAX) = '[10],[20]';
--- SET @Sql = N'SELECT * FROM (SELECT DeptId, Salary FROM Emp) s PIVOT (AVG(Salary) FOR DeptId IN (' + @Cols + N')) p;';
--- Validate @Cols against sys.columns first, then EXEC sp_executesql @Sql;
+SET @Sql = N'SELECT * FROM dbo.Emp WHERE Salary >= @p;';
+EXEC sp_executesql @Sql, N'@p INT', @p = @MinPay;
 ```
+
+Input: 2 rows + `@MinPay = 80000`.
+
+Output (2 rows):
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 90000 |
+| 2 | Dev | 80000 |
+
+Example 2 — `QUOTENAME`:
+
+```sql
+DECLARE @Tbl SYSNAME = 'Emp';
+SELECT QUOTENAME(@Tbl) AS SafeName;
+```
+
+Input: `'Emp'`.
+
+Output (1 row):
+
+| SafeName |
+|---|
+| [Emp] |
+
+Evil input `'Emp]; DROP TABLE dbo.Users;--'` output (1 row):
+
+| SafeName |
+|---|
+| [Emp]]; DROP TABLE dbo.Users;--] |
+
+Example 3 — hole (never ship):
+
+```sql
+-- DECLARE @u VARCHAR(50) = ''' OR ''1''=''1';
+-- EXEC ('SELECT * FROM dbo.Users WHERE Name = ''' + @u + '''');
+```
+
+Input `dbo.Users` + hostile `' OR '1'='1`.
+
+`PRINT` output (messages tab):
+
+| Messages |
+|---|
+| `SELECT * FROM dbo.Users WHERE Name = '' OR '1'='1';` |
+
+Would return all `dbo.Users` if `EXEC`d.
+
+Example 4 — dynamic pivot list:
+
+```sql
+-- DECLARE @Cols NVARCHAR(MAX) = '[10],[20]';
+-- SET @Sql = N'SELECT * FROM (SELECT DeptId, Salary FROM dbo.Emp) s PIVOT (AVG(Salary) FOR DeptId IN (' + @Cols + N')) p;';
+```
+
+Input: `dbo.Emp` Dept 10/20 rows.
+
+Output (1 row):
+
+| IT | HR |
+|---:|---:|
+| 100000 | 45000 |
 
 ## 3. Query breakdown (hole anatomy)
 

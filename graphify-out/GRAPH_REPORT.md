@@ -1,16 +1,16 @@
-# Graph Report - T-SQL-Study  (2026-09-21)
+# Graph Report - T-SQL-Study  (2026-09-22)
 
 ## Corpus Check
-- 87 files · ~50,717 words
+- 88 files · ~57,432 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 574 nodes · 499 edges · 87 communities (55 shown, 29 thin omitted)
+- 582 nodes · 506 edges · 88 communities (56 shown, 29 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f0ed50da`
+- Built from commit: `3e9533ef`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -99,6 +99,7 @@
 - 22-transactions-acid/examples.sql
 - 24-like-pattern-matching/examples.sql
 - 25-dynamic-sql-injection/examples.sql
+- Security Policy
 
 ## God Nodes (most connected - your core abstractions)
 1. `System Functions by Category (MS-Learn Map + Popular Picks)` - 14 edges
@@ -118,7 +119,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (87 total, 29 thin omitted)
+## Communities (88 total, 29 thin omitted)
 
 ### Community 0 - "What You Must Do When Invoked"
 Cohesion: 0.08
@@ -340,16 +341,20 @@ Nodes (3): IX_Stage17_Sal, Share17, Stage17
 Cohesion: 0.83
 Nodes (3): dbo.Dept18, dbo.Emp18, dbo.vw_ITStaff18
 
+### Community 87 - "Security Policy"
+Cohesion: 0.25
+Nodes (7): Ground Rules for Testing, No Secrets in Contributions, Reporting a Vulnerability, Scope, Security Policy, Supported Versions, What happens next
+
 ## Knowledge Gaps
-- **403 isolated node(s):** `$schema`, `instructions`, `edit`, `git *`, `rm -rf *` (+398 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 475 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **408 isolated node(s):** `$schema`, `instructions`, `edit`, `git *`, `rm -rf *` (+403 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 481 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **29 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **What connects `$schema`, `instructions`, `edit` to the rest of the system?**
-  _403 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _408 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `opencode.json` be split into smaller, more focused modules?**

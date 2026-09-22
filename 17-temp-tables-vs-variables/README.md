@@ -29,13 +29,52 @@ tiny goes at-var, one-shot readable goes CTE."*
 ```sql
 CREATE TABLE #Stage (Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT);
 INSERT INTO #Stage VALUES (1,'Asha',90000),(2,'Dev',80000);
-CREATE INDEX IX_Stage_Sal ON #Stage(Salary);   -- temps take real indexes
-
-DECLARE @Tiny TABLE (Id INT PRIMARY KEY, Name VARCHAR(50));  -- inline key only
-INSERT INTO @Tiny VALUES (1,'Asha');
-
-SELECT * INTO #Copy FROM #Stage WHERE 1 = 2;  -- same shape, zero rows, no keys/indexes
+CREATE INDEX IX_Stage_Sal ON #Stage(Salary);
 ```
+
+Input `#Stage`:
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 1 | Asha | 90000 |
+| 2 | Dev | 80000 |
+
+```sql
+SELECT * FROM #Stage WHERE Salary = 80000;
+```
+
+Output (1 row):
+
+| Id | Name | Salary |
+|---:|---|---:|
+| 2 | Dev | 80000 |
+
+```sql
+DECLARE @Tiny TABLE (Id INT PRIMARY KEY, Name VARCHAR(50));
+INSERT INTO @Tiny VALUES (1,'Asha');
+SELECT * FROM @Tiny;
+```
+
+Input `@Tiny`:
+
+| Id | Name |
+|---:|---|
+| 1 | Asha |
+
+Output (1 row): same as input.
+
+```sql
+SELECT * INTO #Copy FROM #Stage WHERE 1 = 2;
+SELECT COUNT(*) AS EmptyClone FROM #Copy;
+```
+
+Input: 2-row `#Stage`, filter kills all.
+
+Output (1 row):
+
+| EmptyClone |
+|---:|
+| 0 |
 
 ## 2. Comparison
 

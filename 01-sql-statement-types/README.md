@@ -30,14 +30,14 @@
 ## 2. Sample table
 
 ```sql
-CREATE TABLE Employees
+CREATE TABLE dbo.Employees
 (
     Id INT,
     Name VARCHAR(100)
 );
 ```
 
-Seed:
+Seed `dbo.Employees`:
 
 | Id | Name |
 |---:|------|
@@ -46,50 +46,170 @@ Seed:
 
 ## 3. Examples
 
+Input evolution of `dbo.Employees(Id, Name, Salary)`:
+
+| Stage | Id | Name | Salary |
+|---:|---|---|---|
+| After INSERT + UPDATE | 1 | Jon | — (col not yet exists) |
+| | 10 | Sara | — |
+| After `DELETE WHERE Id = 10` | 1 | Jon | — |
+| After `ALTER ADD Salary` | 1 | Jon | NULL |
+| After savepoint COMMIT | 1 | Jon | NULL |
+| | 99 | Temp | NULL |
+
 ```sql
 -- DDL
-CREATE TABLE Employees (Id INT, Name VARCHAR(100));
-ALTER TABLE Employees ADD Salary DECIMAL(18,2);
-TRUNCATE TABLE Employees;
-DROP TABLE Employees;
+CREATE TABLE dbo.Employees (Id INT, Name VARCHAR(100));
+ALTER TABLE dbo.Employees ADD Salary DECIMAL(18,2);
+TRUNCATE TABLE dbo.Employees;
+DROP TABLE dbo.Employees;
+```
 
+Input: empty / existing `dbo.Employees`.
+
+Output: structure change, no result set.
+
+| Result |
+|---|
+| Commands completed successfully |
+
+```sql
 -- DML
-INSERT INTO Employees (Id, Name) VALUES (1, 'John');
-UPDATE Employees SET Name = 'Jon' WHERE Id = 1;
-DELETE FROM Employees WHERE Id = 10;
-MERGE INTO Employees AS tgt USING (SELECT 1 AS Id) AS src
+INSERT INTO dbo.Employees (Id, Name) VALUES (1, 'John');
+```
+
+Input: no rows.
+
+Output: 1 row affected, table now:
+
+| Id | Name |
+|---:|---|
+| 1 | John |
+
+```sql
+UPDATE dbo.Employees SET Name = 'Jon' WHERE Id = 1;
+```
+
+Input:
+
+| Id | Name |
+|---:|---|
+| 1 | John |
+| 10 | Sara |
+
+Output: 1 row affected, table now:
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+| 10 | Sara |
+
+```sql
+DELETE FROM dbo.Employees WHERE Id = 10;
+```
+
+Input:
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+| 10 | Sara |
+
+Output — `SELECT * FROM dbo.Employees;` (1 row):
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+
+```sql
+MERGE INTO dbo.Employees AS tgt USING (SELECT 1 AS Id) AS src
   ON tgt.Id = src.Id WHEN NOT MATCHED THEN INSERT (Id) VALUES (src.Id);
+```
 
+Input: current `dbo.Employees`.
+
+Output: `Id = 1` inserted only if missing, else 0 rows affected.
+
+```sql
 -- DQL
-SELECT * FROM Employees;
+SELECT * FROM dbo.Employees;
+```
 
+Input before delete:
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+| 10 | Sara |
+
+Output (2 rows): same as input.
+
+Input after delete:
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+
+Output (1 row): same as input.
+
+```sql
 -- DCL
-GRANT SELECT ON Employees TO AppReader;
-DENY DELETE ON Employees TO AppReader;
-REVOKE SELECT ON Employees TO AppReader;
+GRANT SELECT ON dbo.Employees TO AppReader;
+DENY DELETE ON dbo.Employees TO AppReader;
+REVOKE SELECT ON dbo.Employees TO AppReader;
+```
 
+Input: permissions on `dbo.Employees`.
+
+Output: no result set.
+
+| Result |
+|---|
+| Commands completed successfully |
+
+```sql
 -- TCL
 BEGIN TRANSACTION;
-DELETE FROM Employees WHERE Id = 10;
+DELETE FROM dbo.Employees WHERE Id = 10;
 ROLLBACK; -- or COMMIT;
 SAVE TRANSACTION BeforeDelete; -- savepoint inside a transaction
 ```
 
+Input:
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+| 10 | Sara |
+
+Output after `ROLLBACK` (2 rows):
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+| 10 | Sara |
+
+Output after `COMMIT` (1 row):
+
+| Id | Name |
+|---:|---|
+| 1 | Jon |
+
 ## 4. Query breakdown
 
-`DELETE FROM Employees WHERE Id = 10;`
+`DELETE FROM dbo.Employees WHERE Id = 10;`
 
-1. `FROM Employees` — target table.
+1. `FROM dbo.Employees` — target table.
 2. `WHERE Id = 10` — row filter (omit it = all rows deleted, structure stays).
 3. Logged row-by-row → DELETE triggers fire → can be slow on huge tables.
 
-`TRUNCATE TABLE Employees;`
+`TRUNCATE TABLE dbo.Employees;`
 
 1. Deallocates data pages — fast, minimal logging.
 2. No `WHERE`, no triggers, resets `IDENTITY` (generally).
 3. DDL, yet **rollback-able inside an explicit transaction** in SQL Server.
 
-`DROP TABLE Employees;`
+`DROP TABLE dbo.Employees;`
 
 1. Removes definition + data + indexes/constraints/triggers.
 2. Structure is gone — `SELECT` afterwards errors.

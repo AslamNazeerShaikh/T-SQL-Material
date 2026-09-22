@@ -32,44 +32,81 @@ INSERT INTO #Emp VALUES ('A','IT',80000),('B','IT',90000),('C','HR',40000),('D',
 
 ## 2. Examples
 
-WHERE — before grouping:
+Input used by every example below (`#Emp`):
+
+| Employee | Department | Salary |
+|---|---|---:|
+| A | IT | 80000 |
+| B | IT | 90000 |
+| C | HR | 40000 |
+| D | HR | 45000 |
+
+IT avg = 85000.0. HR avg = 42500.0.
+
+WHERE — before grouping (HR rows removed before averages):
 
 ```sql
 SELECT DepartmentId, AVG(Salary)
-FROM Employees
+FROM dbo.Employees
 WHERE Salary > 50000
 GROUP BY DepartmentId;
--- HR rows removed BEFORE averages are computed
 ```
 
-HAVING — after aggregation:
+Input: table above.
+
+Output (1 row):
+
+| Department | AvgSal |
+|---|---:|
+| IT | 85000.000000 |
+
+HAVING — after aggregation (HR group fails the bar):
 
 ```sql
 SELECT DepartmentId, AVG(Salary) AS AverageSalary
-FROM Employees
+FROM dbo.Employees
 GROUP BY DepartmentId
 HAVING AVG(Salary) > 50000;
--- groups with avg <= 50K removed AFTER computing
 ```
+
+Input: table above.
+
+Output (1 row):
+
+| Department | AverageSalary |
+|---|---:|
+| IT | 85000.000000 |
 
 Both together:
 
 ```sql
 SELECT DepartmentId, AVG(Salary) AS AvgSalary
-FROM Employees
+FROM dbo.Employees
 WHERE Salary > 50000
 GROUP BY DepartmentId
 HAVING AVG(Salary) > 75000;
 ```
 
+Input: table above.
+
+Output (1 row):
+
+| Department | AvgSalary |
+|---|---:|
+| IT | 85000.000000 |
+
 HAVING without GROUP BY (whole result = one group):
 
 ```sql
 SELECT COUNT(*) AS EmployeeCount
-FROM Employees
+FROM dbo.Employees
 HAVING COUNT(*) > 100;
 -- zero rows if count <= 100 (not a row with 0!)
 ```
+
+Input: table above (COUNT = 4, fails > 100).
+
+Output: 0 rows (headers only: `EmployeeCount`).
 
 ## 3. Query breakdown
 

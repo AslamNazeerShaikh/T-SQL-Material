@@ -35,18 +35,85 @@ INSERT INTO #Emp VALUES (1,90000),(2,80000);
 
 ## 2. Examples (shapes — make in your test DB; #temp shown for shape)
 
+Input `#Emp`:
+
+| Id | Salary |
+|---:|---:|
+| 1 | 90000 |
+| 2 | 80000 |
+
+Extended demo `dbo.Emp20`:
+
+| Id | Salary | DeptId |
+|---:|---:|---:|
+| 1 | 90000 | 10 |
+| 2 | 80000 | 10 |
+| 3 | 45000 | 20 |
+
+Example 1 — scalar, single call:
+
 ```sql
--- Scalar: one value back (2019 inlines worthy ones; older runs row-by-row)
 CREATE FUNCTION dbo.fn_Tax(@Pay INT) RETURNS DECIMAL(18,2) AS
 BEGIN RETURN @Pay * 0.10; END;
--- SELECT dbo.fn_Tax(90000);  -- 9000.00
+SELECT dbo.fn_Tax(90000) AS Tax;
+```
 
--- Inline TVF: one SELECT + inputs (fast, folds in plan)
+Input: `90000`.
+
+Output (1 row):
+
+| Tax |
+|---:|
+| 9000.00 |
+
+Example 2 — scalar per row:
+
+```sql
+SELECT Id, Salary, dbo.fn_Tax(Salary) AS Tax FROM dbo.Emp20;
+```
+
+Input: `dbo.Emp20` 3 rows above.
+
+Output (3 rows):
+
+| Id | Salary | Tax |
+|---:|---:|---:|
+| 1 | 90000 | 9000.00 |
+| 2 | 80000 | 8000.00 |
+| 3 | 45000 | 4500.00 |
+
+Example 3 — inline TVF:
+
+```sql
 CREATE FUNCTION dbo.fn_Team(@D INT)
 RETURNS TABLE AS RETURN (SELECT Id, Salary FROM #Emp WHERE Id = @D);
--- SELECT * FROM dbo.fn_Team(1);
+SELECT * FROM dbo.fn_Team(1);
+```
 
--- Multi-step TVF: staged build (handy, oft slow — no stats on @Out)
+Input: `#Emp` 2 rows.
+
+Output (1 row):
+
+| Id | Salary |
+|---:|---:|
+| 1 | 90000 |
+
+```sql
+SELECT * FROM dbo.fn_Team20(10);
+```
+
+Input: `dbo.Emp20` 3 rows.
+
+Output (2 rows):
+
+| Id | Salary |
+|---:|---:|
+| 1 | 90000 |
+| 2 | 80000 |
+
+Example 4 — multi-step TVF:
+
+```sql
 CREATE FUNCTION dbo.fn_Bands()
 RETURNS @Out TABLE (Band VARCHAR(10), Cnt INT) AS
 BEGIN
@@ -54,7 +121,35 @@ BEGIN
   INSERT INTO @Out SELECT 'Rest', COUNT(*) FROM #Emp WHERE Salary < 100000;
   RETURN;
 END;
+SELECT * FROM dbo.fn_Bands20();
 ```
+
+Input: `dbo.Emp20` 3 rows.
+
+Output (2 rows):
+
+| Band | Cnt |
+|---|---:|
+| High | 0 |
+| Rest | 3 |
+
+Example 5 — `CROSS APPLY`:
+
+```sql
+SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e CROSS APPLY dbo.fn_Team20(e.DeptId) t;
+```
+
+Input: 3 rows above.
+
+Output (5 rows):
+
+| Id | TeamSal |
+|---:|---:|
+| 1 | 90000 |
+| 1 | 80000 |
+| 2 | 90000 |
+| 2 | 80000 |
+| 3 | 45000 |
 
 ## 3. Query breakdown (inline win)
 

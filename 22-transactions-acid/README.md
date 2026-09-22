@@ -34,25 +34,75 @@ INSERT INTO #Acct VALUES (1,1000),(2,500);
 
 ## 2. Examples
 
+Input `#Acct`:
+
+| Id | Bal |
+|---:|---:|
+| 1 | 1000 |
+| 2 | 500 |
+
+Example 1 — money move:
+
 ```sql
--- Money move: both legs or neither (XACT_ABORT auto-rolls on blast)
 SET XACT_ABORT ON;
 BEGIN TRANSACTION;
   UPDATE #Acct SET Bal = Bal - 200 WHERE Id = 1;
   UPDATE #Acct SET Bal = Bal + 200 WHERE Id = 2;
 COMMIT;
+SELECT * FROM #Acct;
+```
 
--- Read rungs: pick safety per need
-SET TRANSACTION ISOLATION LEVEL READ COMMITTED;  -- default: sealed work only
-SELECT * FROM #Acct WITH (NOLOCK);               -- = READ UNCOMMITTED: no wait, may show dirt
-SET TRANSACTION ISOLATION LEVEL SNAPSHOT;        -- needs ALLOW_SNAPSHOT_ISOLATION ON: past-view reads, no blocks
--- REPEATABLE READ: re-reads match mid-deal | SERIALIZABLE: full solo, max locks
+Input: 2 rows above.
 
--- Deadlock shape (two sittings, cross order — DON'T run both for real):
+Output (2 rows):
+
+| Id | Bal |
+|---:|---:|
+| 1 | 800 |
+| 2 | 700 |
+
+Example 2 — read rungs:
+
+```sql
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+SELECT * FROM #Acct WITH (NOLOCK);
+```
+
+Input: 2 rows above (no open writer).
+
+Output (2 rows):
+
+| Id | Bal |
+|---:|---:|
+| 1 | 800 |
+| 2 | 700 |
+
+```sql
+SET TRANSACTION ISOLATION LEVEL SNAPSHOT;
+```
+
+Input: needs `ALLOW_SNAPSHOT_ISOLATION ON`.
+
+Output: no result set.
+
+| Result |
+|---|
+| Commands completed successfully |
+
+Example 3 — deadlock shape (don't run both for real):
+
+```sql
 -- Sitting A: UPDATE #Acct WHERE Id=1 ... wait ... UPDATE #Acct WHERE Id=2
 -- Sitting B: UPDATE #Acct WHERE Id=2 ... wait ... UPDATE #Acct WHERE Id=1
--- Fix shape: same order all town (1 then 2), short deals, retry on 1205.
 ```
+
+Input: same 2 rows.
+
+Output: one sitting wins, other output:
+
+| Result |
+|---|
+| Msg 1205 deadlock victim, retry full deal |
 
 ## 3. Query breakdown (money move)
 

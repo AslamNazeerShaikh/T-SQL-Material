@@ -15,13 +15,13 @@
 ## 1. Sample tables
 
 ```sql
-CREATE TABLE Departments
+CREATE TABLE dbo.Departments
 (
     Id INT PRIMARY KEY,
     DeptName VARCHAR(50)
 );
 
-CREATE TABLE Employees
+CREATE TABLE dbo.Employees
 (
     EmployeeId INT PRIMARY KEY,
     Email VARCHAR(200) UNIQUE,
@@ -48,6 +48,30 @@ Employees:
 
 ## 2. The six keys
 
+Input used below:
+
+`dbo.Departments` (2 rows):
+
+| Id | DeptName |
+|---:|---|
+| 10 | IT |
+| 20 | HR |
+
+`dbo.Employees` (2 rows):
+
+| EmployeeId | Email | DepartmentId |
+|---:|---|---:|
+| 1 | a@x.com | 10 |
+| 2 | b@x.com | 20 |
+
+`dbo.Enrollments` (3 rows):
+
+| StudentId | CourseId |
+|---:|---:|
+| 1 | 101 |
+| 1 | 102 |
+| 2 | 101 |
+
 ### Primary Key — uniquely identifies every row
 
 ```sql
@@ -56,13 +80,36 @@ EmployeeId INT PRIMARY KEY
 
 - Unique + NOT NULL, one per table, can span multiple columns.
 
+Input: `dbo.Employees` above.
+
+Output: table holds:
+
+| EmployeeId | Email | DepartmentId |
+|---:|---|---:|
+| 1 | a@x.com | 10 |
+| 2 | b@x.com | 20 |
+
+Duplicate `1` rejected:
+
+| Result |
+|---|
+| Msg 2627 PK violation, 0 rows changed |
+
 ### Foreign Key — relationship + referential integrity
 
 ```sql
-FOREIGN KEY (DepartmentId) REFERENCES Departments(Id)
+FOREIGN KEY (DepartmentId) REFERENCES dbo.Departments(Id)
 ```
 
 - Blocks orphan rows: can't insert `DepartmentId = 99` if no department 99.
+
+Input: `dbo.Departments` above.
+
+`INSERT (3,'c@x.com',99)` output:
+
+| Result |
+|---|
+| Msg 547 FK conflict, rejected, `dbo.Employees` still 2 rows |
 
 ### Unique Key — no duplicates, but ≠ PK
 
@@ -73,9 +120,25 @@ Email VARCHAR(200) UNIQUE
 - One table: `1 PRIMARY KEY`, many `UNIQUE` constraints.
 - UNIQUE allows one NULL (single NULL semantics nuance) — PK allows zero NULLs.
 
+Input: `dbo.Employees` with `a@x.com`, `b@x.com`.
+
+`INSERT (3,'a@x.com',10)` output:
+
+| Result |
+|---|
+| Msg 2627 UNIQUE violation, rejected |
+
 ### Candidate Key — *could* be the PK
 
 If both `EmployeeId` and `Email` are guaranteed unique → both are candidate keys.
+
+Input: `dbo.Employees` above (both columns unique).
+
+Output: no result set (concept only).
+
+| Result |
+|---|
+| Commands completed successfully |
 
 ### Alternate Key — candidate key not chosen as PK
 
@@ -84,11 +147,19 @@ EmployeeId → Primary Key
 Email      → Alternate Key (enforced via UNIQUE)
 ```
 
+Input: same 2-row `dbo.Employees`.
+
+Output: no result set (concept only).
+
+| Result |
+|---|
+| Commands completed successfully |
+
 ### Composite Key — multi-column key
 
 ```sql
 -- Enrollment: one student × one course is unique
-CREATE TABLE Enrollments
+CREATE TABLE dbo.Enrollments
 (
     StudentId INT,
     CourseId INT,
@@ -97,6 +168,26 @@ CREATE TABLE Enrollments
 ```
 
 Neither column alone is unique; the combination is.
+
+Input `dbo.Enrollments`:
+
+| StudentId | CourseId |
+|---:|---:|
+| 1 | 101 |
+| 1 | 102 |
+| 2 | 101 |
+
+```sql
+SELECT * FROM dbo.Enrollments;
+```
+
+Output (3 rows): same as input above.
+
+`INSERT (1,101)` output:
+
+| Result |
+|---|
+| Msg 2627 PK violation (1,101), rejected |
 
 ## 3. Query breakdown
 
