@@ -35,178 +35,75 @@ Timestamp logging applies only to:
 
 Do **NOT** log timestamps for every intermediate tool call, internal operation, or harness/tool step. This avoids unnecessary verbosity.
 
+Here is a compact version that keeps the important rules and cross-platform commands:
+
 ### Required Timestamp Format
 
-At every START and END event, always output **both UTC and Local timestamps** on one timestamp line joined by `|` with one space each side. The Local line always reflects the machine's own timezone (offset + abbreviation are dynamic, never hardcoded).
-
-#### UTC
+At every **START** and **END**, output both UTC and machine-local timestamps on **one line**, separated by `|`.
 
 ```text
-UTC: 2026-09-23T14:54:02Z [UTC]
+UTC: 2026-09-23T14:54:02Z [UTC] | Local: 2026-09-23 08:24:02 PM +05:30 [IST]
 ```
 
-Format:
+**UTC format:**
 
 ```text
 UTC: YYYY-MM-DDTHH:MM:SSZ [UTC]
 ```
 
-24-hour, `Z` suffix, `[UTC]` tag.
+24-hour ISO 8601, `Z` suffix, `[UTC]`.
 
-#### Local
-
-Local with `AM/PM` (machine's own timezone — offset and abbreviation are dynamic):
-
-```text
-Local: 2026-09-23 08:24:02 PM +HH:MM [ABBR]
-```
-
-Format pattern:
+**Local format:**
 
 ```text
 Local: YYYY-MM-DD hh:mm:ss AM/PM +HH:MM [ABBR]
 ```
 
-| Part | Example | Meaning |
-|---|---|---|
-| `Local:` | `Local:` | Timezone label (always `Local:`, never a hardcoded zone) |
-| `YYYY` | `2026` | 4-digit year |
-| `MM` | `09` | 2-digit month |
-| `DD` | `23` | 2-digit day |
-| `hh` | `08` | 12-hour clock (`%I`) |
-| `mm` | `24` | Minutes |
-| `ss` | `02` | Seconds |
-| `AM/PM` | `PM` | 12-hour indicator (`%p`) |
-| `+HH:MM` | `+HH:MM` | Machine's UTC offset (`%z` with colon inserted) |
-| `[ABBR]` | `[ABBR]` | Machine's abbreviation (`[%Z]`) |
+Use the **machine's own timezone**; offset and abbreviation are dynamic and must never be hardcoded. Use 12-hour time with `AM/PM`.
 
-Timestamp pair (digits are illustrative; offset/abbreviation come from the machine clock):
-
-```text
-UTC: 2026-09-23T14:54:02Z [UTC]
-Local: 2026-09-23 08:24:02 PM +HH:MM [ABBR]
-```
-
-### START: Format
-
-Three lines — header, timestamp line (only timestamps, `|` with one space each side), description:
+### START
 
 ```text
 --- Start ---
-UTC: 2026-09-23T14:54:02Z [UTC] | Local: 2026-09-23 08:24:02 PM +HH:MM [ABBR]
+UTC: 2026-09-23T14:54:02Z [UTC] | Local: 2026-09-23 08:24:02 PM +05:30 [IST]
 <what started>
 ```
 
-### END: Format
-
-Three lines — header, timestamp line (only timestamps, `|` with one space each side), description + status line:
+### END
 
 ```text
 --- End ---
-UTC: 2026-09-23T14:54:10Z [UTC] | Local: 2026-09-23 08:24:10 PM +HH:MM [ABBR]
+UTC: 2026-09-23T14:54:10Z [UTC] | Local: 2026-09-23 08:24:10 PM +05:30 [IST]
 <what ended> | Status=Ok
 ```
 
-Use `Status=Fail` instead of `Status=Ok` when the command/task fails. Do NOT append `AM/PM` to 24-hour ISO 8601 times (e.g. `20:24:02` is already 24-hour; `20:24:02 PM` is invalid).
+Use `Status=Fail` when the task fails. Do not put status on the timestamp line.
 
-### Obtaining the Timestamps
+### Getting Timestamps
 
-The implementation must work on **macOS, Linux, and Windows**.
-
-#### macOS / Linux
-
-UTC:
+**macOS / Linux:**
 
 ```bash
 date -u +"%Y-%m-%dT%H:%M:%SZ"
-```
-
-Local timezone (machine's own zone, 12-hour with `AM/PM`):
-
-```bash
 date +"%Y-%m-%d %I:%M:%S %p %z [%Z]"
 ```
 
-Convert the local timezone output from:
+The second command returns the offset as `+HHMM`; insert `:` to produce `+HH:MM`.
 
-```text
-2026-09-23 08:24:02 PM +HHMM [ABBR]
-```
-
-to:
-
-```text
-2026-09-23 08:24:02 PM +HH:MM [ABBR]
-```
-
-Render it as:
-
-```text
-Local: 2026-09-23 08:24:02 PM +HH:MM [ABBR]
-```
-
-Note: macOS BSD `date` does not support `%E`/`%O` modifiers or GNU `%N`; if `%:z` prints literally as `:z` on macOS, use the `%z` form above and insert the colon, or use the Python 3 alternative below. Here `%I` = 12-hour clock and `%p` = `AM`/`PM`.
-
-Alternatively, Python 3 can be used:
-
-```bash
-python3 -c "import datetime; print(datetime.datetime.now().astimezone().isoformat(timespec='seconds'))"
-```
-
-For example:
-
-```text
-2026-09-23T20:24:02+HH:MM
-```
-
-Render it as:
-
-```text
-Local: 2026-09-23T20:24:02+HH:MM [ABBR]
-```
-
-For the Local `AM/PM` line, convert `20:24:02+HH:MM` to `08:24:02 PM +HH:MM [ABBR]` (i.e. `Local: 2026-09-23 08:24:02 PM +HH:MM [ABBR]`).
-
-#### Windows
-
-PowerShell:
+**Windows PowerShell:**
 
 ```powershell
 (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+$now=Get-Date; $offset=[System.TimeZoneInfo]::Local.GetUtcOffset($now); $sign=if($offset -ge [TimeSpan]::Zero){"+"}else{"-"}; $off=$offset.Duration().ToString("hh\:mm"); "Local: $($now.ToString('yyyy-MM-dd hh:mm:ss tt')) $sign$off [$([System.TimeZoneInfo]::Local.StandardName)]"
 ```
 
-For local time with the numeric UTC offset:
+### Rules
 
-```powershell
-$now = Get-Date
-$offset = [System.TimeZoneInfo]::Local.GetUtcOffset($now)
-$sign = if ($offset -ge [TimeSpan]::Zero) { "+" } else { "-" }
-$offset = $offset.Duration().ToString("hh\:mm")
-"Local $($now.ToString('yyyy-MM-ddTHH:mm:ss'))$sign$offset [$([System.TimeZoneInfo]::Local.StandardName)]"
-```
-
-### Important Rules
-
-* Always log **both UTC and Local timestamps**.
-* Always log timestamps at both **START and END**.
-* Never fabricate or estimate a timestamp.
-* Use the actual system clock.
-* The UTC timestamp must end with `Z` and `[UTC]`.
-* The Local timestamp must use 12-hour wall-clock with `AM`/`PM`, numeric offset, and bracket tag (`Local: YYYY-MM-DD hh:mm:ss AM/PM +HH:MM [ABBR]`).
-* UTC `14:54:02Z` and Local `08:24:02 PM` in the example share the same date (offset applied).
-* Do not log timestamps for intermediate tool calls or internal operations.
-* If obtaining a timestamp fails, **omit that timestamp rather than guessing or fabricating it**.
-* Preserve the same event/action description between START and END where practical.
-* END: records must include `Status=Ok` or `Status=Fail` on the description line below the timestamps (never on the timestamp line itself).
-
-### Example
-
-```text
---- Start ---
-UTC: 2026-09-23T14:54:02Z [UTC] | Local: 2026-09-23 08:24:02 PM +HH:MM [ABBR]
-Running CLI command
-
---- End ---
-UTC: 2026-09-23T14:54:10Z [UTC] | Local: 2026-09-23 08:24:10 PM +HH:MM [ABBR]
-CLI command completed | Status=Ok
-```
+* Always log both UTC and Local at **START and END**.
+* Use the actual system clock; never guess or fabricate timestamps.
+* Local timezone, offset, and abbreviation must come from the machine.
+* Do not log intermediate tool calls or internal operations.
+* If timestamp retrieval fails, omit the timestamp rather than guessing.
+* Keep the same action description between START and END where practical.
+* `Status=Ok` or `Status=Fail` appears only on the END description line.
+* `AM/PM` applies only to the Local timestamp; UTC remains 24-hour ISO 8601.

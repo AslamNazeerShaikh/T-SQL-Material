@@ -1,8 +1,8 @@
 {
   ".opencode/opencode.json": {
-    "mtime": 1790104416.7134268,
-    "seen": 1790153158.559836,
-    "ast_hash": "ee5fced67a7a38c24f2be624dba2fa13",
+    "mtime": 1790177756.2389135,
+    "seen": 1790177785.547189,
+    "ast_hash": "5ccc10f696816394a4e6a96361bad245",
     "semantic_hash": ""
   },
   ".opencode/plugins/graphify.js": {
@@ -318,9 +318,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1790177344.4083061,
-    "seen": 1790177400.4084501,
-    "ast_hash": "24b93d5373c1634ed141286534ceaf49",
+    "mtime": 1790177888.3165736,
+    "seen": 1790178037.0084312,
+    "ast_hash": "1337454620f739526e9eeb762e088eec",
     "semantic_hash": ""
   },
   "CONTRIBUTING.md": {
