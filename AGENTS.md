@@ -100,6 +100,7 @@ $now=Get-Date; $offset=[System.TimeZoneInfo]::Local.GetUtcOffset($now); $sign=if
 ### Rules
 
 * Always log both UTC and Local at **START and END**.
+* Prompt output/response **START** = first-action time of the turn: the system clock captured on the first tool/CLI action of the turn, reused verbatim in the final `--- Start ---` line. **END** = system clock at response completion.
 * Use the actual system clock; never guess or fabricate timestamps.
 * Local timezone, offset, and abbreviation must come from the machine.
 * Do not log intermediate tool calls or internal operations.
