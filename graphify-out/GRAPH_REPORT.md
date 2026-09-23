@@ -1,16 +1,16 @@
 # Graph Report - T-SQL-Study  (2026-09-23)
 
 ## Corpus Check
-- 91 files · ~59,616 words
+- 91 files · ~60,377 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 627 nodes · 554 edges · 92 communities (59 shown, 30 thin omitted)
+- 639 nodes · 566 edges · 92 communities (59 shown, 30 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f4e7d8a1`
+- Built from commit: `8e595d98`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -59,7 +59,7 @@
 - Opencode Configuration for T-SQL-Material
 - graphify reference: query, path, explain
 - T-SQL Study Guide
-- AGENTS.md
+- Execution Timestamps (UTC + Local)
 - graphify reference: add a URL and watch a folder
 - graphify reference: commit hook and native CLAUDE.md integration
 - graphify reference: incremental update and cluster-only
@@ -301,9 +301,9 @@ Nodes (5): For /graphify explain, For /graphify path, graphify reference: query,
 Cohesion: 0.40
 Nodes (4): examples.sql law, Style, T-SQL Study Guide, Topic folders
 
-### Community 44 - "AGENTS.md"
-Cohesion: 0.50
-Nodes (3): graphify, response style, toolchain installs
+### Community 44 - "Execution Timestamps (UTC + Local)"
+Cohesion: 0.12
+Nodes (15): END: Format, Example, Execution Timestamps (UTC + Local), graphify, Important Rules, Local, macOS / Linux, Obtaining the Timestamps (+7 more)
 
 ### Community 45 - "graphify reference: add a URL and watch a folder"
 Cohesion: 0.50
@@ -362,24 +362,24 @@ Cohesion: 0.33
 Nodes (5): Outputs, Prerequisites (run once, manually), query-testing — live verification against SQL Server 2025, Usage, Workflow for doc fixes
 
 ## Knowledge Gaps
-- **441 isolated node(s):** `$schema`, `instructions`, `edit`, `git *`, `ls *` (+436 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 518 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **450 isolated node(s):** `$schema`, `instructions`, `edit`, `git *`, `ls *` (+445 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 527 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `bash` connect `bash` to `opencode.json`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **Why does `permission` connect `opencode.json` to `bash`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `$schema`, `instructions`, `edit` to the rest of the system?**
-  _441 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _450 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
 - **Should `03 — Types of Keys in SQL Server` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `System Functions by Category (MS-Learn Map + Popular Picks)` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
-- **Should `bash` be split into smaller, more focused modules?**
-  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
+- **Should `Execution Timestamps (UTC + Local)` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._

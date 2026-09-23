@@ -4719,7 +4719,7 @@
       "label": "AGENTS.md",
       "_origin": "ast",
       "community": 44,
-      "community_name": "AGENTS.md",
+      "community_name": "Execution Timestamps (UTC + Local)",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "agents.md",
@@ -4727,11 +4727,47 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_end_format",
+      "label": "END: Format",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "end: format",
+      "source_file": "AGENTS.md",
+      "source_location": "L100"
+    },
+    {
+      "id": "agents_example",
+      "label": "Example",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "example",
+      "source_file": "AGENTS.md",
+      "source_location": "L202"
+    },
+    {
+      "id": "agents_execution_timestamps_utc_local",
+      "label": "Execution Timestamps (UTC + Local)",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "execution timestamps (utc + local)",
+      "source_file": "AGENTS.md",
+      "source_location": "L25"
+    },
+    {
       "id": "agents_graphify",
       "label": "graphify",
       "_origin": "ast",
       "community": 44,
-      "community_name": "AGENTS.md",
+      "community_name": "Execution Timestamps (UTC + Local)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "graphify",
@@ -4739,11 +4775,71 @@
       "source_location": "L12"
     },
     {
+      "id": "agents_important_rules",
+      "label": "Important Rules",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "important rules",
+      "source_file": "AGENTS.md",
+      "source_location": "L188"
+    },
+    {
+      "id": "agents_local",
+      "label": "Local",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "local",
+      "source_file": "AGENTS.md",
+      "source_location": "L56"
+    },
+    {
+      "id": "agents_macos_linux",
+      "label": "macOS / Linux",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "macos / linux",
+      "source_file": "AGENTS.md",
+      "source_location": "L116"
+    },
+    {
+      "id": "agents_obtaining_the_timestamps",
+      "label": "Obtaining the Timestamps",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "obtaining the timestamps",
+      "source_file": "AGENTS.md",
+      "source_location": "L112"
+    },
+    {
+      "id": "agents_required_timestamp_format",
+      "label": "Required Timestamp Format",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "required timestamp format",
+      "source_file": "AGENTS.md",
+      "source_location": "L38"
+    },
+    {
       "id": "agents_response_style",
       "label": "response style",
       "_origin": "ast",
       "community": 44,
-      "community_name": "AGENTS.md",
+      "community_name": "Execution Timestamps (UTC + Local)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "response style",
@@ -4751,16 +4847,64 @@
       "source_location": "L1"
     },
     {
+      "id": "agents_scope",
+      "label": "Scope",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "scope",
+      "source_file": "AGENTS.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "agents_start_format",
+      "label": "START: Format",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "start: format",
+      "source_file": "AGENTS.md",
+      "source_location": "L90"
+    },
+    {
       "id": "agents_toolchain_installs",
       "label": "toolchain installs",
       "_origin": "ast",
       "community": 44,
-      "community_name": "AGENTS.md",
+      "community_name": "Execution Timestamps (UTC + Local)",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "toolchain installs",
       "source_file": "AGENTS.md",
       "source_location": "L6"
+    },
+    {
+      "id": "agents_utc",
+      "label": "UTC",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "utc",
+      "source_file": "AGENTS.md",
+      "source_location": "L42"
+    },
+    {
+      "id": "agents_windows",
+      "label": "Windows",
+      "_origin": "ast",
+      "community": 44,
+      "community_name": "Execution Timestamps (UTC + Local)",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "windows",
+      "source_file": "AGENTS.md",
+      "source_location": "L170"
     },
     {
       "id": "opencode_skills_graphify_references_add_watch",
@@ -11725,6 +11869,17 @@
     },
     {
       "source": "agents",
+      "target": "agents_execution_timestamps_utc_local",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
       "target": "agents_toolchain_installs",
       "relation": "contains",
       "_origin": "ast",
@@ -11732,6 +11887,127 @@
       "confidence_score": 1.0,
       "source_file": "AGENTS.md",
       "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_end_format",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_obtaining_the_timestamps",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_important_rules",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_example",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L202",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_scope",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_required_timestamp_format",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_execution_timestamps_utc_local",
+      "target": "agents_start_format",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_obtaining_the_timestamps",
+      "target": "agents_macos_linux",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_obtaining_the_timestamps",
+      "target": "agents_windows",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_required_timestamp_format",
+      "target": "agents_utc",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_required_timestamp_format",
+      "target": "agents_local",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L56",
       "weight": 1.0
     },
     {
@@ -13507,5 +13783,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f4e7d8a144d15ae936a8d9b462f17ae8e7c5f911"
+  "built_at_commit": "8e595d98dc91ce9944aa813b96f307f2147a3b17"
 }
