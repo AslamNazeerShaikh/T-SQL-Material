@@ -49,6 +49,8 @@ npm-debug.log*
 
 # Logs / temp
 *.log
+# query-testing run logs are verification evidence — keep them tracked
+!query-testing/results/*.log
 *.tmp
 *.temp
 tmp/

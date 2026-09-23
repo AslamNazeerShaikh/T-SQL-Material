@@ -141,7 +141,28 @@ SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e CROSS APPLY dbo.fn_Team20(e.De
 
 Input: 3 rows above.
 
-Output (5 rows):
+Output (5 rows — verified on SQL Server 2025; row order undefined without
+`ORDER BY`, this run returned source order):
+
+| Id | TeamSal |
+|---:|---:|
+| 1 | 90000 |
+| 2 | 90000 |
+| 1 | 80000 |
+| 2 | 80000 |
+| 3 | 45000 |
+
+Example 6 — `OUTER APPLY` (keeps all left rows):
+
+```sql
+SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e OUTER APPLY dbo.fn_Team20(e.DeptId) t;
+```
+
+Input: 3 rows above (every `DeptId` matches, so same 5 rows as `CROSS APPLY`
+here; a `DeptId` with zero members would add an `(Id, NULL)` row only under
+`OUTER`).
+
+Output (5 rows — verified on SQL Server 2025; row order undefined):
 
 | Id | TeamSal |
 |---:|---:|

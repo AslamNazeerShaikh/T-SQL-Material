@@ -1,0 +1,32 @@
+# 09-cte/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(3 rows affected)
+
+(6 rows affected)
+Id          Name                                               Salary     
+----------- -------------------------------------------------- -----------
+          1 John                                                     80000
+          2 Sara                                                    120000
+
+(2 rows affected)
+Id          Name                                               Salary      DepartmentId
+----------- -------------------------------------------------- ----------- ------------
+          2 Sara                                                    120000           10
+
+(1 rows affected)
+Id          Name                 ManagerId   Lvl        
+----------- -------------------- ----------- -----------
+          1 CEO                         NULL           0
+          2 MgrA                           1           1
+          3 MgrB                           1           1
+          4 Emp1                           2           2
+          5 Emp2                           2           2
+          6 Emp3                           3           2
+
+(6 rows affected)
+
+--- stderr ---
+

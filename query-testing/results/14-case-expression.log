@@ -1,0 +1,50 @@
+# 14-case-expression/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(4 rows affected)
+Name                 Salary      Band
+-------------------- ----------- ----
+Asha                      120000 High
+Dev                        80000 Med 
+Ravi                       45000 Low 
+Kiran                       NULL Low 
+
+(4 rows affected)
+Name                 Dept 
+-------------------- -----
+Asha                 IT   
+Dev                  IT   
+Ravi                 HR   
+Kiran                HR   
+
+(4 rows affected)
+Id          Name                 Salary      DeptId     
+----------- -------------------- ----------- -----------
+          1 Asha                      120000          10
+          2 Dev                        80000          10
+          3 Ravi                       45000          20
+          4 Kiran                       NULL          20
+
+(4 rows affected)
+DeptId      HighCnt     Total      
+----------- ----------- -----------
+         10           1           2
+         20           0           2
+
+(2 rows affected)
+IT          HR         
+----------- -----------
+     100000       45000
+
+(1 rows affected)
+Dept Yr                                                                                                                               Amt        
+---- -------------------------------------------------------------------------------------------------------------------------------- -----------
+IT   Y2025                                                                                                                                    100
+IT   Y2026                                                                                                                                    120
+
+(2 rows affected)
+
+--- stderr ---
+

@@ -1,0 +1,74 @@
+# 16-window-functions/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(6 rows affected)
+Name                 DeptId      Salary      rn                   rnk                  drnk                
+-------------------- ----------- ----------- -------------------- -------------------- --------------------
+Asha                          10       90000                    1                    1                    1
+Dev                           10       90000                    2                    1                    1
+Ravi                          10       80000                    3                    3                    2
+Kiran                         20       70000                    1                    1                    1
+Meena                         20       70000                    2                    1                    1
+Tom                           20       60000                    3                    3                    2
+
+(6 rows affected)
+Id          Name                 DeptId      Salary     
+----------- -------------------- ----------- -----------
+          1 Asha                          10       90000
+          4 Kiran                         20       70000
+
+(2 rows affected)
+SecondTop  
+-----------
+      80000
+
+(1 rows affected)
+Name                 Salary      RunTotal   
+-------------------- ----------- -----------
+Ravi                       80000       80000
+Asha                       90000      260000
+Dev                        90000      260000
+Tom                        60000       60000
+Kiran                      70000      200000
+Meena                      70000      200000
+
+(6 rows affected)
+Name                 Salary      GrandTotal 
+-------------------- ----------- -----------
+Asha                       90000      460000
+Dev                        90000      460000
+Ravi                       80000      460000
+Kiran                      70000      460000
+Meena                      70000      460000
+Tom                        60000      460000
+
+(6 rows affected)
+Name                 Salary      NextPay     GapVsPrev  
+-------------------- ----------- ----------- -----------
+Asha                       90000       90000           0
+Dev                        90000       80000           0
+Ravi                       80000       70000      -10000
+Kiran                      70000       70000      -10000
+Meena                      70000       60000           0
+Tom                        60000        NULL      -10000
+
+(6 rows affected)
+Id          Name                 DeptId      Salary      rn                  
+----------- -------------------- ----------- ----------- --------------------
+
+(0 rows affected)
+Name                 Salary      Quart               
+-------------------- ----------- --------------------
+Asha                       90000                    1
+Dev                        90000                    2
+Ravi                       80000                    3
+Kiran                      70000                    1
+Meena                      70000                    2
+Tom                        60000                    3
+
+(6 rows affected)
+
+--- stderr ---
+

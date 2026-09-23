@@ -16,6 +16,78 @@
       "source_location": "L12"
     },
     {
+      "id": "query_testing_run_all_base_cmd",
+      "label": "base_cmd()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "base_cmd()",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L49"
+    },
+    {
+      "id": "query_testing_run_all_discover",
+      "label": "discover()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "discover()",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L84"
+    },
+    {
+      "id": "query_testing_run_all_main",
+      "label": "main()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "main()",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L101"
+    },
+    {
+      "id": "query_testing_run_all_reset_db",
+      "label": "reset_db()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "reset_db()",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L74"
+    },
+    {
+      "id": "query_testing_run_all_run_file",
+      "label": "run_file()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "run_file()",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L91"
+    },
+    {
+      "id": "query_testing_run_all_run_sqlcmd",
+      "label": "run_sqlcmd()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "run_sqlcmd()",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L57"
+    },
+    {
       "id": "opencode_skills_graphify_skill",
       "label": "graphify/SKILL.md",
       "_origin": "ast",
@@ -331,50 +403,6 @@
       "source_location": "L1"
     },
     {
-      "id": "opencode_opencode_bash_chmod_777",
-      "label": "chmod 777 *",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "opencode.json",
-      "file_type": "code",
-      "norm_label": "chmod 777 *",
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "opencode_opencode_bash_git",
-      "label": "git *",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "opencode.json",
-      "file_type": "code",
-      "norm_label": "git *",
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "opencode_opencode_bash_rm_rf",
-      "label": "rm -rf *",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "opencode.json",
-      "file_type": "code",
-      "norm_label": "rm -rf *",
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "opencode_opencode_bash_sudo",
-      "label": "sudo *",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "opencode.json",
-      "file_type": "code",
-      "norm_label": "sudo *",
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L10"
-    },
-    {
       "id": "opencode_opencode_github_enabled",
       "label": "enabled",
       "_origin": "ast",
@@ -383,7 +411,7 @@
       "file_type": "code",
       "norm_label": "enabled",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L19"
+      "source_location": "L49"
     },
     {
       "id": "opencode_opencode_github_headers",
@@ -394,7 +422,7 @@
       "file_type": "code",
       "norm_label": "headers",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L20"
+      "source_location": "L50"
     },
     {
       "id": "opencode_opencode_github_type",
@@ -405,7 +433,7 @@
       "file_type": "code",
       "norm_label": "type",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L17"
+      "source_location": "L47"
     },
     {
       "id": "opencode_opencode_github_url",
@@ -416,7 +444,7 @@
       "file_type": "code",
       "norm_label": "url",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L18"
+      "source_location": "L48"
     },
     {
       "id": "opencode_opencode_headers_authorization",
@@ -427,7 +455,7 @@
       "file_type": "code",
       "norm_label": "authorization",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L21"
+      "source_location": "L51"
     },
     {
       "id": "opencode_opencode_instructions",
@@ -449,7 +477,7 @@
       "file_type": "code",
       "norm_label": "lsp",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L14"
+      "source_location": "L44"
     },
     {
       "id": "opencode_opencode_mcp",
@@ -460,7 +488,7 @@
       "file_type": "code",
       "norm_label": "mcp",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L15"
+      "source_location": "L45"
     },
     {
       "id": "opencode_opencode_mcp_github",
@@ -471,7 +499,7 @@
       "file_type": "code",
       "norm_label": "github",
       "source_file": ".opencode/opencode.json",
-      "source_location": "L16"
+      "source_location": "L46"
     },
     {
       "id": "opencode_opencode_permission",
@@ -483,17 +511,6 @@
       "norm_label": "permission",
       "source_file": ".opencode/opencode.json",
       "source_location": "L4"
-    },
-    {
-      "id": "opencode_opencode_permission_bash",
-      "label": "bash",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "opencode.json",
-      "file_type": "code",
-      "norm_label": "bash",
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L6"
     },
     {
       "id": "opencode_opencode_permission_edit",
@@ -815,7 +832,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (paging)",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L203"
+      "source_location": "L204"
     },
     {
       "id": "13_order_by_top_distinct_readme_4_edge_cases",
@@ -827,7 +844,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L209"
+      "source_location": "L210"
     },
     {
       "id": "13_order_by_top_distinct_readme_5_interview_scenario_questions",
@@ -839,7 +856,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L218"
+      "source_location": "L219"
     },
     {
       "id": "13_order_by_top_distinct_readme_6_more_list_law_asked_follow_ups",
@@ -851,7 +868,7 @@
       "node_kind": "heading",
       "norm_label": "6. more list law (asked follow-ups)",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L226"
+      "source_location": "L227"
     },
     {
       "id": "13_order_by_top_distinct_readme_cheat_recap",
@@ -863,7 +880,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L237"
+      "source_location": "L238"
     },
     {
       "id": "13_order_by_top_distinct_readme_definition_say_this_in_the_interview",
@@ -1979,7 +1996,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L119"
+      "source_location": "L122"
     },
     {
       "id": "26_query_optimization_readme_6_senior_tuning_pack_experienced_round_asks",
@@ -1991,7 +2008,7 @@
       "node_kind": "heading",
       "norm_label": "6. senior tuning pack (experienced-round asks)",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L127"
+      "source_location": "L130"
     },
     {
       "id": "26_query_optimization_readme_cheat_recap",
@@ -2003,7 +2020,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L149"
+      "source_location": "L152"
     },
     {
       "id": "26_query_optimization_readme_definition_say_this_in_the_interview",
@@ -2099,7 +2116,7 @@
       "node_kind": "heading",
       "norm_label": "5. edge cases",
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L234"
+      "source_location": "L243"
     },
     {
       "id": "27_data_types_numbers_dates_readme_6_interview_scenario_questions",
@@ -2111,7 +2128,7 @@
       "node_kind": "heading",
       "norm_label": "6. interview scenario questions",
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L245"
+      "source_location": "L259"
     },
     {
       "id": "27_data_types_numbers_dates_readme_cheat_recap",
@@ -2123,7 +2140,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L255"
+      "source_location": "L269"
     },
     {
       "id": "27_data_types_numbers_dates_readme_definition_say_this_in_the_interview",
@@ -3563,7 +3580,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (inline win)",
       "source_file": "20-functions/README.md",
-      "source_location": "L154"
+      "source_location": "L175"
     },
     {
       "id": "20_functions_readme_4_edge_cases",
@@ -3575,7 +3592,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "20-functions/README.md",
-      "source_location": "L161"
+      "source_location": "L182"
     },
     {
       "id": "20_functions_readme_5_interview_scenario_questions",
@@ -3587,7 +3604,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "20-functions/README.md",
-      "source_location": "L170"
+      "source_location": "L191"
     },
     {
       "id": "20_functions_readme_cheat_recap",
@@ -3599,7 +3616,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "20-functions/README.md",
-      "source_location": "L178"
+      "source_location": "L199"
     },
     {
       "id": "20_functions_readme_definition_say_this_in_the_interview",
@@ -3887,7 +3904,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (hole anatomy)",
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L115"
+      "source_location": "L112"
     },
     {
       "id": "25_dynamic_sql_injection_readme_4_edge_cases",
@@ -3899,7 +3916,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L121"
+      "source_location": "L118"
     },
     {
       "id": "25_dynamic_sql_injection_readme_5_interview_scenario_questions",
@@ -3911,7 +3928,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L130"
+      "source_location": "L127"
     },
     {
       "id": "25_dynamic_sql_injection_readme_cheat_recap",
@@ -3923,7 +3940,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L138"
+      "source_location": "L135"
     },
     {
       "id": "25_dynamic_sql_injection_readme_definition_say_this_in_the_interview",
@@ -5500,7 +5517,7 @@
       "file_type": "code",
       "norm_label": "ix_ord26_big",
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L21"
+      "source_location": "L25"
     },
     {
       "id": "26_query_optimization_examples_ix_ord26_cust",
@@ -5511,7 +5528,7 @@
       "file_type": "code",
       "norm_label": "ix_ord26_cust",
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L6"
+      "source_location": "L10"
     },
     {
       "id": "26_query_optimization_examples_ord26",
@@ -5522,7 +5539,7 @@
       "file_type": "code",
       "norm_label": "ord26",
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L4"
+      "source_location": "L8"
     },
     {
       "id": "include",
@@ -6237,7 +6254,7 @@
       "file_type": "code",
       "norm_label": "dbo.key27",
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L15"
+      "source_location": "L19"
     },
     {
       "id": "27_data_types_numbers_dates_examples_rv27",
@@ -6248,7 +6265,7 @@
       "file_type": "code",
       "norm_label": "rv27",
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L40"
+      "source_location": "L44"
     },
     {
       "id": "01_sql_statement_types_examples",
@@ -6775,6 +6792,402 @@
       "source_location": "L26"
     },
     {
+      "id": "opencode_opencode_bash_cat",
+      "label": "cat *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "cat *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "opencode_opencode_bash_cd",
+      "label": "cd *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "cd *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "opencode_opencode_bash_chmod_777",
+      "label": "chmod 777 *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "chmod 777 *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L41"
+    },
+    {
+      "id": "opencode_opencode_bash_cut",
+      "label": "cut *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "cut *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L22"
+    },
+    {
+      "id": "opencode_opencode_bash_date",
+      "label": "date *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "date *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L27"
+    },
+    {
+      "id": "opencode_opencode_bash_docker_exec_sql2025",
+      "label": "docker exec sql2025 *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "docker exec sql2025 *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L34"
+    },
+    {
+      "id": "opencode_opencode_bash_docker_images",
+      "label": "docker images *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "docker images *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L37"
+    },
+    {
+      "id": "opencode_opencode_bash_docker_logs",
+      "label": "docker logs *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "docker logs *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L35"
+    },
+    {
+      "id": "opencode_opencode_bash_docker_ps",
+      "label": "docker ps *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "docker ps *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L36"
+    },
+    {
+      "id": "opencode_opencode_bash_echo",
+      "label": "echo *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "echo *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "opencode_opencode_bash_find",
+      "label": "find *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "find *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L24"
+    },
+    {
+      "id": "opencode_opencode_bash_git",
+      "label": "git *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "git *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "opencode_opencode_bash_grep",
+      "label": "grep *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "grep *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "opencode_opencode_bash_head",
+      "label": "head *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "head *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "opencode_opencode_bash_ls",
+      "label": "ls *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "ls *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "opencode_opencode_bash_podman_exec_sql2025",
+      "label": "podman exec sql2025 *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "podman exec sql2025 *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L30"
+    },
+    {
+      "id": "opencode_opencode_bash_podman_images",
+      "label": "podman images *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "podman images *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L33"
+    },
+    {
+      "id": "opencode_opencode_bash_podman_logs",
+      "label": "podman logs *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "podman logs *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L31"
+    },
+    {
+      "id": "opencode_opencode_bash_podman_ps",
+      "label": "podman ps *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "podman ps *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L32"
+    },
+    {
+      "id": "opencode_opencode_bash_printf",
+      "label": "printf *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "printf *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "opencode_opencode_bash_pwd",
+      "label": "pwd",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "pwd",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "opencode_opencode_bash_python3_query_testing",
+      "label": "python3 query-testing/*",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "python3 query-testing/*",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "opencode_opencode_bash_rm_rf",
+      "label": "rm -rf *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "rm -rf *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L39"
+    },
+    {
+      "id": "opencode_opencode_bash_sleep",
+      "label": "sleep *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "sleep *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "opencode_opencode_bash_sort",
+      "label": "sort *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "sort *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "opencode_opencode_bash_sudo",
+      "label": "sudo *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "sudo *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L40"
+    },
+    {
+      "id": "opencode_opencode_bash_tail",
+      "label": "tail *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "tail *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "opencode_opencode_bash_tr",
+      "label": "tr *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "tr *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L23"
+    },
+    {
+      "id": "opencode_opencode_bash_uniq",
+      "label": "uniq *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "uniq *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L21"
+    },
+    {
+      "id": "opencode_opencode_bash_wc",
+      "label": "wc *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "wc *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "opencode_opencode_bash_which",
+      "label": "which *",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "which *",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "opencode_opencode_bash_whoami",
+      "label": "whoami",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "whoami",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L26"
+    },
+    {
+      "id": "opencode_opencode_permission_bash",
+      "label": "bash",
+      "_origin": "ast",
+      "community": 88,
+      "community_name": "bash",
+      "file_type": "code",
+      "norm_label": "bash",
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "query_testing_run_all",
+      "label": "run_all.py",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "code",
+      "norm_label": "run_all.py",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "query_testing_run_all_rationale_2",
+      "label": "Run every <NN-topic>/examples.sql against the SQL Server container, one by one.\u2026",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "rationale",
+      "norm_label": "run every <nn-topic>/examples.sql against the sql server container, one by one....",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L2"
+    },
+    {
+      "id": "query_testing_run_all_rationale_58",
+      "label": "Returns (returncode, stdout, stderr).",
+      "_origin": "ast",
+      "community": 89,
+      "community_name": "run_all.py",
+      "file_type": "rationale",
+      "norm_label": "returns (returncode, stdout, stderr).",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L58"
+    },
+    {
       "id": "07_joins_readme",
       "label": "07-joins/README.md",
       "_origin": "ast",
@@ -6893,9 +7306,177 @@
       "norm_label": "definition (say this in the interview)",
       "source_file": "07-joins/README.md",
       "source_location": "L5"
+    },
+    {
+      "id": "query_testing_readme",
+      "label": "query-testing/README.md",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "query-testing \u2014 live verification against SQL Server 2025",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "query-testing/readme.md",
+      "source_file": "query-testing/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "query_testing_readme_outputs",
+      "label": "Outputs",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "query-testing \u2014 live verification against SQL Server 2025",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "outputs",
+      "source_file": "query-testing/README.md",
+      "source_location": "L55"
+    },
+    {
+      "id": "query_testing_readme_prerequisites_run_once_manually",
+      "label": "Prerequisites (run once, manually)",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "query-testing \u2014 live verification against SQL Server 2025",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "prerequisites (run once, manually)",
+      "source_file": "query-testing/README.md",
+      "source_location": "L12"
+    },
+    {
+      "id": "query_testing_readme_query_testing_live_verification_against_sql_server_2025",
+      "label": "query-testing \u2014 live verification against SQL Server 2025",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "query-testing \u2014 live verification against SQL Server 2025",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "query-testing \u2014 live verification against sql server 2025",
+      "source_file": "query-testing/README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "query_testing_readme_usage",
+      "label": "Usage",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "query-testing \u2014 live verification against SQL Server 2025",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "usage",
+      "source_file": "query-testing/README.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "query_testing_readme_workflow_for_doc_fixes",
+      "label": "Workflow for doc fixes",
+      "_origin": "ast",
+      "community": 90,
+      "community_name": "query-testing \u2014 live verification against SQL Server 2025",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "workflow for doc fixes",
+      "source_file": "query-testing/README.md",
+      "source_location": "L62"
+    },
+    {
+      "id": "query_testing_results_summary",
+      "label": "summary.md",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "summary.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "summary.md",
+      "source_file": "query-testing/results/summary.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "query_testing_results_summary_query_testing_results_2026_09_23t14_14_12",
+      "label": "query-testing results \u2014 2026-09-23T14:14:12",
+      "_origin": "ast",
+      "community": 91,
+      "community_name": "summary.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "query-testing results \u2014 2026-09-23t14:14:12",
+      "source_file": "query-testing/results/summary.md",
+      "source_location": "L1"
     }
   ],
   "links": [
+    {
+      "source": "query_testing_run_all_main",
+      "target": "query_testing_run_all_discover",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_main",
+      "target": "query_testing_run_all_run_file",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_reset_db",
+      "target": "query_testing_run_all_run_sqlcmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_run_file",
+      "target": "query_testing_run_all_reset_db",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_run_file",
+      "target": "query_testing_run_all_run_sqlcmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_run_sqlcmd",
+      "target": "query_testing_run_all_base_cmd",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L59",
+      "weight": 1.0
+    },
     {
       "source": "00_sql_comments_readme",
       "target": "00_sql_comments_readme_00_sql_comments_in_t_sql",
@@ -8851,7 +9432,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L203",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -8862,7 +9443,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L209",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -8873,7 +9454,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L218",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -8884,7 +9465,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L226",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -8895,7 +9476,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L237",
+      "source_location": "L238",
       "weight": 1.0
     },
     {
@@ -9995,7 +10576,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L154",
+      "source_location": "L175",
       "weight": 1.0
     },
     {
@@ -10006,7 +10587,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L161",
+      "source_location": "L182",
       "weight": 1.0
     },
     {
@@ -10017,7 +10598,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L170",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -10028,7 +10609,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L178",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -10798,7 +11379,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L115",
+      "source_location": "L112",
       "weight": 1.0
     },
     {
@@ -10809,7 +11390,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L121",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -10820,7 +11401,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L130",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -10831,7 +11412,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "25-dynamic-sql-injection/README.md",
-      "source_location": "L138",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -10869,13 +11450,24 @@
     },
     {
       "source": "26_query_optimization_examples",
+      "target": "26_query_optimization_examples_ix_ord26_cust",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "26-query-optimization/examples.sql",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "26_query_optimization_examples",
       "target": "26_query_optimization_examples_ix_ord26_big",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L21",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -10886,18 +11478,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L4",
-      "weight": 1.0
-    },
-    {
-      "source": "26_query_optimization_examples",
-      "target": "26_query_optimization_examples_ix_ord26_cust",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -10941,7 +11522,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L119",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -10952,7 +11533,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L127",
+      "source_location": "L130",
       "weight": 1.0
     },
     {
@@ -10963,7 +11544,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L149",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -11007,7 +11588,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L15",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -11018,7 +11599,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L40",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -11040,7 +11621,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L234",
+      "source_location": "L243",
       "weight": 1.0
     },
     {
@@ -11051,7 +11632,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L245",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -11062,7 +11643,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L255",
+      "source_location": "L269",
       "weight": 1.0
     },
     {
@@ -11265,28 +11846,6 @@
     },
     {
       "source": "opencode_opencode",
-      "target": "opencode_opencode_lsp",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L14",
-      "weight": 1.0
-    },
-    {
-      "source": "opencode_opencode",
-      "target": "opencode_opencode_mcp",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "opencode_opencode",
       "target": "opencode_opencode_schema",
       "relation": "contains",
       "_origin": "ast",
@@ -11319,6 +11878,28 @@
       "weight": 1.0
     },
     {
+      "source": "opencode_opencode",
+      "target": "opencode_opencode_lsp",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode",
+      "target": "opencode_opencode_mcp",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
       "source": "opencode_opencode_github_headers",
       "target": "opencode_opencode_headers_authorization",
       "relation": "contains",
@@ -11326,7 +11907,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
-      "source_location": "L21",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -11337,7 +11918,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
-      "source_location": "L16",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -11348,7 +11929,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
-      "source_location": "L17",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -11359,7 +11940,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
-      "source_location": "L18",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -11370,7 +11951,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
-      "source_location": "L19",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -11381,7 +11962,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
-      "source_location": "L20",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -11408,7 +11989,7 @@
     },
     {
       "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_sudo",
+      "target": "opencode_opencode_bash_ls",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -11419,13 +12000,332 @@
     },
     {
       "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_chmod_777",
+      "target": "opencode_opencode_bash_cd",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
       "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_pwd",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_echo",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_printf",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_cat",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_grep",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_head",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_tail",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_wc",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_sort",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_uniq",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_cut",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_tr",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_find",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_which",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_whoami",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_date",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_sleep",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_podman_exec_sql2025",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_podman_logs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_podman_ps",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_podman_images",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_docker_exec_sql2025",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_docker_logs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_docker_ps",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_docker_images",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_python3_query_testing",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_rm_rf",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_sudo",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "opencode_opencode_permission_bash",
+      "target": "opencode_opencode_bash_chmod_777",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".opencode/opencode.json",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -11437,17 +12337,6 @@
       "confidence_score": 1.0,
       "source_file": ".opencode/opencode.json",
       "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "opencode_opencode_permission_bash",
-      "target": "opencode_opencode_bash_rm_rf",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".opencode/opencode.json",
-      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -12144,6 +13033,138 @@
       "weight": 1.0
     },
     {
+      "source": "query_testing_readme",
+      "target": "query_testing_readme_query_testing_live_verification_against_sql_server_2025",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/README.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_readme_query_testing_live_verification_against_sql_server_2025",
+      "target": "query_testing_readme_prerequisites_run_once_manually",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/README.md",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_readme_query_testing_live_verification_against_sql_server_2025",
+      "target": "query_testing_readme_usage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/README.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_readme_query_testing_live_verification_against_sql_server_2025",
+      "target": "query_testing_readme_outputs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/README.md",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_readme_query_testing_live_verification_against_sql_server_2025",
+      "target": "query_testing_readme_workflow_for_doc_fixes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/README.md",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_results_summary",
+      "target": "query_testing_results_summary_query_testing_results_2026_09_23t14_14_12",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/results/summary.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all",
+      "target": "query_testing_run_all_main",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all",
+      "target": "query_testing_run_all_base_cmd",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all",
+      "target": "query_testing_run_all_run_sqlcmd",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all",
+      "target": "query_testing_run_all_reset_db",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all",
+      "target": "query_testing_run_all_discover",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all",
+      "target": "query_testing_run_all_run_file",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
       "source": "readme",
       "target": "readme_t_sql_study_sql_server_2019_interview_prep",
       "relation": "contains",
@@ -12382,7 +13403,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L21",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -12393,7 +13414,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L6",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -12405,6 +13426,28 @@
       "confidence_score": 1.0,
       "source_file": ".opencode/plugins/graphify.js",
       "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_rationale_2",
+      "target": "query_testing_run_all",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "query_testing_run_all_rationale_58",
+      "target": "query_testing_run_all_run_sqlcmd",
+      "relation": "rationale_for",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "query-testing/run_all.py",
+      "source_location": "L58",
       "weight": 1.0
     },
     {
@@ -12464,5 +13507,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "3e9533ef8c77c5b02690649581538f161bfef98e"
+  "built_at_commit": "74ca49319081fa5192890eaadf2e15fff88040ff"
 }

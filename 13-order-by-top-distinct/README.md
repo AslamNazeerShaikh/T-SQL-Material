@@ -185,20 +185,21 @@ Example 10 — `DISTINCT` melts NULLs:
 SELECT DISTINCT x FROM (VALUES (1),(NULL),(NULL)) v(x);
 ```
 
-Input:
+Input (no `ORDER BY`, so engine order is undefined — this run returned):
 
 | x |
 |---:|
+| NULL |
+| NULL |
 | 1 |
-| NULL |
-| NULL |
 
-Output (2 rows):
+Output (2 rows — `DISTINCT` melts the two NULLs into one; display order
+undefined, this run returned NULL first):
 
 | x |
 |---:|
-| 1 |
 | NULL |
+| 1 |
 
 ## 3. Query breakdown (paging)
 

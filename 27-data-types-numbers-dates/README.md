@@ -80,11 +80,14 @@ SELECT CAST(0.1 + 0.2 AS DECIMAL(10,2)) AS Exact, CAST(0.1 + 0.2 AS FLOAT) AS Gu
 
 Input: literals `0.1`, `0.2`.
 
-Output (1 row):
+Output (1 row — verified on SQL Server 2025):
 
 | Exact | Guess |
-|---:|---:|
-| 0.30 | 0.3 |
+|---:|---|
+| 0.30 | 0.29999999999999999 |
+
+> SSMS grid shows `0.30`; `sqlcmd` renders it as `.30` (no leading zero).
+> `Guess` is the binary float — never use it for money.
 
 Example 2 — stamps:
 
@@ -164,11 +167,17 @@ SELECT NEXT VALUE FOR dbo.Seq27 AS S1, NEXT VALUE FOR dbo.Seq27 AS S2;
 
 Input: `dbo.Seq27 START 1000 STEP 10`.
 
-Output (1 row):
+Output (1 row — verified on SQL Server 2025):
 
 | S1 | S2 |
 |---:|---:|
-| 1000 | 1010 |
+| 1000 | 1000 |
+
+> Two references in one `SELECT` share a single increment — both read `1000`.
+> The *next* call returns `1010` (verified: a follow-up
+> `SELECT NEXT VALUE FOR dbo.Seq27` gives `1010`). Separate statements (or
+> `NEXT VALUE FOR ... OVER`) advance per call; same-statement twin references
+> do not.
 
 Example 5 — XML teeth:
 
@@ -239,6 +248,11 @@ Output (1 row):
 - IDENTITY gaps are law (rollback/cache) — need gap-free? SEQUENCE NOCACHE still gaps on rollback; true serial needs locks.
 - IDENTITY_INSERT one table per sitting — second ON flips error; mind OFF after.
 - SEQUENCE shared = cross-table key pools; NEXT VALUE FOR per row in set INSERTs.
+  Twin references in one SELECT share one increment (verified: S1=S2=1000,
+  next call 1010) — don't assume one increment per reference.
+- XML methods and filtered indexes need QUOTED_IDENTIFIER ON (Msg 1934).
+  SSMS sets it ON; `sqlcmd` defaults OFF — `examples.sql` sets it explicitly,
+  so the file stays F5-clean in both tools.
 - NEWID in clustered key = page-split storm — NEWSEQUENTIALID or INT keys.
 - ROWVERSION unreadable by eye — compare, never show.
 

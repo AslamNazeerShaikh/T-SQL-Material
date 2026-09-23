@@ -1,0 +1,72 @@
+# 13-order-by-top-distinct/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(5 rows affected)
+Id          Name                 Salary      City                
+----------- -------------------- ----------- --------------------
+          1 Asha                       90000 Pune                
+          3 Ravi                       90000 Mumbai              
+          2 Dev                        80000 Pune                
+          5 Meena                      80000 Mumbai              
+          4 Kiran                      70000 Pune                
+
+(5 rows affected)
+Id          Name                 Salary      City                
+----------- -------------------- ----------- --------------------
+          1 Asha                       90000 Pune                
+          3 Ravi                       90000 Mumbai              
+          2 Dev                        80000 Pune                
+
+(3 rows affected)
+Id          Name                 Salary      City                
+----------- -------------------- ----------- --------------------
+          1 Asha                       90000 Pune                
+          3 Ravi                       90000 Mumbai              
+
+(2 rows affected)
+Id          Name                 Salary      City                
+----------- -------------------- ----------- --------------------
+          1 Asha                       90000 Pune                
+          3 Ravi                       90000 Mumbai              
+
+(2 rows affected)
+Id          Name                 Salary      City                
+----------- -------------------- ----------- --------------------
+          3 Ravi                       90000 Mumbai              
+          4 Kiran                      70000 Pune                
+
+(2 rows affected)
+Salary     
+-----------
+      90000
+
+(1 rows affected)
+City                
+--------------------
+Mumbai              
+Pune                
+
+(2 rows affected)
+City                 Times      
+-------------------- -----------
+Mumbai                         2
+Pune                           3
+
+(2 rows affected)
+Id          Name                 Salary      City                
+----------- -------------------- ----------- --------------------
+          5 Meena                      80000 Mumbai              
+          4 Kiran                      70000 Pune                
+
+(2 rows affected)
+x          
+-----------
+       NULL
+          1
+
+(2 rows affected)
+
+--- stderr ---
+

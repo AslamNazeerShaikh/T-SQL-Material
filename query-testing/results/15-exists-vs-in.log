@@ -1,0 +1,43 @@
+# 15-exists-vs-in/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(3 rows affected)
+
+(2 rows affected)
+Id          Name                
+----------- --------------------
+          1 Asha                
+
+(1 rows affected)
+Id          Name                
+----------- --------------------
+          1 Asha                
+
+(1 rows affected)
+Id          Name                
+----------- --------------------
+          2 Dev                 
+          3 Ravi                
+
+(2 rows affected)
+Id          Name                
+----------- --------------------
+          2 Dev                 
+          3 Ravi                
+
+(2 rows affected)
+Id          Name                
+----------- --------------------
+
+(0 rows affected)
+Id          Name                
+----------- --------------------
+          1 Asha                
+          3 Ravi                
+
+(2 rows affected)
+
+--- stderr ---
+

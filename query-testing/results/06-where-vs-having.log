@@ -1,0 +1,28 @@
+# 06-where-vs-having/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(4 rows affected)
+Department AvgSal                                  
+---------- ----------------------------------------
+IT                                     85000.000000
+
+(1 rows affected)
+Department AvgSal                                  
+---------- ----------------------------------------
+IT                                     85000.000000
+
+(1 rows affected)
+Department AvgSal                                  
+---------- ----------------------------------------
+IT                                     85000.000000
+
+(1 rows affected)
+EmployeeCount
+-------------
+
+(0 rows affected)
+
+--- stderr ---
+

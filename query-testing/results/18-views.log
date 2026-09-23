@@ -1,0 +1,23 @@
+# 18-views/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+
+(3 rows affected)
+Id          Name                 Dept                
+----------- -------------------- --------------------
+          1 Asha                 IT                  
+          2 Dev                  IT                  
+
+(2 rows affected)
+Id          Name                 Dept                 Salary     
+----------- -------------------- -------------------- -----------
+          1 Asha                 IT                         90000
+          2 Dev                  IT                         80000
+
+(2 rows affected)
+
+--- stderr ---
+

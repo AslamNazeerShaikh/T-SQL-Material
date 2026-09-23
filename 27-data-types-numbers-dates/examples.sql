@@ -1,6 +1,10 @@
 -- 27 — Numbers, dates, specials. Self-contained, F5 clean.
 -- IDENTITY/IDENT_* demos use a real dbo table (IDENT_CURRENT needs exact names;
 -- #temp internal names carry suffixes, so it returns NULL on temp tables).
+-- SET lines: SSMS has them ON already; sqlcmd defaults them OFF and XML
+-- methods refuse to run without QUOTED_IDENTIFIER ON (Msg 1934).
+SET QUOTED_IDENTIFIER ON;
+SET ANSI_NULLS ON;
 IF OBJECT_ID('dbo.Key27', 'U') IS NOT NULL DROP TABLE dbo.Key27;
 IF OBJECT_ID('dbo.Seq27', 'SO') IS NOT NULL DROP SEQUENCE dbo.Seq27;
 

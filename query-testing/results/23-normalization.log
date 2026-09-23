@@ -1,0 +1,25 @@
+# 23-normalization/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+
+(2 rows affected)
+
+(3 rows affected)
+
+(3 rows affected)
+
+(1 rows affected)
+Name                           TeamName                       City                           Pin        Phone          
+------------------------------ ------------------------------ ------------------------------ ---------- ---------------
+Asha                           IT                             Pune City                      411001     98111          
+Asha                           IT                             Pune City                      411001     98222          
+Dev                            IT                             Pune City                      411001     98333          
+Ravi                           HR                             Mumbai                         400001     NULL           
+
+(4 rows affected)
+
+--- stderr ---
+

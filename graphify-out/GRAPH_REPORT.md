@@ -1,16 +1,16 @@
-# Graph Report - T-SQL-Study  (2026-09-22)
+# Graph Report - T-SQL-Study  (2026-09-23)
 
 ## Corpus Check
-- 88 files · ~57,432 words
+- 91 files · ~59,048 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 582 nodes · 506 edges · 88 communities (56 shown, 29 thin omitted)
+- 627 nodes · 554 edges · 92 communities (59 shown, 30 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `3e9533ef`
+- Built from commit: `74ca4931`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -100,18 +100,22 @@
 - 24-like-pattern-matching/examples.sql
 - 25-dynamic-sql-injection/examples.sql
 - Security Policy
+- bash
+- run_all.py
+- query-testing — live verification against SQL Server 2025
+- summary.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `System Functions by Category (MS-Learn Map + Popular Picks)` - 14 edges
-2. `What You Must Do When Invoked` - 12 edges
-3. `DDL, DML, DQL, DCL, TCL — Full Detail` - 12 edges
-4. `02 — Character Data Types in SQL Server` - 11 edges
-5. `/graphify` - 10 edges
-6. `01 — Types of SQL / T-SQL Statements` - 10 edges
-7. `10 — Clustered vs Non-Clustered Index` - 10 edges
-8. `05 — Query vs Subquery` - 9 edges
-9. `07 — SQL Joins` - 9 edges
-10. `09 — CTE (Common Table Expression)` - 9 edges
+1. `bash` - 33 edges
+2. `System Functions by Category (MS-Learn Map + Popular Picks)` - 14 edges
+3. `What You Must Do When Invoked` - 12 edges
+4. `DDL, DML, DQL, DCL, TCL — Full Detail` - 12 edges
+5. `02 — Character Data Types in SQL Server` - 11 edges
+6. `/graphify` - 10 edges
+7. `01 — Types of SQL / T-SQL Statements` - 10 edges
+8. `10 — Clustered vs Non-Clustered Index` - 10 edges
+9. `05 — Query vs Subquery` - 9 edges
+10. `07 — SQL Joins` - 9 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -119,15 +123,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (88 total, 29 thin omitted)
+## Communities (92 total, 30 thin omitted)
 
 ### Community 0 - "What You Must Do When Invoked"
 Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 1 - "opencode.json"
-Cohesion: 0.11
-Nodes (17): chmod 777 *, git *, rm -rf *, sudo *, enabled, headers, type, url (+9 more)
+Cohesion: 0.15
+Nodes (12): enabled, headers, type, url, Authorization, instructions, lsp, mcp (+4 more)
 
 ### Community 2 - "03 — Types of Keys in SQL Server"
 Cohesion: 0.13
@@ -345,21 +349,37 @@ Nodes (3): dbo.Dept18, dbo.Emp18, dbo.vw_ITStaff18
 Cohesion: 0.25
 Nodes (7): Ground Rules for Testing, No Secrets in Contributions, Reporting a Vulnerability, Scope, Security Policy, Supported Versions, What happens next
 
+### Community 88 - "bash"
+Cohesion: 0.06
+Nodes (33): cat *, cd *, chmod 777 *, cut *, date *, docker exec sql2025 *, docker images *, docker logs * (+25 more)
+
+### Community 89 - "run_all.py"
+Cohesion: 0.39
+Nodes (8): base_cmd(), discover(), main(), Run every <NN-topic>/examples.sql against the SQL Server container, one by one.…, Returns (returncode, stdout, stderr)., reset_db(), run_file(), run_sqlcmd()
+
+### Community 90 - "query-testing — live verification against SQL Server 2025"
+Cohesion: 0.33
+Nodes (5): Outputs, Prerequisites (run once, manually), query-testing — live verification against SQL Server 2025, Usage, Workflow for doc fixes
+
 ## Knowledge Gaps
-- **408 isolated node(s):** `$schema`, `instructions`, `edit`, `git *`, `rm -rf *` (+403 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 481 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **29 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **441 isolated node(s):** `$schema`, `instructions`, `edit`, `git *`, `ls *` (+436 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 518 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `bash` connect `bash` to `opencode.json`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **Why does `permission` connect `opencode.json` to `bash`?**
+  _High betweenness centrality (0.002) - this node is a cross-community bridge._
 - **What connects `$schema`, `instructions`, `edit` to the rest of the system?**
-  _408 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _441 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `opencode.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.1111111111111111 - nodes in this community are weakly interconnected._
 - **Should `03 — Types of Keys in SQL Server` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `System Functions by Category (MS-Learn Map + Popular Picks)` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+- **Should `bash` be split into smaller, more focused modules?**
+  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._

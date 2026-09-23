@@ -1,0 +1,31 @@
+# 22-transactions-acid/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+
+(1 rows affected)
+
+(1 rows affected)
+Id          Bal        
+----------- -----------
+          1         800
+          2         700
+
+(2 rows affected)
+Id          Bal        
+----------- -----------
+          1         800
+          2         700
+
+(2 rows affected)
+Id          Bal        
+----------- -----------
+          1         800
+          2         700
+
+(2 rows affected)
+
+--- stderr ---
+

@@ -1,0 +1,52 @@
+# 00-sql-comments/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+One        
+-----------
+          1
+
+(1 rows affected)
+Two        
+-----------
+          2
+
+(1 rows affected)
+Three      
+-----------
+          3
+
+(1 rows affected)
+           
+-----------
+          5
+
+(1 rows affected)
+RealMath   
+-----------
+          7
+
+(1 rows affected)
+DashText BlockText
+-------- ---------
+--       /*       
+
+(1 rows affected)
+EmpCount   
+-----------
+          2
+
+(1 rows affected)
+What    
+--------
+full-set
+
+(1 rows affected)
+Header   
+---------
+header-ok
+
+(1 rows affected)
+
+--- stderr ---
+

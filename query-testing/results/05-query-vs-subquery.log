@@ -1,0 +1,28 @@
+# 05-query-vs-subquery/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+
+(3 rows affected)
+Id          Name                                               Salary      DepartmentId
+----------- -------------------------------------------------- ----------- ------------
+          1 John                                                     80000           10
+          2 Sara                                                     90000           10
+
+(2 rows affected)
+Id          Name                                               Salary      DepartmentId
+----------- -------------------------------------------------- ----------- ------------
+          1 John                                                     80000           10
+          2 Sara                                                     90000           10
+
+(2 rows affected)
+Id          Name                                               Salary      DepartmentId
+----------- -------------------------------------------------- ----------- ------------
+          2 Sara                                                     90000           10
+
+(1 rows affected)
+
+--- stderr ---
+

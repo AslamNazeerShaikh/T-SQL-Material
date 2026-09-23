@@ -86,5 +86,9 @@
   "84": "25-dynamic-sql-injection/examples.sql",
   "85": "00-sql-comments/examples.sql",
   "86": "system-functions-examples.sql",
-  "87": "Security Policy"
+  "87": "Security Policy",
+  "88": "bash",
+  "89": "run_all.py",
+  "90": "query-testing — live verification against SQL Server 2025",
+  "91": "summary.md"
 }

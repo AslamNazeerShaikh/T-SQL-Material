@@ -1,0 +1,18 @@
+# 25-dynamic-sql-injection/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+SELECT * FROM dbo.Emp WHERE Salary >= @p;
+SafeName                                                                                                                                                                                                                                                          
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[Emp]]; DROP TABLE Users;--]                                                                                                                                                                                                                                      
+
+(1 rows affected)
+SELECT * FROM Users WHERE Name = '' OR '1'='1';
+SELECT * FROM dbo.Emp ORDER BY [Salary];
+SELECT * FROM (SELECT DeptId, Salary FROM dbo.Emp) s PIVOT (AVG(Salary) FOR DeptId IN ([10],[20])) p;
+
+--- stderr ---
+

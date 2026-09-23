@@ -1,0 +1,58 @@
+# 07-joins/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(3 rows affected)
+
+(3 rows affected)
+Name                 Department          
+-------------------- --------------------
+John                 IT                  
+Sara                 HR                  
+
+(2 rows affected)
+Name                 Department          
+-------------------- --------------------
+John                 IT                  
+Sara                 HR                  
+Mike                 NULL                
+
+(3 rows affected)
+Department          
+--------------------
+Finance             
+
+(1 rows affected)
+Name                 Department          
+-------------------- --------------------
+John                 IT                  
+Sara                 HR                  
+NULL                 Finance             
+
+(3 rows affected)
+Name                 Department          
+-------------------- --------------------
+John                 IT                  
+Sara                 HR                  
+Mike                 NULL                
+NULL                 Finance             
+
+(4 rows affected)
+CrossCount 
+-----------
+          9
+
+(1 rows affected)
+
+(3 rows affected)
+Employee             Manager             
+-------------------- --------------------
+CEO                  NULL                
+MgrA                 CEO                 
+Emp1                 MgrA                
+
+(3 rows affected)
+
+--- stderr ---
+

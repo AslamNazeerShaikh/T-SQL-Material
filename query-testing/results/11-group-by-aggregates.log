@@ -1,0 +1,37 @@
+# 11-group-by-aggregates/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(6 rows affected)
+Region     Rows        Priced      Total       AvgAmt                                   Lo          Hi         
+---------- ----------- ----------- ----------- ---------------------------------------- ----------- -----------
+East                 3           2         300                               150.000000         100         200
+West                 3           3         750                               250.000000         150         300
+
+(2 rows affected)
+Seller               Times      
+-------------------- -----------
+Asha                           2
+Ravi                           2
+
+(2 rows affected)
+SumNone     CntNone    
+----------- -----------
+       NULL           0
+
+(1 rows affected)
+Region     Seller               Total      
+---------- -------------------- -----------
+East       Asha                         300
+East       Dev                         NULL
+East       NULL                         300
+West       NULL                         150
+West       Ravi                         600
+West       NULL                         750
+NULL       NULL                        1050
+
+(7 rows affected)
+
+--- stderr ---
+

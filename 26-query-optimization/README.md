@@ -115,6 +115,9 @@ Amt read off leaf (no table trip) → GROUP sums few rows. Wrapped twin
 - Param sniff: first-call plan misfits next values — test odd inputs.
 - Implicit converts hide in plans as warnings — match app types to column types.
 - NOLOCK "speed" is dirt, not a fix (see `22`) — fix the path, not the lock.
+- Filtered indexes need QUOTED_IDENTIFIER ON at CREATE time (Msg 1934).
+  SSMS sets it ON; `sqlcmd` defaults OFF — `examples.sql` sets it explicitly,
+  so the file stays F5-clean in both tools.
 
 ## 5. Interview scenario questions
 

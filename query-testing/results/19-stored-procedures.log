@@ -1,0 +1,32 @@
+# 19-stored-procedures/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+Id          Name                                               Salary     
+----------- -------------------------------------------------- -----------
+          1 Asha                                                     90000
+          2 Dev                                                      80000
+Id          Name                                               Salary     
+----------- -------------------------------------------------- -----------
+          1 Asha                                                     90000
+          2 Dev                                                      80000
+Status      NewId      
+----------- -----------
+          0           3
+
+(1 rows affected)
+Id          Name                                               Salary      DeptId     
+----------- -------------------------------------------------- ----------- -----------
+          1 Asha                                                     90000          10
+          2 Dev                                                      80000          10
+          3 Ravi                                                     75000        NULL
+
+(3 rows affected)
+Asha
+Dev
+Ravi
+
+--- stderr ---
+

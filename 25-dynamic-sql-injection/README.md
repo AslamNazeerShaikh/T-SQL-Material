@@ -62,23 +62,20 @@ Output (2 rows):
 Example 2 — `QUOTENAME`:
 
 ```sql
-DECLARE @Tbl SYSNAME = 'Emp';
+DECLARE @Tbl SYSNAME = 'Emp]; DROP TABLE Users;--';
 SELECT QUOTENAME(@Tbl) AS SafeName;
 ```
 
-Input: `'Emp'`.
+Input: `'Emp]; DROP TABLE Users;--'` (the poisoned name `examples.sql` demos).
 
-Output (1 row):
-
-| SafeName |
-|---|
-| [Emp] |
-
-Evil input `'Emp]; DROP TABLE dbo.Users;--'` output (1 row):
+Output (1 row — verified on SQL Server 2025):
 
 | SafeName |
 |---|
-| [Emp]]; DROP TABLE dbo.Users;--] |
+| [Emp]]; DROP TABLE Users;--] |
+
+> The `]` doubles to `]]`, so the whole attack string becomes one dead object
+> name. A clean input like `'Emp'` would give `[Emp]` the same way.
 
 Example 3 — hole (never ship):
 

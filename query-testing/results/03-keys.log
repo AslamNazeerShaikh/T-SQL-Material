@@ -1,0 +1,20 @@
+# 03-keys/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+
+(2 rows affected)
+
+(3 rows affected)
+StudentId   CourseId   
+----------- -----------
+          1         101
+          1         102
+          2         101
+
+(3 rows affected)
+
+--- stderr ---
+

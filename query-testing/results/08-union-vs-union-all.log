@@ -1,0 +1,34 @@
+# 08-union-vs-union-all/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(2 rows affected)
+
+(2 rows affected)
+Name                
+--------------------
+John                
+Mike                
+Sara                
+
+(3 rows affected)
+Name                
+--------------------
+John                
+Sara                
+Sara                
+Mike                
+
+(4 rows affected)
+Name                 Src
+-------------------- ---
+John                 Emp
+Mike                 Con
+Sara                 Emp
+Sara                 Con
+
+(4 rows affected)
+
+--- stderr ---
+

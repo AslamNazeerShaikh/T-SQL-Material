@@ -1,0 +1,63 @@
+# 24-like-pattern-matching/examples.sql
+# exit=0 status=PASS
+
+--- stdout ---
+
+(4 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          1 Asha                           asha@x.com                                        
+          2 Ashok                          ashok@y.com                                       
+
+(2 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          1 Asha                           asha@x.com                                        
+          2 Ashok                          ashok@y.com                                       
+
+(2 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          3 Dev                            dev@x.com                                         
+
+(1 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          2 Ashok                          ashok@y.com                                       
+
+(1 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          1 Asha                           asha@x.com                                        
+          2 Ashok                          ashok@y.com                                       
+          3 Dev                            dev@x.com                                         
+
+(3 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          3 Dev                            dev@x.com                                         
+          4 100%Sure                       s@z.com                                           
+
+(2 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          1 Asha                           asha@x.com                                        
+          2 Ashok                          ashok@y.com                                       
+          3 Dev                            dev@x.com                                         
+          4 100%Sure                       s@z.com                                           
+
+(4 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          4 100%Sure                       s@z.com                                           
+
+(1 rows affected)
+Id          Name                           Mail                                              
+----------- ------------------------------ --------------------------------------------------
+          3 Dev                            dev@x.com                                         
+          4 100%Sure                       s@z.com                                           
+
+(2 rows affected)
+
+--- stderr ---
+

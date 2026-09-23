@@ -1,5 +1,9 @@
 -- 26 — Query optimization basics. Self-contained, F5 clean.
 -- Open with Ctrl+M (Include Actual Plan) to SEE seeks vs scans while running.
+-- SET lines: SSMS has them ON already; sqlcmd defaults them OFF and filtered
+-- indexes refuse to build without QUOTED_IDENTIFIER ON (Msg 1934).
+SET QUOTED_IDENTIFIER ON;
+SET ANSI_NULLS ON;
 IF OBJECT_ID('tempdb..#Ord26') IS NOT NULL DROP TABLE #Ord26;
 CREATE TABLE #Ord26 (Id INT PRIMARY KEY, CustId INT, Amt INT, ODate DATE);
 INSERT INTO #Ord26 VALUES (1,1,100,'2026-01-05'),(2,1,200,'2026-02-05'),(3,2,150,'2026-01-20');
