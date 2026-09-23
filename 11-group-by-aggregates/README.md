@@ -26,8 +26,8 @@ strong groups — like teams with more than five staff."*
 ```sql
 CREATE TABLE #Sales (Region VARCHAR(10), Seller VARCHAR(20), Amt INT NULL);
 INSERT INTO #Sales VALUES
- ('East','Asha',100),('East','Asha',200),('East','Dev',NULL),
- ('West','Ravi',300),('West','Ravi',300),('West',NULL,150);
+('East', 'Asha', 100), ('East', 'Asha', 200), ('East', 'Dev', NULL),
+('West', 'Ravi', 300), ('West', 'Ravi', 300), ('West', NULL, 150);
 ```
 
 ## 2. Examples
@@ -46,9 +46,14 @@ Input `#Sales` used by every example below:
 Example 1 — totals per region (NULL amts skipped):
 
 ```sql
-SELECT Region, COUNT(*) AS Rows, COUNT(Amt) AS Priced,
-       SUM(Amt) AS Total, AVG(Amt * 1.0) AS AvgAmt,
-       MIN(Amt) AS Lo, MAX(Amt) AS Hi
+SELECT
+    Region,
+    COUNT(*) AS Rows,
+    COUNT(Amt) AS Priced,
+    SUM(Amt) AS Total,
+    AVG(Amt * 1.0) AS AvgAmt,
+    MIN(Amt) AS Lo,
+    MAX(Amt) AS Hi
 FROM #Sales GROUP BY Region;
 ```
 
@@ -64,7 +69,9 @@ Output (2 rows):
 Example 2 — dupes (`HAVING COUNT(*) > 1`):
 
 ```sql
-SELECT Seller, COUNT(*) AS Times
+SELECT
+    Seller,
+    COUNT(*) AS Times
 FROM #Sales GROUP BY Seller HAVING COUNT(*) > 1;
 ```
 
@@ -80,7 +87,10 @@ Output (2 rows):
 Example 3 — empty-set aggregate:
 
 ```sql
-SELECT SUM(Amt) AS SumNone, COUNT(*) AS CntNone FROM #Sales WHERE 1 = 2;
+SELECT
+    SUM(Amt) AS SumNone,
+    COUNT(*) AS CntNone
+FROM #Sales WHERE 1 = 2;
 ```
 
 Input: 0 rows (filter kills all).
@@ -94,8 +104,11 @@ Output (1 row):
 Example 4 — `ROLLUP` grand total:
 
 ```sql
-SELECT Region, Seller, SUM(Amt) AS Total
-FROM #Sales GROUP BY ROLLUP (Region, Seller);
+SELECT
+    Region,
+    Seller,
+    SUM(Amt) AS Total
+FROM #Sales GROUP BY ROLLUP(Region, Seller);
 ```
 
 Input: 6 rows above.

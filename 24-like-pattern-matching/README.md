@@ -19,8 +19,8 @@ with a tail `%` still seeks an index; wrapped app loops can't.
 
 ```sql
 CREATE TABLE #Emp (Id INT, Name VARCHAR(30), Mail VARCHAR(50));
-INSERT INTO #Emp VALUES (1,'Asha','asha@x.com'),(2,'Ashok','ashok@y.com'),
- (3,'Dev','dev@x.com'),(4,'100%Sure','s@z.com');
+INSERT INTO #Emp VALUES (1, 'Asha', 'asha@x.com'), (2, 'Ashok', 'ashok@y.com'),
+(3, 'Dev', 'dev@x.com'), (4, '100%Sure', 's@z.com');
 ```
 
 **Interview-ready answer:** *"LIKE tests text by shape. Percent is any run.

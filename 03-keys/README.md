@@ -26,7 +26,7 @@ CREATE TABLE dbo.Employees
     EmployeeId INT PRIMARY KEY,
     Email VARCHAR(200) UNIQUE,
     DepartmentId INT
-        FOREIGN KEY REFERENCES Departments(Id)
+    FOREIGN KEY REFERENCES Departments (Id)
 );
 ```
 

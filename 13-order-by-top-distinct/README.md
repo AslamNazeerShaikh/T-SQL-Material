@@ -25,8 +25,10 @@ kind key, else ties jump pages between reads."*
 
 ```sql
 CREATE TABLE #Emp (Id INT, Name VARCHAR(20), Salary INT, City VARCHAR(20));
-INSERT INTO #Emp VALUES (1,'Asha',90000,'Pune'),(2,'Dev',80000,'Pune'),
- (3,'Ravi',90000,'Mumbai'),(4,'Kiran',70000,'Pune'),(5,'Meena',80000,'Mumbai');
+INSERT INTO #Emp VALUES (1, 'Asha', 90000, 'Pune'), (2, 'Dev', 80000, 'Pune'),
+(3, 'Ravi', 90000, 'Mumbai'),
+(4, 'Kiran', 70000, 'Pune'),
+(5, 'Meena', 80000, 'Mumbai');
 ```
 
 ## 2. Examples
@@ -123,7 +125,9 @@ Output (2 rows):
 Example 6 — 2nd pay:
 
 ```sql
-SELECT Salary FROM #Emp ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
+SELECT Salary
+FROM #Emp
+ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
 ```
 
 Input pays: 90000, 90000, 80000, 80000, 70000.
@@ -167,7 +171,10 @@ Output (2 rows):
 Example 9 — counts:
 
 ```sql
-SELECT City, COUNT(*) AS Times FROM #Emp GROUP BY City;
+SELECT
+    City,
+    COUNT(*) AS Times
+FROM #Emp GROUP BY City;
 ```
 
 Input: 5 rows above.
@@ -182,7 +189,7 @@ Output (2 rows):
 Example 10 — `DISTINCT` melts NULLs:
 
 ```sql
-SELECT DISTINCT x FROM (VALUES (1),(NULL),(NULL)) v(x);
+SELECT DISTINCT x FROM (VALUES (1), (NULL), (NULL)) v (x);
 ```
 
 Input (no `ORDER BY`, so engine order is undefined — this run returned):

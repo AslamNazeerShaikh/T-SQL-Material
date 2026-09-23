@@ -60,7 +60,7 @@ Input evolution of `dbo.Employees(Id, Name, Salary)`:
 ```sql
 -- DDL
 CREATE TABLE dbo.Employees (Id INT, Name VARCHAR(100));
-ALTER TABLE dbo.Employees ADD Salary DECIMAL(18,2);
+ALTER TABLE dbo.Employees ADD Salary DECIMAL(18, 2);
 TRUNCATE TABLE dbo.Employees;
 DROP TABLE dbo.Employees;
 ```
@@ -123,7 +123,8 @@ Output — `SELECT * FROM dbo.Employees;` (1 row):
 
 ```sql
 MERGE INTO dbo.Employees AS tgt USING (SELECT 1 AS Id) AS src
-  ON tgt.Id = src.Id WHEN NOT MATCHED THEN INSERT (Id) VALUES (src.Id);
+    ON tgt.Id = src.Id
+WHEN NOT MATCHED THEN INSERT (Id) VALUES (src.Id);
 ```
 
 Input: current `dbo.Employees`.

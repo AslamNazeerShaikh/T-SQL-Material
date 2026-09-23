@@ -21,7 +21,7 @@ CREATE TABLE dbo.Employees
     Name VARCHAR(100) NOT NULL,
     Email VARCHAR(200) UNIQUE,
     Age INT CHECK (Age >= 18),
-    DepartmentId INT FOREIGN KEY REFERENCES dbo.Departments(Id),
+    DepartmentId INT FOREIGN KEY REFERENCES dbo.Departments (Id),
     CreatedDate DATETIME2 DEFAULT GETDATE()
 );
 ```

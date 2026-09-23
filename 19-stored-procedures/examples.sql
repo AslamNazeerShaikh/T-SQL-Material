@@ -4,18 +4,26 @@
 
 -- Demo table (run first, same batch as calls below is fine for ad-hoc procs)
 IF OBJECT_ID('dbo.Emp19', 'U') IS NOT NULL DROP TABLE dbo.Emp19;
-CREATE TABLE dbo.Emp19 (Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT, DeptId INT);
-INSERT INTO dbo.Emp19 VALUES (1,'Asha',90000,10),(2,'Dev',80000,10);
+CREATE TABLE dbo.Emp19 (
+    Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT, DeptId INT
+);
+INSERT INTO dbo.Emp19 VALUES (1, 'Asha', 90000, 10), (2, 'Dev', 80000, 10);
 GO
 
 -- Read proc with default param
-IF OBJECT_ID('dbo.usp_GetStaff19', 'P') IS NOT NULL DROP PROC dbo.usp_GetStaff19;
+IF
+    OBJECT_ID('dbo.usp_GetStaff19', 'P') IS NOT NULL
+    DROP PROC dbo.usp_GetStaff19;
 GO
 CREATE PROC dbo.usp_GetStaff19 @DeptId INT = NULL AS
 BEGIN
-  SET NOCOUNT ON;
-  SELECT Id, Name, Salary FROM dbo.Emp19
-  WHERE @DeptId IS NULL OR DeptId = @DeptId;
+    SET NOCOUNT ON;
+    SELECT
+        Id,
+        Name,
+        Salary
+    FROM dbo.Emp19
+    WHERE @DeptId IS NULL OR DeptId = @DeptId;
 END;
 GO
 EXEC dbo.usp_GetStaff19;
@@ -26,25 +34,30 @@ GO
 IF OBJECT_ID('dbo.usp_Hire19', 'P') IS NOT NULL DROP PROC dbo.usp_Hire19;
 GO
 CREATE PROC dbo.usp_Hire19
-  @Name VARCHAR(50), @Salary INT, @NewId INT OUTPUT AS
+    @Name VARCHAR(50), @Salary INT, @NewId INT OUTPUT
+AS
 BEGIN
-  SET NOCOUNT ON;
-  BEGIN TRY
-    BEGIN TRANSACTION;
-      SELECT @NewId = ISNULL(MAX(Id),0) + 1 FROM dbo.Emp19;
-      INSERT INTO dbo.Emp19 (Id, Name, Salary) VALUES (@NewId, @Name, @Salary);
-    COMMIT;
-    RETURN 0;
-  END TRY
-  BEGIN CATCH
-    IF @@TRANCOUNT > 0 ROLLBACK;
-    THROW;
-  END CATCH;
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        SELECT @NewId = ISNULL(MAX(Id), 0) + 1 FROM dbo.Emp19;
+        INSERT INTO dbo.Emp19 (Id, Name, Salary) VALUES (
+            @NewId, @Name, @Salary
+        );
+        COMMIT;
+        RETURN 0;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 ROLLBACK;
+        THROW;
+    END CATCH;
 END;
 GO
 DECLARE @nid INT, @rc INT;
 EXEC @rc = dbo.usp_Hire19 @Name = 'Ravi', @Salary = 75000, @NewId = @nid OUTPUT;
-SELECT @rc AS Status, @nid AS NewId;
+SELECT
+    @rc AS Status,
+    @nid AS NewId;
 SELECT * FROM dbo.Emp19;
 GO
 

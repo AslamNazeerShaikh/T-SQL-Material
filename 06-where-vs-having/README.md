@@ -27,7 +27,10 @@ Employees:
 
 ```sql
 CREATE TABLE #Emp (Employee CHAR(1), Department VARCHAR(10), Salary INT);
-INSERT INTO #Emp VALUES ('A','IT',80000),('B','IT',90000),('C','HR',40000),('D','HR',45000);
+INSERT INTO #Emp VALUES ('A', 'IT', 80000),
+('B', 'IT', 90000),
+('C', 'HR', 40000),
+('D', 'HR', 45000);
 ```
 
 ## 2. Examples
@@ -46,7 +49,9 @@ IT avg = 85000.0. HR avg = 42500.0.
 WHERE — before grouping (HR rows removed before averages):
 
 ```sql
-SELECT DepartmentId, AVG(Salary)
+SELECT
+    DepartmentId,
+    AVG(Salary)
 FROM dbo.Employees
 WHERE Salary > 50000
 GROUP BY DepartmentId;
@@ -63,7 +68,9 @@ Output (1 row):
 HAVING — after aggregation (HR group fails the bar):
 
 ```sql
-SELECT DepartmentId, AVG(Salary) AS AverageSalary
+SELECT
+    DepartmentId,
+    AVG(Salary) AS AverageSalary
 FROM dbo.Employees
 GROUP BY DepartmentId
 HAVING AVG(Salary) > 50000;
@@ -80,7 +87,9 @@ Output (1 row):
 Both together:
 
 ```sql
-SELECT DepartmentId, AVG(Salary) AS AvgSalary
+SELECT
+    DepartmentId,
+    AVG(Salary) AS AvgSalary
 FROM dbo.Employees
 WHERE Salary > 50000
 GROUP BY DepartmentId

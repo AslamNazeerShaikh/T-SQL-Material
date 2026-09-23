@@ -75,7 +75,9 @@ GETDATE() = old local DATETIME. SYSDATETIME() = sharp DATETIME2. SYSUTCDATETIME(
 Example 1 — money exact vs float guess:
 
 ```sql
-SELECT CAST(0.1 + 0.2 AS DECIMAL(10,2)) AS Exact, CAST(0.1 + 0.2 AS FLOAT) AS Guess;
+SELECT
+    CAST(0.1 + 0.2 AS DECIMAL(10, 2)) AS Exact,
+    CAST(0.1 + 0.2 AS FLOAT) AS Guess;
 ```
 
 Input: literals `0.1`, `0.2`.
@@ -92,7 +94,10 @@ Output (1 row — verified on SQL Server 2025):
 Example 2 — stamps:
 
 ```sql
-SELECT GETDATE() AS OldLocal, SYSDATETIME() AS Sharp, SYSUTCDATETIME() AS Utc;
+SELECT
+    GETDATE() AS OldLocal,
+    SYSDATETIME() AS Sharp,
+    SYSUTCDATETIME() AS Utc;
 ```
 
 Input: system clock.
@@ -106,7 +111,7 @@ Output (1 row — all execution-time, non-deterministic):
 Example 3 — `IDENTITY(100,5)`:
 
 ```sql
-INSERT INTO dbo.Key27(Name) VALUES ('Asha'),('Dev');
+INSERT INTO dbo.Key27 (Name) VALUES ('Asha'), ('Dev');
 SELECT * FROM dbo.Key27;
 ```
 
@@ -121,7 +126,7 @@ Output (2 rows):
 
 ```sql
 DELETE FROM dbo.Key27 WHERE Id = 105;
-INSERT INTO dbo.Key27(Name) VALUES ('Ravi');
+INSERT INTO dbo.Key27 (Name) VALUES ('Ravi');
 SELECT * FROM dbo.Key27;
 ```
 
@@ -135,7 +140,10 @@ Output (2 rows):
 | 110 | Ravi |
 
 ```sql
-SELECT IDENT_CURRENT('dbo.Key27') AS AnyScope, IDENT_INCR('dbo.Key27') AS Step, IDENT_SEED('dbo.Key27') AS Seed;
+SELECT
+    IDENT_CURRENT('dbo.Key27') AS AnyScope,
+    IDENT_INCR('dbo.Key27') AS Step,
+    IDENT_SEED('dbo.Key27') AS Seed;
 ```
 
 Output (1 row):
@@ -146,7 +154,7 @@ Output (1 row):
 
 ```sql
 SET IDENTITY_INSERT dbo.Key27 ON;
-INSERT INTO dbo.Key27(Id,Name) VALUES (1,'Hand');
+INSERT INTO dbo.Key27 (Id, Name) VALUES (1, 'Hand');
 SET IDENTITY_INSERT dbo.Key27 OFF;
 SELECT * FROM dbo.Key27;
 ```
@@ -162,7 +170,9 @@ Output (3 rows):
 Example 4 — `SEQUENCE`:
 
 ```sql
-SELECT NEXT VALUE FOR dbo.Seq27 AS S1, NEXT VALUE FOR dbo.Seq27 AS S2;
+SELECT
+    NEXT VALUE FOR dbo.Seq27 AS S1,
+    NEXT VALUE FOR dbo.Seq27 AS S2;
 ```
 
 Input: `dbo.Seq27 START 1000 STEP 10`.
@@ -183,7 +193,9 @@ Example 5 — XML teeth:
 
 ```sql
 DECLARE @X XML = '<r><i>Asha</i><i>Dev</i></r>';
-SELECT @X.value('(/r/i)[1]', 'VARCHAR(20)') AS First, @X.exist('/r/i[text()="Dev"]') AS HasDev;
+SELECT
+    @X.value('(/r/i)[1]', 'VARCHAR(20)') AS First,
+    @X.exist('/r/i[text()="Dev"]') AS HasDev;
 ```
 
 Input `@X`:
@@ -199,7 +211,7 @@ Output (1 row):
 | Asha | 1 |
 
 ```sql
-SELECT Dev.query('.') FROM @X.nodes('/r/i') D(Dev);
+SELECT Dev.query('.') FROM @X.nodes('/r/i') D (Dev);
 ```
 
 Output (2 rows):
@@ -210,7 +222,8 @@ Output (2 rows):
 | `<i>Dev</i>` |
 
 ```sql
-SELECT (SELECT Name + ',' FROM (VALUES ('Asha'),('Dev')) v(Name) FOR XML PATH('')) AS Glue;
+SELECT
+    (SELECT Name + ',' FROM (VALUES ('Asha'), ('Dev')) v (Name) FOR XML PATH ('')) AS Glue;
 ```
 
 Input:
@@ -229,7 +242,12 @@ Output (1 row):
 Example 6 — bits:
 
 ```sql
-SELECT 5 & 4 AS HasPaid, 2 & 4 AS HasShip, 5 | 2 AS Both, 5 ^ 1 AS Toggle, ~5 AS Flip;
+SELECT
+    5 & 4 AS HasPaid,
+    2 & 4 AS HasShip,
+    5 | 2 AS Both,
+    5 ^ 1 AS Toggle,
+    ~5 AS Flip;
 ```
 
 Input: literals `5`, `4`, `2`.

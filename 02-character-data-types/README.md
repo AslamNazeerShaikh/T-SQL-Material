@@ -29,8 +29,8 @@ NVARCHAR(MAX)  large variable,   Unicode (~2 GB / ~1B chars)
 ```sql
 CREATE TABLE dbo.DemoStrings
 (
-    Code    CHAR(6),          -- 'EMP001' always 6 chars
-    Name    VARCHAR(100),     -- varying English names
+    Code CHAR(6),          -- 'EMP001' always 6 chars
+    Name VARCHAR(100),     -- varying English names
     UniName NVARCHAR(100)     -- multilingual names
 );
 ```
@@ -52,9 +52,10 @@ Input `dbo.DemoStrings`:
 Example 1 — storage shapes:
 
 ```sql
-SELECT DATALENGTH(CAST('ABC' AS CHAR(10))) AS Char10Bytes,
-       LEN('ABC') AS LenAbc,
-       DATALENGTH('{"id":1,"tags":["a","b"]}') AS JsonBytes;
+SELECT
+    DATALENGTH(CAST('ABC' AS CHAR(10))) AS Char10Bytes,
+    LEN('ABC') AS LenAbc,
+    DATALENGTH('{"id":1,"tags":["a","b"]}') AS JsonBytes;
 ```
 
 Input: literals `'ABC'`, `'{"id":1,"tags":["a","b"]}'` (25 chars).

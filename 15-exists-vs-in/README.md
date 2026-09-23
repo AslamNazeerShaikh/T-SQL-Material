@@ -28,8 +28,8 @@ NOT EXISTS, or LEFT JOIN with IS NULL."*
 ```sql
 CREATE TABLE #Cust (Id INT, Name VARCHAR(20));
 CREATE TABLE #Ord (Id INT, CustId INT NULL);
-INSERT INTO #Cust VALUES (1,'Asha'),(2,'Dev'),(3,'Ravi');
-INSERT INTO #Ord VALUES (101,1),(102,NULL);  -- NULL row arms the trap
+INSERT INTO #Cust VALUES (1, 'Asha'), (2, 'Dev'), (3, 'Ravi');
+INSERT INTO #Ord VALUES (101, 1), (102, NULL);  -- NULL row arms the trap
 ```
 
 ## 2. Examples
@@ -54,7 +54,9 @@ Input used below:
 Example 1 — `IN` match:
 
 ```sql
-SELECT * FROM #Cust WHERE Id IN (SELECT CustId FROM #Ord WHERE CustId IS NOT NULL);
+SELECT *
+FROM #Cust
+WHERE Id IN (SELECT CustId FROM #Ord WHERE CustId IS NOT NULL);
 ```
 
 Input: 3 cust + list `{1}`.
@@ -68,7 +70,9 @@ Output (1 row):
 Example 2 — `EXISTS` match:
 
 ```sql
-SELECT c.* FROM #Cust c WHERE EXISTS (SELECT 1 FROM #Ord o WHERE o.CustId = c.Id);
+SELECT c.*
+FROM #Cust c
+WHERE EXISTS (SELECT 1 FROM #Ord o WHERE o.CustId = c.Id);
 ```
 
 Input: 3 cust + 2 ord.

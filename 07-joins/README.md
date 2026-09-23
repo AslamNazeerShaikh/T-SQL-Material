@@ -33,8 +33,8 @@ Departments:
 ```sql
 CREATE TABLE #E (Id INT, Name VARCHAR(20), DepartmentId INT);
 CREATE TABLE #D (Id INT, Department VARCHAR(20));
-INSERT INTO #E VALUES (1,'John',10),(2,'Sara',20),(3,'Mike',30);
-INSERT INTO #D VALUES (10,'IT'),(20,'HR'),(40,'Finance');
+INSERT INTO #E VALUES (1, 'John', 10), (2, 'Sara', 20), (3, 'Mike', 30);
+INSERT INTO #D VALUES (10, 'IT'), (20, 'HR'), (40, 'Finance');
 ```
 
 ## 2. Examples
@@ -60,7 +60,9 @@ Input used by every example below (unless noted):
 INNER — only matches:
 
 ```sql
-SELECT e.Name, d.Department
+SELECT
+    e.Name,
+    d.Department
 FROM #E e INNER JOIN #D d ON e.DepartmentId = d.Id;
 ```
 
@@ -76,7 +78,9 @@ Output (2 rows):
 LEFT — all left + matches:
 
 ```sql
-SELECT e.Name, d.Department
+SELECT
+    e.Name,
+    d.Department
 FROM #E e LEFT JOIN #D d ON e.DepartmentId = d.Id;
 ```
 
@@ -109,7 +113,9 @@ Output (1 row):
 RIGHT — all right + matches:
 
 ```sql
-SELECT e.Name, d.Department
+SELECT
+    e.Name,
+    d.Department
 FROM #E e RIGHT JOIN #D d ON e.DepartmentId = d.Id;
 -- (Prefer LEFT JOIN with swapped order for readability.)
 ```
@@ -127,7 +133,9 @@ Output (3 rows):
 FULL OUTER — everything:
 
 ```sql
-SELECT e.Name, d.Department
+SELECT
+    e.Name,
+    d.Department
 FROM #E e FULL OUTER JOIN #D d ON e.DepartmentId = d.Id;
 ```
 
@@ -167,7 +175,9 @@ Input `Employees`:
 | 3 | Emp1 | 2 |
 
 ```sql
-SELECT e.Name AS Employee, m.Name AS Manager
+SELECT
+    e.Name AS Employee,
+    m.Name AS Manager
 FROM dbo.Employees e LEFT JOIN dbo.Employees m ON e.ManagerId = m.Id;
 ```
 

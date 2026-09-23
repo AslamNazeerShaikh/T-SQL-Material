@@ -30,8 +30,12 @@ set-wise, and logged."*
 
 ```sql
 CREATE TABLE #Emp (Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT);
-CREATE TABLE #Audit (Id INT IDENTITY, Note VARCHAR(200), WhenAt DATETIME2 DEFAULT SYSUTCDATETIME());
-INSERT INTO #Emp VALUES (1,'Asha',90000),(2,'Dev',80000);
+CREATE TABLE #Audit (
+    Id INT IDENTITY,
+    Note VARCHAR(200),
+    WhenAt DATETIME2 DEFAULT SYSUTCDATETIME()
+);
+INSERT INTO #Emp VALUES (1, 'Asha', 90000), (2, 'Dev', 80000);
 ```
 
 ## 2. Examples (shapes — triggers can't sit on #temp; make in test DB)
@@ -55,11 +59,11 @@ Example 1 — `AFTER` audit:
 CREATE TRIGGER dbo.trg_Emp_Audit ON dbo.Emp
 AFTER INSERT, UPDATE, DELETE AS
 BEGIN
-  SET NOCOUNT ON;
-  INSERT INTO dbo.Audit (Note)
-  SELECT CONCAT('ins:', i.Id) FROM inserted i
-  UNION ALL
-  SELECT CONCAT('del:', d.Id) FROM deleted d;
+    SET NOCOUNT ON;
+    INSERT INTO dbo.Audit (Note)
+    SELECT CONCAT('ins:', i.Id) FROM inserted i
+    UNION ALL
+    SELECT CONCAT('del:', d.Id) FROM deleted d;
 END;
 ```
 
@@ -67,7 +71,7 @@ Demo:
 
 ```sql
 UPDATE dbo.Emp SET Salary = 95000 WHERE Id = 1;
-INSERT INTO dbo.Emp VALUES (3,'Ravi',70000);
+INSERT INTO dbo.Emp VALUES (3, 'Ravi', 70000);
 SELECT * FROM dbo.Audit;
 ```
 
@@ -82,7 +86,11 @@ Output `dbo.Audit` (3 rows):
 | 3 | ins:3 | <fire-time UTC> |
 
 ```sql
-SELECT Id, Name, Salary FROM dbo.Emp;
+SELECT
+    Id,
+    Name,
+    Salary
+FROM dbo.Emp;
 ```
 
 Output (3 rows):
@@ -99,12 +107,15 @@ Example 2 — `INSTEAD OF` veto:
 CREATE TRIGGER dbo.trg_Emp_NoCut ON dbo.Emp
 INSTEAD OF UPDATE AS
 BEGIN
-  SET NOCOUNT ON;
-  IF EXISTS (SELECT 1 FROM inserted i JOIN deleted d ON d.Id = i.Id
-             WHERE i.Salary < d.Salary)
-  BEGIN RAISERROR('Pay cuts blocked.', 16, 1); ROLLBACK; RETURN; END;
-  UPDATE e SET e.Name = i.Name, e.Salary = i.Salary
-  FROM dbo.Emp e JOIN inserted i ON i.Id = e.Id;
+    SET NOCOUNT ON;
+    IF
+        EXISTS (
+            SELECT 1 FROM inserted i JOIN deleted d ON d.Id = i.Id
+            WHERE i.Salary < d.Salary
+        )
+        BEGIN RAISERROR ('Pay cuts blocked.', 16, 1); ROLLBACK; RETURN; END;
+    UPDATE e SET e.Name = i.Name, e.Salary = i.Salary
+    FROM dbo.Emp e JOIN inserted i ON i.Id = e.Id;
 END;
 ```
 
@@ -112,7 +123,11 @@ Demo (passes):
 
 ```sql
 UPDATE dbo.Emp SET Salary = 96000 WHERE Id = 1;
-SELECT Id, Name, Salary FROM dbo.Emp;
+SELECT
+    Id,
+    Name,
+    Salary
+FROM dbo.Emp;
 ```
 
 Input: 3 emp above.

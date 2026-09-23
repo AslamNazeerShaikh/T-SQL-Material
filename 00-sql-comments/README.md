@@ -132,7 +132,9 @@ Output (1 row):
 Example 6 — markers in quotes are data:
 
 ```sql
-SELECT '--' AS DashText, '/*' AS BlockText;
+SELECT
+    '--' AS DashText,
+    '/*' AS BlockText;
 ```
 
 Input: strings `'--'`, `'/*'`.
@@ -146,7 +148,13 @@ Output (1 row):
 Example 7 — toggle filter:
 
 ```sql
-SELECT COUNT(*) AS EmpCount FROM (SELECT 1 AS x UNION ALL SELECT 2) t WHERE 1 = 1 /* AND 1 = 2 */;
+SELECT COUNT(*) AS EmpCount
+FROM (
+    SELECT 1 AS x
+    UNION ALL
+    SELECT 2
+) t
+WHERE 1 = 1 /* AND 1 = 2 */;
 ```
 
 Input `t(x)`:
@@ -193,7 +201,9 @@ Output (1 row):
 
 ```sql
 -- Note at top: why this odd filter sits here
-SELECT EmpId, Name
+SELECT
+    EmpId,
+    Name
 FROM dbo.Demo_Emp
 WHERE Salary > 0;   -- junk rows hold -1 from old load
 ```

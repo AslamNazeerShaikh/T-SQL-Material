@@ -26,9 +26,13 @@ slow and hard to trace."*
 
 ```sql
 CREATE TABLE dbo.Dept18 (Id INT PRIMARY KEY, Name VARCHAR(20));
-CREATE TABLE dbo.Emp18 (Id INT PRIMARY KEY, Name VARCHAR(20), Salary INT, DeptId INT);
-INSERT INTO dbo.Dept18 VALUES (10,'IT'),(20,'HR');
-INSERT INTO dbo.Emp18 VALUES (1,'Asha',90000,10),(2,'Dev',80000,10),(3,'Ravi',45000,20);
+CREATE TABLE dbo.Emp18 (
+    Id INT PRIMARY KEY, Name VARCHAR(20), Salary INT, DeptId INT
+);
+INSERT INTO dbo.Dept18 VALUES (10, 'IT'), (20, 'HR');
+INSERT INTO dbo.Emp18 VALUES (1, 'Asha', 90000, 10),
+(2, 'Dev', 80000, 10),
+(3, 'Ravi', 45000, 20);
 -- (Views can't sit on #temp tables, hence real demo tables + cleanup.)
 ```
 
@@ -55,7 +59,10 @@ Example 1 — view hides pay:
 
 ```sql
 CREATE VIEW dbo.vw_ITStaff AS
-SELECT e.Id, e.Name, d.Name AS Dept
+SELECT
+    e.Id,
+    e.Name,
+    d.Name AS Dept
 FROM dbo.Emp18 e JOIN dbo.Dept18 d ON d.Id = e.DeptId WHERE e.DeptId = 10;
 SELECT * FROM dbo.vw_ITStaff;
 ```
@@ -87,7 +94,11 @@ Example 3 — `ALTER` adds field:
 
 ```sql
 ALTER VIEW dbo.vw_ITStaff AS
-SELECT e.Id, e.Name, d.Name AS Dept, e.Salary
+SELECT
+    e.Id,
+    e.Name,
+    d.Name AS Dept,
+    e.Salary
 FROM dbo.Emp18 e JOIN dbo.Dept18 d ON d.Id = e.DeptId WHERE e.DeptId = 10;
 SELECT * FROM dbo.vw_ITStaff;
 ```

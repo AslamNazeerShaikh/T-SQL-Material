@@ -28,8 +28,8 @@ tiny goes at-var, one-shot readable goes CTE."*
 
 ```sql
 CREATE TABLE #Stage (Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT);
-INSERT INTO #Stage VALUES (1,'Asha',90000),(2,'Dev',80000);
-CREATE INDEX IX_Stage_Sal ON #Stage(Salary);
+INSERT INTO #Stage VALUES (1, 'Asha', 90000), (2, 'Dev', 80000);
+CREATE INDEX IX_Stage_Sal ON #Stage (Salary);
 ```
 
 Input `#Stage`:
@@ -51,7 +51,7 @@ Output (1 row):
 
 ```sql
 DECLARE @Tiny TABLE (Id INT PRIMARY KEY, Name VARCHAR(50));
-INSERT INTO @Tiny VALUES (1,'Asha');
+INSERT INTO @Tiny VALUES (1, 'Asha');
 SELECT * FROM @Tiny;
 ```
 

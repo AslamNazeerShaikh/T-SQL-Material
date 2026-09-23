@@ -1,7 +1,7 @@
 # Graph Report - T-SQL-Study  (2026-09-23)
 
 ## Corpus Check
-- 91 files · ~59,048 words
+- 91 files · ~59,616 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `74ca4931`
+- Built from commit: `f4e7d8a1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

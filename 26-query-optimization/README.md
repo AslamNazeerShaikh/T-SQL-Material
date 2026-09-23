@@ -27,8 +27,10 @@ I prove with plan before and after, and park hot-path wins in Query Store."*
 
 ```sql
 CREATE TABLE #Ord (Id INT PRIMARY KEY, CustId INT, Amt INT, ODate DATE);
-INSERT INTO #Ord VALUES (1,1,100,'2026-01-05'),(2,1,200,'2026-02-05'),(3,2,150,'2026-01-20');
-CREATE NONCLUSTERED INDEX IX_Ord_Cust ON #Ord(CustId) INCLUDE (Amt);
+INSERT INTO #Ord VALUES (1, 1, 100, '2026-01-05'),
+(2, 1, 200, '2026-02-05'),
+(3, 2, 150, '2026-01-20');
+CREATE NONCLUSTERED INDEX IX_Ord_Cust ON #Ord (CustId) INCLUDE (Amt);
 ```
 
 ## 2. Examples
@@ -44,7 +46,10 @@ Input `#Ord` used by every example below (+ `IX_Ord_Cust(CustId) INCLUDE(Amt)`):
 Example 1 — seek-friendly:
 
 ```sql
-SELECT CustId, SUM(Amt) AS Total FROM #Ord
+SELECT
+    CustId,
+    SUM(Amt) AS Total
+FROM #Ord
 WHERE CustId = 1 AND ODate >= '2026-01-01' AND ODate < '2026-03-01'
 GROUP BY CustId;
 ```

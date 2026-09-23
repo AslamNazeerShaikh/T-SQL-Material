@@ -71,8 +71,10 @@ Input `#Phone` (1NF child):
 Example 1 — 1NF child table:
 
 ```sql
-CREATE TABLE #Phone (StaffId INT, Phone VARCHAR(15),
-  PRIMARY KEY (StaffId, Phone));
+CREATE TABLE #Phone (
+    StaffId INT, Phone VARCHAR(15),
+    PRIMARY KEY (StaffId, Phone)
+);
 ```
 
 Input: Asha 2 phones, Dev 1, Ravi 0.
@@ -92,9 +94,14 @@ Output `#Team` (2 rows): same as input table above.
 Example 3 — 3NF rebuild + edit-once:
 
 ```sql
-INSERT INTO #City VALUES (1,'Pune','411001');
+INSERT INTO #City VALUES (1, 'Pune', '411001');
 UPDATE #City SET City = 'Pune City' WHERE CityId = 1;
-SELECT s.Name, t.TeamName, c.City, c.Pin, p.Phone
+SELECT
+    s.Name,
+    t.TeamName,
+    c.City,
+    c.Pin,
+    p.Phone
 FROM #Staff s JOIN #Team t ON t.TeamId = s.TeamId
 JOIN #City c ON c.CityId = t.CityId LEFT JOIN #Phone p ON p.StaffId = s.StaffId;
 ```

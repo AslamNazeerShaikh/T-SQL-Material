@@ -1,4 +1,4 @@
-# query-testing results — 2026-09-23T14:14:12
+# query-testing results — 2026-09-23T15:52:43
 runtime=docker container=sql2025 db=TsqlStudyTest
 
 | Topic | Status | Exit | Log |

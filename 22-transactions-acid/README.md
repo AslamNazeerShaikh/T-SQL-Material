@@ -29,7 +29,7 @@ locks."*
 
 ```sql
 CREATE TABLE #Acct (Id INT PRIMARY KEY, Bal INT);
-INSERT INTO #Acct VALUES (1,1000),(2,500);
+INSERT INTO #Acct VALUES (1, 1000), (2, 500);
 ```
 
 ## 2. Examples
@@ -46,8 +46,8 @@ Example 1 — money move:
 ```sql
 SET XACT_ABORT ON;
 BEGIN TRANSACTION;
-  UPDATE #Acct SET Bal = Bal - 200 WHERE Id = 1;
-  UPDATE #Acct SET Bal = Bal + 200 WHERE Id = 2;
+UPDATE #Acct SET Bal = Bal - 200 WHERE Id = 1;
+UPDATE #Acct SET Bal = Bal + 200 WHERE Id = 2;
 COMMIT;
 SELECT * FROM #Acct;
 ```

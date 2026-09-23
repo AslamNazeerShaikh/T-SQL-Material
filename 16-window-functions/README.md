@@ -28,8 +28,10 @@ Top gun uses: top N per team, Nth top pay, and kill dupes with row number 1."*
 
 ```sql
 CREATE TABLE #Emp (Id INT, Name VARCHAR(20), DeptId INT, Salary INT);
-INSERT INTO #Emp VALUES (1,'Asha',10,90000),(2,'Dev',10,90000),(3,'Ravi',10,80000),
- (4,'Kiran',20,70000),(5,'Meena',20,70000),(6,'Tom',20,60000);
+INSERT INTO #Emp VALUES (1, 'Asha', 10, 90000),
+(2, 'Dev', 10, 90000),
+(3, 'Ravi', 10, 80000),
+(4, 'Kiran', 20, 70000), (5, 'Meena', 20, 70000), (6, 'Tom', 20, 60000);
 ```
 
 ## 2. Examples
@@ -48,10 +50,13 @@ Input `#Emp` used by every example below:
 Example 1 — rank trio, fresh per team:
 
 ```sql
-SELECT Name, DeptId, Salary,
-  ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rn,
-  RANK()       OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rnk,
-  DENSE_RANK() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS drnk
+SELECT
+    Name,
+    DeptId,
+    Salary,
+    ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rn,
+    RANK() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rnk,
+    DENSE_RANK() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS drnk
 FROM #Emp;
 ```
 
@@ -71,8 +76,13 @@ Output (6 rows):
 Example 2 — top 1 per team:
 
 ```sql
-WITH R AS (SELECT *, ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rn
-           FROM #Emp)
+WITH R AS (
+    SELECT
+        *,
+        ROW_NUMBER() OVER (PARTITION BY DeptId ORDER BY Salary DESC) AS rn
+    FROM #Emp
+)
+
 SELECT * FROM R WHERE rn = 1;
 ```
 
@@ -88,7 +98,13 @@ Output (2 rows — tie pick nondet):
 Example 3 — 2nd top distinct pay:
 
 ```sql
-WITH D AS (SELECT Salary, DENSE_RANK() OVER (ORDER BY Salary DESC) AS dr FROM #Emp)
+WITH D AS (
+    SELECT
+        Salary,
+        DENSE_RANK() OVER (ORDER BY Salary DESC) AS dr
+    FROM #Emp
+)
+
 SELECT DISTINCT Salary FROM D WHERE dr = 2;
 ```
 
@@ -103,7 +119,10 @@ Output (1 row):
 Example 4 — running total:
 
 ```sql
-SELECT Name, Salary, SUM(Salary) OVER (PARTITION BY DeptId ORDER BY Salary) AS RunTotal
+SELECT
+    Name,
+    Salary,
+    SUM(Salary) OVER (PARTITION BY DeptId ORDER BY Salary) AS RunTotal
 FROM #Emp;
 ```
 
@@ -123,7 +142,11 @@ Output (6 rows):
 Example 5 — grand total:
 
 ```sql
-SELECT Name, Salary, SUM(Salary) OVER () AS GrandTotal FROM #Emp;
+SELECT
+    Name,
+    Salary,
+    SUM(Salary) OVER () AS GrandTotal
+FROM #Emp;
 ```
 
 Input: 6 rows above.
@@ -142,9 +165,11 @@ Output (6 rows — every row `GrandTotal` 460000):
 Example 6 — `LEAD` / `LAG` gaps:
 
 ```sql
-SELECT Name, Salary,
-  LEAD(Salary)  OVER (ORDER BY Salary DESC) AS NextPay,
-  Salary - LAG(Salary, 1, Salary) OVER (ORDER BY Salary DESC) AS GapVsPrev
+SELECT
+    Name,
+    Salary,
+    LEAD(Salary) OVER (ORDER BY Salary DESC) AS NextPay,
+    Salary - LAG(Salary, 1, Salary) OVER (ORDER BY Salary DESC) AS GapVsPrev
 FROM #Emp;
 ```
 

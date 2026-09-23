@@ -19,8 +19,8 @@ Employees: `John, Sara` — Contractors: `Sara, Mike`
 ```sql
 CREATE TABLE #Emp (Name VARCHAR(20));
 CREATE TABLE #Con (Name VARCHAR(20));
-INSERT INTO #Emp VALUES ('John'),('Sara');
-INSERT INTO #Con VALUES ('Sara'),('Mike');
+INSERT INTO #Emp VALUES ('John'), ('Sara');
+INSERT INTO #Con VALUES ('Sara'), ('Mike');
 ```
 
 ## 2. Examples
@@ -83,9 +83,15 @@ Multi-column (column count must match) + source label, ordered:
 Input: same tables plus literal `'Emp'` / `'Con'`.
 
 ```sql
-SELECT Name, 'Emp' AS Src FROM #Emp
+SELECT
+    Name,
+    'Emp' AS Src
+FROM #Emp
 UNION ALL
-SELECT Name, 'Con' FROM #Con
+SELECT
+    Name,
+    'Con'
+FROM #Con
 ORDER BY Name;
 ```
 

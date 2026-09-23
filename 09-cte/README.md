@@ -17,11 +17,20 @@
 ## 1. Sample tables
 
 ```sql
-CREATE TABLE dbo.Employees (Id INT, Name VARCHAR(50), Salary INT, DepartmentId INT);
-INSERT INTO dbo.Employees VALUES (1,'John',80000,10),(2,'Sara',120000,10),(3,'Mike',45000,20);
+CREATE TABLE dbo.Employees (
+    Id INT, Name VARCHAR(50), Salary INT, DepartmentId INT
+);
+INSERT INTO dbo.Employees VALUES (1, 'John', 80000, 10),
+(2, 'Sara', 120000, 10),
+(3, 'Mike', 45000, 20);
 
 CREATE TABLE dbo.Org (Id INT, Name VARCHAR(20), ManagerId INT NULL);
-INSERT INTO dbo.Org VALUES (1,'CEO',NULL),(2,'MgrA',1),(3,'MgrB',1),(4,'Emp1',2),(5,'Emp2',2),(6,'Emp3',3);
+INSERT INTO dbo.Org VALUES (1, 'CEO', NULL),
+(2, 'MgrA', 1),
+(3, 'MgrB', 1),
+(4, 'Emp1', 2),
+(5, 'Emp2', 2),
+(6, 'Emp3', 3);
 ```
 
 ## 2. Examples
@@ -51,8 +60,13 @@ Basic CTE:
 
 ```sql
 WITH EmployeeCTE AS (
-    SELECT Id, Name, Salary FROM dbo.Employees WHERE Salary > 50000
+    SELECT
+        Id,
+        Name,
+        Salary
+    FROM dbo.Employees WHERE Salary > 50000
 )
+
 SELECT * FROM EmployeeCTE;
 ```
 
@@ -71,6 +85,7 @@ Multi-step (vs nested mess):
 WITH HighPaid AS (
     SELECT * FROM dbo.Employees WHERE Salary > 100000
 )
+
 SELECT * FROM HighPaid WHERE DepartmentId = 10;
 ```
 
@@ -96,12 +111,21 @@ Recursive (org hierarchy):
 
 ```sql
 WITH OrgTree AS (
-    SELECT Id, Name, ManagerId, 0 AS Lvl
+    SELECT
+        Id,
+        Name,
+        ManagerId,
+        0 AS Lvl
     FROM dbo.Org WHERE ManagerId IS NULL          -- anchor: CEO
     UNION ALL
-    SELECT o.Id, o.Name, o.ManagerId, t.Lvl + 1
+    SELECT
+        o.Id,
+        o.Name,
+        o.ManagerId,
+        t.Lvl + 1
     FROM dbo.Org o JOIN OrgTree t ON o.ManagerId = t.Id  -- recursive: reports
 )
+
 SELECT * FROM OrgTree ORDER BY Lvl, Id;
 ```
 

@@ -2,13 +2,13 @@
 -- (SNAPSHOT rung needs a DB flag; shown as notes. Deadlock demo is a shape — needs two sittings.)
 IF OBJECT_ID('tempdb..#Acct22') IS NOT NULL DROP TABLE #Acct22;
 CREATE TABLE #Acct22 (Id INT PRIMARY KEY, Bal INT);
-INSERT INTO #Acct22 VALUES (1,1000),(2,500);
+INSERT INTO #Acct22 VALUES (1, 1000), (2, 500);
 
 -- Money move: both legs or neither
 SET XACT_ABORT ON;
 BEGIN TRANSACTION;
-  UPDATE #Acct22 SET Bal = Bal - 200 WHERE Id = 1;
-  UPDATE #Acct22 SET Bal = Bal + 200 WHERE Id = 2;
+UPDATE #Acct22 SET Bal = Bal - 200 WHERE Id = 1;
+UPDATE #Acct22 SET Bal = Bal + 200 WHERE Id = 2;
 COMMIT;
 SELECT * FROM #Acct22;  -- 800 / 700
 

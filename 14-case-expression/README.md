@@ -25,8 +25,8 @@ blanks last — and with SUM to pivot rows into columns."*
 
 ```sql
 CREATE TABLE #Emp (Id INT, Name VARCHAR(20), Salary INT NULL, DeptId INT);
-INSERT INTO #Emp VALUES (1,'Asha',120000,10),(2,'Dev',80000,10),
- (3,'Ravi',45000,20),(4,'Kiran',NULL,20);
+INSERT INTO #Emp VALUES (1, 'Asha', 120000, 10), (2, 'Dev', 80000, 10),
+(3, 'Ravi', 45000, 20), (4, 'Kiran', NULL, 20);
 ```
 
 ## 2. Examples
@@ -43,10 +43,14 @@ Input `#Emp` used by every example below:
 Example 1 — searched bands:
 
 ```sql
-SELECT Name, Salary,
-  CASE WHEN Salary >= 100000 THEN 'High'
-       WHEN Salary >= 60000  THEN 'Med'
-       ELSE 'Low' END AS Band
+SELECT
+    Name,
+    Salary,
+    CASE
+        WHEN Salary >= 100000 THEN 'High'
+        WHEN Salary >= 60000 THEN 'Med'
+        ELSE 'Low'
+    END AS Band
 FROM #Emp;
 ```
 
@@ -64,7 +68,9 @@ Output (4 rows):
 Example 2 — simple decode:
 
 ```sql
-SELECT Name, CASE DeptId WHEN 10 THEN 'IT' WHEN 20 THEN 'HR' ELSE 'Other' END AS Dept
+SELECT
+    Name,
+    CASE DeptId WHEN 10 THEN 'IT' WHEN 20 THEN 'HR' ELSE 'Other' END AS Dept
 FROM #Emp;
 ```
 
@@ -100,9 +106,10 @@ Output (4 rows in order):
 Example 4 — pivot `SUM(CASE)`:
 
 ```sql
-SELECT DeptId,
-  SUM(CASE WHEN Salary >= 100000 THEN 1 ELSE 0 END) AS HighCnt,
-  COUNT(*) AS Total
+SELECT
+    DeptId,
+    SUM(CASE WHEN Salary >= 100000 THEN 1 ELSE 0 END) AS HighCnt,
+    COUNT(*) AS Total
 FROM #Emp GROUP BY DeptId;
 ```
 
@@ -118,9 +125,15 @@ Output (2 rows):
 Example 5 — `PIVOT` operator:
 
 ```sql
-SELECT [10] AS IT, [20] AS HR FROM
- (SELECT DeptId, Salary FROM #Emp WHERE Salary IS NOT NULL) s
-PIVOT (AVG(Salary) FOR DeptId IN ([10],[20])) p;
+SELECT
+    [10] AS IT,
+    [20] AS HR
+FROM
+    (SELECT
+        DeptId,
+        Salary
+    FROM #Emp WHERE Salary IS NOT NULL) s
+PIVOT (AVG(Salary) FOR DeptId IN ([10], [20])) p;
 ```
 
 Input: 3 non-NULL rows.

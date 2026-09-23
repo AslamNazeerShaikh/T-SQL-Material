@@ -1,8 +1,10 @@
 -- 13 — ORDER BY, TOP, DISTINCT. Self-contained, F5 clean.
 IF OBJECT_ID('tempdb..#Emp13') IS NOT NULL DROP TABLE #Emp13;
 CREATE TABLE #Emp13 (Id INT, Name VARCHAR(20), Salary INT, City VARCHAR(20));
-INSERT INTO #Emp13 VALUES (1,'Asha',90000,'Pune'),(2,'Dev',80000,'Pune'),
- (3,'Ravi',90000,'Mumbai'),(4,'Kiran',70000,'Pune'),(5,'Meena',80000,'Mumbai');
+INSERT INTO #Emp13 VALUES (1, 'Asha', 90000, 'Pune'), (2, 'Dev', 80000, 'Pune'),
+(3, 'Ravi', 90000, 'Mumbai'),
+(4, 'Kiran', 70000, 'Pune'),
+(5, 'Meena', 80000, 'Mumbai');
 
 SELECT * FROM #Emp13 ORDER BY Salary DESC, Name ASC;
 SELECT TOP 3 * FROM #Emp13 ORDER BY Salary DESC;
@@ -12,13 +14,18 @@ SELECT TOP 40 PERCENT * FROM #Emp13 ORDER BY Salary DESC;
 -- Page rows 3-4
 SELECT * FROM #Emp13 ORDER BY Id OFFSET 2 ROWS FETCH NEXT 2 ROWS ONLY;
 -- 2nd top pay
-SELECT Salary FROM #Emp13 ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
+SELECT Salary
+FROM #Emp13
+ORDER BY Salary DESC OFFSET 1 ROWS FETCH NEXT 1 ROWS ONLY;
 
 SELECT DISTINCT City FROM #Emp13;
-SELECT City, COUNT(*) AS Times FROM #Emp13 GROUP BY City;
+SELECT
+    City,
+    COUNT(*) AS Times
+FROM #Emp13 GROUP BY City;
 
 -- Last 2 rows by Id (flipped sort) + DISTINCT melts NULLs to one
 SELECT * FROM #Emp13 ORDER BY Id DESC OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY;
-SELECT DISTINCT x FROM (VALUES (1),(NULL),(NULL)) v(x);
+SELECT DISTINCT x FROM (VALUES (1), (NULL), (NULL)) v (x);
 
 DROP TABLE #Emp13;

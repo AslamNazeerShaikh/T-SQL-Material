@@ -30,7 +30,7 @@ table work, scalar for plain math, multi-step only when steps truly must stage."
 
 ```sql
 CREATE TABLE #Emp (Id INT, Salary INT);
-INSERT INTO #Emp VALUES (1,90000),(2,80000);
+INSERT INTO #Emp VALUES (1, 90000), (2, 80000);
 ```
 
 ## 2. Examples (shapes — make in your test DB; #temp shown for shape)
@@ -53,7 +53,7 @@ Extended demo `dbo.Emp20`:
 Example 1 — scalar, single call:
 
 ```sql
-CREATE FUNCTION dbo.fn_Tax(@Pay INT) RETURNS DECIMAL(18,2) AS
+CREATE FUNCTION dbo.fn_Tax(@Pay INT) RETURNS DECIMAL(18, 2) AS
 BEGIN RETURN @Pay * 0.10; END;
 SELECT dbo.fn_Tax(90000) AS Tax;
 ```
@@ -69,7 +69,11 @@ Output (1 row):
 Example 2 — scalar per row:
 
 ```sql
-SELECT Id, Salary, dbo.fn_Tax(Salary) AS Tax FROM dbo.Emp20;
+SELECT
+    Id,
+    Salary,
+    dbo.fn_Tax(Salary) AS Tax
+FROM dbo.Emp20;
 ```
 
 Input: `dbo.Emp20` 3 rows above.
@@ -86,7 +90,10 @@ Example 3 — inline TVF:
 
 ```sql
 CREATE FUNCTION dbo.fn_Team(@D INT)
-RETURNS TABLE AS RETURN (SELECT Id, Salary FROM #Emp WHERE Id = @D);
+RETURNS TABLE AS RETURN (SELECT
+    Id,
+    Salary
+FROM #Emp WHERE Id = @D);
 SELECT * FROM dbo.fn_Team(1);
 ```
 
@@ -117,11 +124,17 @@ Example 4 — multi-step TVF:
 CREATE FUNCTION dbo.fn_Bands()
 RETURNS @Out TABLE (Band VARCHAR(10), Cnt INT) AS
 BEGIN
-  INSERT INTO @Out SELECT 'High', COUNT(*) FROM #Emp WHERE Salary >= 100000;
-  INSERT INTO @Out SELECT 'Rest', COUNT(*) FROM #Emp WHERE Salary < 100000;
-  RETURN;
+    INSERT INTO @Out SELECT
+        'High',
+        COUNT(*)
+    FROM #Emp WHERE Salary >= 100000;
+    INSERT INTO @Out SELECT
+        'Rest',
+        COUNT(*)
+    FROM #Emp WHERE Salary < 100000;
+    RETURN;
 END;
-SELECT * FROM dbo.fn_Bands20();
+SELECT * FROM dbo.fn_Bands20 ();
 ```
 
 Input: `dbo.Emp20` 3 rows.
@@ -136,7 +149,11 @@ Output (2 rows):
 Example 5 — `CROSS APPLY`:
 
 ```sql
-SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e CROSS APPLY dbo.fn_Team20(e.DeptId) t;
+SELECT
+    e.Id,
+    t.Salary AS TeamSal
+FROM dbo.Emp20 e
+CROSS APPLY dbo.fn_Team20(e.DeptId) t;
 ```
 
 Input: 3 rows above.
@@ -155,7 +172,11 @@ Output (5 rows — verified on SQL Server 2025; row order undefined without
 Example 6 — `OUTER APPLY` (keeps all left rows):
 
 ```sql
-SELECT e.Id, t.Salary AS TeamSal FROM dbo.Emp20 e OUTER APPLY dbo.fn_Team20(e.DeptId) t;
+SELECT
+    e.Id,
+    t.Salary AS TeamSal
+FROM dbo.Emp20 e
+OUTER APPLY dbo.fn_Team20(e.DeptId) t;
 ```
 
 Input: 3 rows above (every `DeptId` matches, so same 5 rows as `CROSS APPLY`

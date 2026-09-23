@@ -29,8 +29,10 @@ reads, OUTPUT for one back-value, status code for win-or-fail."*
 ## 1. Sample table
 
 ```sql
-CREATE TABLE #Emp (Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT, DeptId INT);
-INSERT INTO #Emp VALUES (1,'Asha',90000,10),(2,'Dev',80000,10);
+CREATE TABLE #Emp (
+    Id INT PRIMARY KEY, Name VARCHAR(50), Salary INT, DeptId INT
+);
+INSERT INTO #Emp VALUES (1, 'Asha', 90000, 10), (2, 'Dev', 80000, 10);
 ```
 
 ## 2. Examples (shape — run in your test DB, #temp shown for shape only)
@@ -55,9 +57,13 @@ Example 1 — read proc with default:
 ```sql
 CREATE PROC dbo.usp_GetStaff @DeptId INT = NULL AS
 BEGIN
-  SET NOCOUNT ON;
-  SELECT Id, Name, Salary FROM #Emp
-  WHERE @DeptId IS NULL OR DeptId = @DeptId;
+    SET NOCOUNT ON;
+    SELECT
+        Id,
+        Name,
+        Salary
+    FROM #Emp
+    WHERE @DeptId IS NULL OR DeptId = @DeptId;
 END;
 ```
 
@@ -77,20 +83,21 @@ Example 2 — write proc with `OUTPUT` + `TRY-CATCH`:
 
 ```sql
 CREATE PROC dbo.usp_Hire
-  @Name VARCHAR(50), @Salary INT, @NewId INT OUTPUT AS
+    @Name VARCHAR(50), @Salary INT, @NewId INT OUTPUT
+AS
 BEGIN
-  SET NOCOUNT ON;
-  BEGIN TRY
-    BEGIN TRANSACTION;
-      SELECT @NewId = ISNULL(MAX(Id),0) + 1 FROM #Emp;
-      INSERT INTO #Emp (Id, Name, Salary) VALUES (@NewId, @Name, @Salary);
-    COMMIT;
-    RETURN 0;
-  END TRY
-  BEGIN CATCH
-    IF @@TRANCOUNT > 0 ROLLBACK;
-    THROW;
-  END CATCH;
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+        SELECT @NewId = ISNULL(MAX(Id), 0) + 1 FROM #Emp;
+        INSERT INTO #Emp (Id, Name, Salary) VALUES (@NewId, @Name, @Salary);
+        COMMIT;
+        RETURN 0;
+    END TRY
+    BEGIN CATCH
+        IF @@TRANCOUNT > 0 ROLLBACK;
+        THROW;
+    END CATCH;
 END;
 ```
 

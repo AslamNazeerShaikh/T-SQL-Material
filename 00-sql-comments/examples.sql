@@ -22,10 +22,18 @@ SELECT 5--2 AS TrapResult;   -- returns 5
 SELECT 5 - -2 AS RealMath;   -- returns 7 (gaps = minus negative two)
 
 -- 5. Notes in quotes are plain text, NOT notes
-SELECT '--' AS DashText, '/*' AS BlockText;
+SELECT
+    '--' AS DashText,
+    '/*' AS BlockText;
 
 -- 6. Kill one filter fast while testing (toggle the dashes)
-SELECT COUNT(*) AS EmpCount FROM (SELECT 1 AS x UNION ALL SELECT 2) t WHERE 1 = 1 /* AND 1 = 2 */;
+SELECT COUNT(*) AS EmpCount
+FROM (
+    SELECT 1 AS x
+    UNION ALL
+    SELECT 2
+) t
+WHERE 1 = 1 /* AND 1 = 2 */;
 
 -- 7. Trailing-note trap demo: WHERE is skipped, full set comes back
 SELECT 'full-set' AS What; -- WHERE 1 = 2  <- this filter never runs

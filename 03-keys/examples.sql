@@ -1,6 +1,8 @@
 -- 03 — Keys. Self-contained.
 IF OBJECT_ID('dbo.Employees_03', 'U') IS NOT NULL DROP TABLE dbo.Employees_03;
-IF OBJECT_ID('dbo.Departments_03', 'U') IS NOT NULL DROP TABLE dbo.Departments_03;
+IF
+    OBJECT_ID('dbo.Departments_03', 'U') IS NOT NULL
+    DROP TABLE dbo.Departments_03;
 
 CREATE TABLE dbo.Departments_03 (Id INT PRIMARY KEY, DeptName VARCHAR(50));
 CREATE TABLE dbo.Employees_03
@@ -8,7 +10,7 @@ CREATE TABLE dbo.Employees_03
     EmployeeId INT PRIMARY KEY,
     Email VARCHAR(200) UNIQUE,       -- alternate key
     DepartmentId INT
-        FOREIGN KEY REFERENCES dbo.Departments_03(Id)
+    FOREIGN KEY REFERENCES dbo.Departments_03 (Id)
 );
 
 INSERT INTO dbo.Departments_03 VALUES (10, 'IT'), (20, 'HR');
@@ -21,7 +23,9 @@ INSERT INTO dbo.Employees_03 VALUES (1, 'a@x.com', 10), (2, 'b@x.com', 20);
 -- INSERT INTO dbo.Employees_03 VALUES (3, 'a@x.com', 10); -- errors
 
 -- Composite key example
-IF OBJECT_ID('dbo.Enrollments_03', 'U') IS NOT NULL DROP TABLE dbo.Enrollments_03;
+IF
+    OBJECT_ID('dbo.Enrollments_03', 'U') IS NOT NULL
+    DROP TABLE dbo.Enrollments_03;
 CREATE TABLE dbo.Enrollments_03
 (
     StudentId INT,

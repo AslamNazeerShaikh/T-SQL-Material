@@ -580,7 +580,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples",
       "source_file": "09-cte/README.md",
-      "source_location": "L27"
+      "source_location": "L36"
     },
     {
       "id": "09_cte_readme_3_query_breakdown_recursive",
@@ -592,7 +592,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (recursive)",
       "source_file": "09-cte/README.md",
-      "source_location": "L121"
+      "source_location": "L145"
     },
     {
       "id": "09_cte_readme_4_edge_cases",
@@ -604,7 +604,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "09-cte/README.md",
-      "source_location": "L128"
+      "source_location": "L152"
     },
     {
       "id": "09_cte_readme_5_interview_scenario_questions",
@@ -616,7 +616,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "09-cte/README.md",
-      "source_location": "L137"
+      "source_location": "L161"
     },
     {
       "id": "09_cte_readme_6_cte_vs_derived_table_asked_follow_up",
@@ -628,7 +628,7 @@
       "node_kind": "heading",
       "norm_label": "6. cte vs derived table (asked follow-up)",
       "source_file": "09-cte/README.md",
-      "source_location": "L145"
+      "source_location": "L169"
     },
     {
       "id": "09_cte_readme_cheat_recap",
@@ -640,7 +640,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "09-cte/README.md",
-      "source_location": "L151"
+      "source_location": "L175"
     },
     {
       "id": "09_cte_readme_definition_say_this_in_the_interview",
@@ -712,7 +712,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (not in wipeout)",
       "source_file": "12-null-handling/README.md",
-      "source_location": "L144"
+      "source_location": "L152"
     },
     {
       "id": "12_null_handling_readme_4_edge_cases",
@@ -724,7 +724,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "12-null-handling/README.md",
-      "source_location": "L150"
+      "source_location": "L158"
     },
     {
       "id": "12_null_handling_readme_5_interview_scenario_questions",
@@ -736,7 +736,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "12-null-handling/README.md",
-      "source_location": "L160"
+      "source_location": "L168"
     },
     {
       "id": "12_null_handling_readme_6_catch_all_where_caution_asked_pattern",
@@ -748,7 +748,7 @@
       "node_kind": "heading",
       "norm_label": "6. catch-all where caution (asked pattern)",
       "source_file": "12-null-handling/README.md",
-      "source_location": "L168"
+      "source_location": "L176"
     },
     {
       "id": "12_null_handling_readme_cheat_recap",
@@ -760,7 +760,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "12-null-handling/README.md",
-      "source_location": "L175"
+      "source_location": "L183"
     },
     {
       "id": "12_null_handling_readme_definition_say_this_in_the_interview",
@@ -820,7 +820,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L32"
+      "source_location": "L34"
     },
     {
       "id": "13_order_by_top_distinct_readme_3_query_breakdown_paging",
@@ -832,7 +832,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (paging)",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L204"
+      "source_location": "L211"
     },
     {
       "id": "13_order_by_top_distinct_readme_4_edge_cases",
@@ -844,7 +844,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L210"
+      "source_location": "L217"
     },
     {
       "id": "13_order_by_top_distinct_readme_5_interview_scenario_questions",
@@ -856,7 +856,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L219"
+      "source_location": "L226"
     },
     {
       "id": "13_order_by_top_distinct_readme_6_more_list_law_asked_follow_ups",
@@ -868,7 +868,7 @@
       "node_kind": "heading",
       "norm_label": "6. more list law (asked follow-ups)",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L227"
+      "source_location": "L234"
     },
     {
       "id": "13_order_by_top_distinct_readme_cheat_recap",
@@ -880,7 +880,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L238"
+      "source_location": "L245"
     },
     {
       "id": "13_order_by_top_distinct_readme_definition_say_this_in_the_interview",
@@ -940,7 +940,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples",
       "source_file": "16-window-functions/README.md",
-      "source_location": "L35"
+      "source_location": "L37"
     },
     {
       "id": "16_window_functions_readme_3_query_breakdown_rank_trio_on_asha_dev_tie",
@@ -952,7 +952,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (rank trio on asha/dev tie)",
       "source_file": "16-window-functions/README.md",
-      "source_location": "L179"
+      "source_location": "L204"
     },
     {
       "id": "16_window_functions_readme_4_edge_cases",
@@ -964,7 +964,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "16-window-functions/README.md",
-      "source_location": "L185"
+      "source_location": "L210"
     },
     {
       "id": "16_window_functions_readme_5_interview_scenario_questions",
@@ -976,7 +976,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "16-window-functions/README.md",
-      "source_location": "L194"
+      "source_location": "L219"
     },
     {
       "id": "16_window_functions_readme_6_ntile_buckets_asked_with_the_rank_trio",
@@ -988,7 +988,7 @@
       "node_kind": "heading",
       "norm_label": "6. ntile buckets (asked with the rank trio)",
       "source_file": "16-window-functions/README.md",
-      "source_location": "L203"
+      "source_location": "L228"
     },
     {
       "id": "16_window_functions_readme_cheat_recap",
@@ -1000,7 +1000,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "16-window-functions/README.md",
-      "source_location": "L208"
+      "source_location": "L233"
     },
     {
       "id": "16_window_functions_readme_definition_say_this_in_the_interview",
@@ -1060,7 +1060,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples",
       "source_file": "18-views/README.md",
-      "source_location": "L35"
+      "source_location": "L39"
     },
     {
       "id": "18_views_readme_3_query_breakdown_rights_wall",
@@ -1072,7 +1072,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (rights wall)",
       "source_file": "18-views/README.md",
-      "source_location": "L116"
+      "source_location": "L127"
     },
     {
       "id": "18_views_readme_4_edge_cases",
@@ -1084,7 +1084,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "18-views/README.md",
-      "source_location": "L122"
+      "source_location": "L133"
     },
     {
       "id": "18_views_readme_5_interview_scenario_questions",
@@ -1096,7 +1096,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "18-views/README.md",
-      "source_location": "L134"
+      "source_location": "L145"
     },
     {
       "id": "18_views_readme_6_cousin_synonym_asked_with_views",
@@ -1108,7 +1108,7 @@
       "node_kind": "heading",
       "norm_label": "6. cousin: synonym (asked with views)",
       "source_file": "18-views/README.md",
-      "source_location": "L142"
+      "source_location": "L153"
     },
     {
       "id": "18_views_readme_cheat_recap",
@@ -1120,7 +1120,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "18-views/README.md",
-      "source_location": "L148"
+      "source_location": "L159"
     },
     {
       "id": "18_views_readme_definition_say_this_in_the_interview",
@@ -1540,7 +1540,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples (shapes \u2014 triggers can't sit on #temp; make in test db)",
       "source_file": "21-triggers/README.md",
-      "source_location": "L37"
+      "source_location": "L41"
     },
     {
       "id": "21_triggers_readme_3_query_breakdown_audit_after",
@@ -1552,7 +1552,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (audit after)",
       "source_file": "21-triggers/README.md",
-      "source_location": "L134"
+      "source_location": "L149"
     },
     {
       "id": "21_triggers_readme_4_edge_cases",
@@ -1564,7 +1564,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "21-triggers/README.md",
-      "source_location": "L140"
+      "source_location": "L155"
     },
     {
       "id": "21_triggers_readme_5_interview_scenario_questions",
@@ -1576,7 +1576,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "21-triggers/README.md",
-      "source_location": "L149"
+      "source_location": "L164"
     },
     {
       "id": "21_triggers_readme_6_nesting_trigger_nestlevel_asked_follow_ups",
@@ -1588,7 +1588,7 @@
       "node_kind": "heading",
       "norm_label": "6. nesting + trigger_nestlevel (asked follow-ups)",
       "source_file": "21-triggers/README.md",
-      "source_location": "L157"
+      "source_location": "L172"
     },
     {
       "id": "21_triggers_readme_cheat_recap",
@@ -1600,7 +1600,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "21-triggers/README.md",
-      "source_location": "L165"
+      "source_location": "L180"
     },
     {
       "id": "21_triggers_readme_definition_say_this_in_the_interview",
@@ -1960,7 +1960,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L34"
+      "source_location": "L36"
     },
     {
       "id": "26_query_optimization_readme_3_query_breakdown_seek_path",
@@ -1972,7 +1972,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (seek path)",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L104"
+      "source_location": "L109"
     },
     {
       "id": "26_query_optimization_readme_4_edge_cases",
@@ -1984,7 +1984,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L110"
+      "source_location": "L115"
     },
     {
       "id": "26_query_optimization_readme_5_interview_scenario_questions",
@@ -1996,7 +1996,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L122"
+      "source_location": "L127"
     },
     {
       "id": "26_query_optimization_readme_6_senior_tuning_pack_experienced_round_asks",
@@ -2008,7 +2008,7 @@
       "node_kind": "heading",
       "norm_label": "6. senior tuning pack (experienced-round asks)",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L130"
+      "source_location": "L135"
     },
     {
       "id": "26_query_optimization_readme_cheat_recap",
@@ -2020,7 +2020,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L152"
+      "source_location": "L157"
     },
     {
       "id": "26_query_optimization_readme_definition_say_this_in_the_interview",
@@ -2116,7 +2116,7 @@
       "node_kind": "heading",
       "norm_label": "5. edge cases",
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L243"
+      "source_location": "L261"
     },
     {
       "id": "27_data_types_numbers_dates_readme_6_interview_scenario_questions",
@@ -2128,7 +2128,7 @@
       "node_kind": "heading",
       "norm_label": "6. interview scenario questions",
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L259"
+      "source_location": "L277"
     },
     {
       "id": "27_data_types_numbers_dates_readme_cheat_recap",
@@ -2140,7 +2140,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L269"
+      "source_location": "L287"
     },
     {
       "id": "27_data_types_numbers_dates_readme_definition_say_this_in_the_interview",
@@ -2212,7 +2212,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (how the engine reads them)",
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L247"
+      "source_location": "L257"
     },
     {
       "id": "00_sql_comments_readme_4_edge_cases_the_traps",
@@ -2224,7 +2224,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases (the traps)",
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L256"
+      "source_location": "L266"
     },
     {
       "id": "00_sql_comments_readme_5_interview_scenario_questions",
@@ -2236,7 +2236,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L275"
+      "source_location": "L285"
     },
     {
       "id": "00_sql_comments_readme_cheat_recap",
@@ -2248,7 +2248,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L290"
+      "source_location": "L300"
     },
     {
       "id": "00_sql_comments_readme_definition_say_this_in_the_interview",
@@ -2524,7 +2524,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples",
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L33"
+      "source_location": "L36"
     },
     {
       "id": "06_where_vs_having_readme_3_query_breakdown",
@@ -2536,7 +2536,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown",
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L111"
+      "source_location": "L120"
     },
     {
       "id": "06_where_vs_having_readme_4_edge_cases",
@@ -2548,7 +2548,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L126"
+      "source_location": "L135"
     },
     {
       "id": "06_where_vs_having_readme_5_interview_scenario_questions",
@@ -2560,7 +2560,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L134"
+      "source_location": "L143"
     },
     {
       "id": "06_where_vs_having_readme_cheat_recap",
@@ -2572,7 +2572,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L142"
+      "source_location": "L151"
     },
     {
       "id": "06_where_vs_having_readme_definition_say_this_in_the_interview",
@@ -2644,7 +2644,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown",
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L101"
+      "source_location": "L107"
     },
     {
       "id": "08_union_vs_union_all_readme_4_edge_cases",
@@ -2656,7 +2656,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L108"
+      "source_location": "L114"
     },
     {
       "id": "08_union_vs_union_all_readme_5_interview_scenario_questions",
@@ -2668,7 +2668,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L117"
+      "source_location": "L123"
     },
     {
       "id": "08_union_vs_union_all_readme_cheat_recap",
@@ -2680,7 +2680,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L125"
+      "source_location": "L131"
     },
     {
       "id": "08_union_vs_union_all_readme_definition_say_this_in_the_interview",
@@ -2860,7 +2860,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (dup-spotter)",
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L115"
+      "source_location": "L128"
     },
     {
       "id": "11_group_by_aggregates_readme_4_edge_cases",
@@ -2872,7 +2872,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L122"
+      "source_location": "L135"
     },
     {
       "id": "11_group_by_aggregates_readme_5_interview_scenario_questions",
@@ -2884,7 +2884,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L131"
+      "source_location": "L144"
     },
     {
       "id": "11_group_by_aggregates_readme_cheat_recap",
@@ -2896,7 +2896,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L139"
+      "source_location": "L152"
     },
     {
       "id": "11_group_by_aggregates_readme_definition_say_this_in_the_interview",
@@ -2968,7 +2968,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (band case)",
       "source_file": "14-case-expression/README.md",
-      "source_location": "L134"
+      "source_location": "L147"
     },
     {
       "id": "14_case_expression_readme_4_edge_cases",
@@ -2980,7 +2980,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "14-case-expression/README.md",
-      "source_location": "L140"
+      "source_location": "L153"
     },
     {
       "id": "14_case_expression_readme_5_interview_scenario_questions",
@@ -2992,7 +2992,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "14-case-expression/README.md",
-      "source_location": "L149"
+      "source_location": "L162"
     },
     {
       "id": "14_case_expression_readme_cheat_recap",
@@ -3004,7 +3004,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "14-case-expression/README.md",
-      "source_location": "L157"
+      "source_location": "L170"
     },
     {
       "id": "14_case_expression_readme_definition_say_this_in_the_interview",
@@ -3256,7 +3256,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (exists short-circuit)",
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L143"
+      "source_location": "L147"
     },
     {
       "id": "15_exists_vs_in_readme_4_edge_cases",
@@ -3268,7 +3268,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L149"
+      "source_location": "L153"
     },
     {
       "id": "15_exists_vs_in_readme_5_interview_scenario_questions",
@@ -3280,7 +3280,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L158"
+      "source_location": "L162"
     },
     {
       "id": "15_exists_vs_in_readme_cheat_recap",
@@ -3292,7 +3292,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L166"
+      "source_location": "L170"
     },
     {
       "id": "15_exists_vs_in_readme_definition_say_this_in_the_interview",
@@ -3460,7 +3460,7 @@
       "node_kind": "heading",
       "norm_label": "2. examples (shape \u2014 run in your test db, #temp shown for shape only)",
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L36"
+      "source_location": "L38"
     },
     {
       "id": "19_stored_procedures_readme_3_query_breakdown_safe_call_flow",
@@ -3472,7 +3472,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (safe call flow)",
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L113"
+      "source_location": "L120"
     },
     {
       "id": "19_stored_procedures_readme_4_edge_cases",
@@ -3484,7 +3484,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L119"
+      "source_location": "L126"
     },
     {
       "id": "19_stored_procedures_readme_5_interview_scenario_questions",
@@ -3496,7 +3496,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L129"
+      "source_location": "L136"
     },
     {
       "id": "19_stored_procedures_readme_cheat_recap",
@@ -3508,7 +3508,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L137"
+      "source_location": "L144"
     },
     {
       "id": "19_stored_procedures_readme_definition_say_this_in_the_interview",
@@ -3580,7 +3580,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (inline win)",
       "source_file": "20-functions/README.md",
-      "source_location": "L175"
+      "source_location": "L196"
     },
     {
       "id": "20_functions_readme_4_edge_cases",
@@ -3592,7 +3592,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "20-functions/README.md",
-      "source_location": "L182"
+      "source_location": "L203"
     },
     {
       "id": "20_functions_readme_5_interview_scenario_questions",
@@ -3604,7 +3604,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "20-functions/README.md",
-      "source_location": "L191"
+      "source_location": "L212"
     },
     {
       "id": "20_functions_readme_cheat_recap",
@@ -3616,7 +3616,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "20-functions/README.md",
-      "source_location": "L199"
+      "source_location": "L220"
     },
     {
       "id": "20_functions_readme_definition_say_this_in_the_interview",
@@ -3688,7 +3688,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (city rename)",
       "source_file": "23-normalization/README.md",
-      "source_location": "L113"
+      "source_location": "L120"
     },
     {
       "id": "23_normalization_readme_4_edge_cases",
@@ -3700,7 +3700,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "23-normalization/README.md",
-      "source_location": "L119"
+      "source_location": "L126"
     },
     {
       "id": "23_normalization_readme_5_interview_scenario_questions",
@@ -3712,7 +3712,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "23-normalization/README.md",
-      "source_location": "L127"
+      "source_location": "L134"
     },
     {
       "id": "23_normalization_readme_cheat_recap",
@@ -3724,7 +3724,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "23-normalization/README.md",
-      "source_location": "L135"
+      "source_location": "L142"
     },
     {
       "id": "23_normalization_readme_definition_say_this_in_the_interview",
@@ -5056,7 +5056,7 @@
       "node_kind": "heading",
       "norm_label": "4. query breakdown",
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L126"
+      "source_location": "L127"
     },
     {
       "id": "02_character_data_types_readme_5_char_vs_varchar_vs_nvarchar",
@@ -5068,7 +5068,7 @@
       "node_kind": "heading",
       "norm_label": "5. char vs varchar vs nvarchar",
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L139"
+      "source_location": "L140"
     },
     {
       "id": "02_character_data_types_readme_6_edge_cases",
@@ -5080,7 +5080,7 @@
       "node_kind": "heading",
       "norm_label": "6. edge cases",
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L148"
+      "source_location": "L149"
     },
     {
       "id": "02_character_data_types_readme_7_interview_scenario_questions",
@@ -5092,7 +5092,7 @@
       "node_kind": "heading",
       "norm_label": "7. interview scenario questions",
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L157"
+      "source_location": "L158"
     },
     {
       "id": "02_character_data_types_readme_8_collation_asked_t_sql_follow_up",
@@ -5104,7 +5104,7 @@
       "node_kind": "heading",
       "norm_label": "8. collation (asked t-sql follow-up)",
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L165"
+      "source_location": "L166"
     },
     {
       "id": "02_character_data_types_readme_cheat_recap",
@@ -5116,7 +5116,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L183"
+      "source_location": "L184"
     },
     {
       "id": "02_character_data_types_readme_definition_say_this_in_the_interview",
@@ -5330,7 +5330,7 @@
       "file_type": "code",
       "norm_label": "dbo.orders_10",
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L23"
+      "source_location": "L28"
     },
     {
       "id": "10_indexes_examples_ix_employees10_id",
@@ -5352,7 +5352,7 @@
       "file_type": "code",
       "norm_label": "ix_employees10_idname",
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L31"
+      "source_location": "L36"
     },
     {
       "id": "10_indexes_examples_ix_employees10_name",
@@ -5374,7 +5374,7 @@
       "file_type": "code",
       "norm_label": "ix_employees10_name_cover",
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L16"
+      "source_location": "L18"
     },
     {
       "id": "10_indexes_examples_ix_orders10_date",
@@ -5385,7 +5385,7 @@
       "file_type": "code",
       "norm_label": "ix_orders10_date",
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L28"
+      "source_location": "L33"
     },
     {
       "id": "20_functions_examples",
@@ -5418,7 +5418,7 @@
       "file_type": "code",
       "norm_label": "dbo.fn_bands20()",
       "source_file": "20-functions/examples.sql",
-      "source_location": "L28"
+      "source_location": "L35"
     },
     {
       "id": "20_functions_examples_dbo_fn_tax20",
@@ -5440,7 +5440,7 @@
       "file_type": "code",
       "norm_label": "dbo.fn_team20()",
       "source_file": "20-functions/examples.sql",
-      "source_location": "L21"
+      "source_location": "L25"
     },
     {
       "id": "23_normalization_examples",
@@ -5473,7 +5473,7 @@
       "file_type": "code",
       "norm_label": "phone23",
       "source_file": "23-normalization/examples.sql",
-      "source_location": "L11"
+      "source_location": "L13"
     },
     {
       "id": "23_normalization_examples_staff23",
@@ -5484,7 +5484,7 @@
       "file_type": "code",
       "norm_label": "staff23",
       "source_file": "23-normalization/examples.sql",
-      "source_location": "L10"
+      "source_location": "L12"
     },
     {
       "id": "23_normalization_examples_team23",
@@ -5495,7 +5495,7 @@
       "file_type": "code",
       "norm_label": "team23",
       "source_file": "23-normalization/examples.sql",
-      "source_location": "L9"
+      "source_location": "L11"
     },
     {
       "id": "26_query_optimization_examples",
@@ -5517,7 +5517,7 @@
       "file_type": "code",
       "norm_label": "ix_ord26_big",
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L25"
+      "source_location": "L33"
     },
     {
       "id": "26_query_optimization_examples_ix_ord26_cust",
@@ -5528,7 +5528,7 @@
       "file_type": "code",
       "norm_label": "ix_ord26_cust",
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L10"
+      "source_location": "L12"
     },
     {
       "id": "26_query_optimization_examples_ord26",
@@ -5622,7 +5622,7 @@
       "node_kind": "heading",
       "norm_label": "4. query breakdown",
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L198"
+      "source_location": "L199"
     },
     {
       "id": "01_sql_statement_types_readme_5_delete_vs_truncate_vs_drop",
@@ -5634,7 +5634,7 @@
       "node_kind": "heading",
       "norm_label": "5. delete vs truncate vs drop",
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L217"
+      "source_location": "L218"
     },
     {
       "id": "01_sql_statement_types_readme_6_edge_cases",
@@ -5646,7 +5646,7 @@
       "node_kind": "heading",
       "norm_label": "6. edge cases",
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L230"
+      "source_location": "L231"
     },
     {
       "id": "01_sql_statement_types_readme_7_interview_scenario_questions",
@@ -5658,7 +5658,7 @@
       "node_kind": "heading",
       "norm_label": "7. interview scenario questions",
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L238"
+      "source_location": "L239"
     },
     {
       "id": "01_sql_statement_types_readme_cheat_recap",
@@ -5670,7 +5670,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L246"
+      "source_location": "L247"
     },
     {
       "id": "01_sql_statement_types_readme_definition_say_this_in_the_interview",
@@ -5704,7 +5704,7 @@
       "file_type": "code",
       "norm_label": "dbo.departments_03",
       "source_file": "03-keys/examples.sql",
-      "source_location": "L5"
+      "source_location": "L7"
     },
     {
       "id": "03_keys_examples_dbo_employees_03",
@@ -5715,7 +5715,7 @@
       "file_type": "code",
       "norm_label": "dbo.employees_03",
       "source_file": "03-keys/examples.sql",
-      "source_location": "L6"
+      "source_location": "L8"
     },
     {
       "id": "03_keys_examples_dbo_enrollments_03",
@@ -5726,7 +5726,7 @@
       "file_type": "code",
       "norm_label": "dbo.enrollments_03",
       "source_file": "03-keys/examples.sql",
-      "source_location": "L25"
+      "source_location": "L29"
     },
     {
       "id": "07_joins_examples",
@@ -5770,7 +5770,7 @@
       "file_type": "code",
       "norm_label": "emp07",
       "source_file": "07-joins/examples.sql",
-      "source_location": "L24"
+      "source_location": "L43"
     },
     {
       "id": "17_temp_tables_vs_variables_examples",
@@ -5792,7 +5792,7 @@
       "file_type": "code",
       "norm_label": "ix_stage17_sal",
       "source_file": "17-temp-tables-vs-variables/examples.sql",
-      "source_location": "L8"
+      "source_location": "L10"
     },
     {
       "id": "17_temp_tables_vs_variables_examples_share17",
@@ -5803,7 +5803,7 @@
       "file_type": "code",
       "norm_label": "share17",
       "source_file": "17-temp-tables-vs-variables/examples.sql",
-      "source_location": "L21"
+      "source_location": "L23"
     },
     {
       "id": "17_temp_tables_vs_variables_examples_stage17",
@@ -5858,7 +5858,7 @@
       "file_type": "code",
       "norm_label": "dbo.vw_itstaff18",
       "source_file": "18-views/examples.sql",
-      "source_location": "L15"
+      "source_location": "L19"
     },
     {
       "id": "19_stored_procedures_examples",
@@ -5891,7 +5891,7 @@
       "file_type": "code",
       "norm_label": "dbo.usp_getstaff19()",
       "source_file": "19-stored-procedures/examples.sql",
-      "source_location": "L14"
+      "source_location": "L18"
     },
     {
       "id": "19_stored_procedures_examples_dbo_usp_hire19",
@@ -5902,7 +5902,7 @@
       "file_type": "code",
       "norm_label": "dbo.usp_hire19()",
       "source_file": "19-stored-procedures/examples.sql",
-      "source_location": "L28"
+      "source_location": "L36"
     },
     {
       "id": "04_constraints_examples",
@@ -5924,7 +5924,7 @@
       "file_type": "code",
       "norm_label": "dbo.departments_04",
       "source_file": "04-constraints/examples.sql",
-      "source_location": "L5"
+      "source_location": "L7"
     },
     {
       "id": "04_constraints_examples_dbo_employees_04",
@@ -5935,7 +5935,7 @@
       "file_type": "code",
       "norm_label": "dbo.employees_04",
       "source_file": "04-constraints/examples.sql",
-      "source_location": "L6"
+      "source_location": "L8"
     },
     {
       "id": "05_query_vs_subquery_examples",
@@ -6034,7 +6034,7 @@
       "file_type": "code",
       "norm_label": "org09",
       "source_file": "09-cte/examples.sql",
-      "source_location": "L6"
+      "source_location": "L8"
     },
     {
       "id": "15_exists_vs_in_examples",
@@ -6115,7 +6115,7 @@
       "node_kind": "heading",
       "norm_label": "2. definitions",
       "source_file": "10-indexes/README.md",
-      "source_location": "L93"
+      "source_location": "L96"
     },
     {
       "id": "10_indexes_readme_3_comparison",
@@ -6127,7 +6127,7 @@
       "node_kind": "heading",
       "norm_label": "3. comparison",
       "source_file": "10-indexes/README.md",
-      "source_location": "L99"
+      "source_location": "L102"
     },
     {
       "id": "10_indexes_readme_4_query_breakdown",
@@ -6139,7 +6139,7 @@
       "node_kind": "heading",
       "norm_label": "4. query breakdown",
       "source_file": "10-indexes/README.md",
-      "source_location": "L110"
+      "source_location": "L113"
     },
     {
       "id": "10_indexes_readme_5_edge_cases",
@@ -6151,7 +6151,7 @@
       "node_kind": "heading",
       "norm_label": "5. edge cases",
       "source_file": "10-indexes/README.md",
-      "source_location": "L121"
+      "source_location": "L124"
     },
     {
       "id": "10_indexes_readme_6_interview_scenario_questions",
@@ -6163,7 +6163,7 @@
       "node_kind": "heading",
       "norm_label": "6. interview scenario questions",
       "source_file": "10-indexes/README.md",
-      "source_location": "L130"
+      "source_location": "L133"
     },
     {
       "id": "10_indexes_readme_7_composite_covering_recap_limits_asked_follow_ups",
@@ -6175,7 +6175,7 @@
       "node_kind": "heading",
       "norm_label": "7. composite, covering recap + limits (asked follow-ups)",
       "source_file": "10-indexes/README.md",
-      "source_location": "L147"
+      "source_location": "L150"
     },
     {
       "id": "10_indexes_readme_cheat_recap",
@@ -6187,7 +6187,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "10-indexes/README.md",
-      "source_location": "L157"
+      "source_location": "L160"
     },
     {
       "id": "10_indexes_readme_definition_say_this_in_the_interview",
@@ -6221,7 +6221,7 @@
       "file_type": "code",
       "norm_label": "dbo.audit21",
       "source_file": "21-triggers/examples.sql",
-      "source_location": "L8"
+      "source_location": "L12"
     },
     {
       "id": "21_triggers_examples_dbo_emp21",
@@ -6232,7 +6232,7 @@
       "file_type": "code",
       "norm_label": "dbo.emp21",
       "source_file": "21-triggers/examples.sql",
-      "source_location": "L7"
+      "source_location": "L11"
     },
     {
       "id": "27_data_types_numbers_dates_examples",
@@ -6254,7 +6254,7 @@
       "file_type": "code",
       "norm_label": "dbo.key27",
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L19"
+      "source_location": "L25"
     },
     {
       "id": "27_data_types_numbers_dates_examples_rv27",
@@ -6265,7 +6265,7 @@
       "file_type": "code",
       "norm_label": "rv27",
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L44"
+      "source_location": "L54"
     },
     {
       "id": "01_sql_statement_types_examples",
@@ -6309,7 +6309,7 @@
       "file_type": "code",
       "norm_label": "dbo.demostrings_02",
       "source_file": "02-character-data-types/examples.sql",
-      "source_location": "L3"
+      "source_location": "L5"
     },
     {
       "id": "06_where_vs_having_examples",
@@ -7245,7 +7245,7 @@
       "node_kind": "heading",
       "norm_label": "3. query breakdown (left + anti-join)",
       "source_file": "07-joins/README.md",
-      "source_location": "L182"
+      "source_location": "L192"
     },
     {
       "id": "07_joins_readme_4_edge_cases",
@@ -7257,7 +7257,7 @@
       "node_kind": "heading",
       "norm_label": "4. edge cases",
       "source_file": "07-joins/README.md",
-      "source_location": "L192"
+      "source_location": "L202"
     },
     {
       "id": "07_joins_readme_5_interview_scenario_questions",
@@ -7269,7 +7269,7 @@
       "node_kind": "heading",
       "norm_label": "5. interview scenario questions",
       "source_file": "07-joins/README.md",
-      "source_location": "L201"
+      "source_location": "L211"
     },
     {
       "id": "07_joins_readme_6_non_equi_semi_joins_asked_follow_ups",
@@ -7281,7 +7281,7 @@
       "node_kind": "heading",
       "norm_label": "6. non-equi + semi joins (asked follow-ups)",
       "source_file": "07-joins/README.md",
-      "source_location": "L209"
+      "source_location": "L219"
     },
     {
       "id": "07_joins_readme_cheat_recap",
@@ -7293,7 +7293,7 @@
       "node_kind": "heading",
       "norm_label": "cheat recap",
       "source_file": "07-joins/README.md",
-      "source_location": "L216"
+      "source_location": "L226"
     },
     {
       "id": "07_joins_readme_definition_say_this_in_the_interview",
@@ -7392,14 +7392,14 @@
       "source_location": "L1"
     },
     {
-      "id": "query_testing_results_summary_query_testing_results_2026_09_23t14_14_12",
-      "label": "query-testing results \u2014 2026-09-23T14:14:12",
+      "id": "query_testing_results_summary_query_testing_results_2026_09_23t15_52_43",
+      "label": "query-testing results \u2014 2026-09-23T15:52:43",
       "_origin": "ast",
       "community": 91,
       "community_name": "summary.md",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "query-testing results \u2014 2026-09-23t14:14:12",
+      "norm_label": "query-testing results \u2014 2026-09-23t15:52:43",
       "source_file": "query-testing/results/summary.md",
       "source_location": "L1"
     }
@@ -7496,7 +7496,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L247",
+      "source_location": "L257",
       "weight": 1.0
     },
     {
@@ -7507,18 +7507,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L256",
-      "weight": 1.0
-    },
-    {
-      "source": "00_sql_comments_readme_00_sql_comments_in_t_sql",
-      "target": "00_sql_comments_readme_5_interview_scenario_questions",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "00-sql-comments/README.md",
-      "source_location": "L275",
+      "source_location": "L266",
       "weight": 1.0
     },
     {
@@ -7534,13 +7523,24 @@
     },
     {
       "source": "00_sql_comments_readme_00_sql_comments_in_t_sql",
+      "target": "00_sql_comments_readme_5_interview_scenario_questions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "00-sql-comments/README.md",
+      "source_location": "L285",
+      "weight": 1.0
+    },
+    {
+      "source": "00_sql_comments_readme_00_sql_comments_in_t_sql",
       "target": "00_sql_comments_readme_cheat_recap",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "00-sql-comments/README.md",
-      "source_location": "L290",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -7694,7 +7694,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L198",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -7705,7 +7705,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L217",
+      "source_location": "L218",
       "weight": 1.0
     },
     {
@@ -7716,7 +7716,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L230",
+      "source_location": "L231",
       "weight": 1.0
     },
     {
@@ -7727,7 +7727,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L238",
+      "source_location": "L239",
       "weight": 1.0
     },
     {
@@ -7738,7 +7738,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "01-sql-statement-types/README.md",
-      "source_location": "L246",
+      "source_location": "L247",
       "weight": 1.0
     },
     {
@@ -7914,7 +7914,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/examples.sql",
-      "source_location": "L3",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -7936,7 +7936,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L126",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -7947,7 +7947,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L139",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -7958,7 +7958,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L148",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -7980,7 +7980,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L157",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -7991,7 +7991,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L165",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -8002,7 +8002,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "02-character-data-types/README.md",
-      "source_location": "L183",
+      "source_location": "L184",
       "weight": 1.0
     },
     {
@@ -8046,7 +8046,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "03-keys/examples.sql",
-      "source_location": "L25",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -8057,7 +8057,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "03-keys/examples.sql",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -8068,7 +8068,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "03-keys/examples.sql",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -8233,7 +8233,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "04-constraints/examples.sql",
-      "source_location": "L5",
+      "source_location": "L7",
       "weight": 1.0
     },
     {
@@ -8244,7 +8244,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "04-constraints/examples.sql",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -8486,7 +8486,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L111",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -8497,7 +8497,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L126",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -8508,7 +8508,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L134",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -8519,7 +8519,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L142",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -8541,7 +8541,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "06-where-vs-having/README.md",
-      "source_location": "L33",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -8557,17 +8557,6 @@
     },
     {
       "source": "07_joins_examples",
-      "target": "07_joins_examples_emp07",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "07-joins/examples.sql",
-      "source_location": "L24",
-      "weight": 1.0
-    },
-    {
-      "source": "07_joins_examples",
       "target": "07_joins_examples_e07",
       "relation": "contains",
       "_origin": "ast",
@@ -8575,6 +8564,17 @@
       "confidence_score": 1.0,
       "source_file": "07-joins/examples.sql",
       "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "07_joins_examples",
+      "target": "07_joins_examples_emp07",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "07-joins/examples.sql",
+      "source_location": "L43",
       "weight": 1.0
     },
     {
@@ -8618,7 +8618,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "07-joins/README.md",
-      "source_location": "L182",
+      "source_location": "L192",
       "weight": 1.0
     },
     {
@@ -8629,7 +8629,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "07-joins/README.md",
-      "source_location": "L192",
+      "source_location": "L202",
       "weight": 1.0
     },
     {
@@ -8640,7 +8640,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "07-joins/README.md",
-      "source_location": "L201",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -8651,7 +8651,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "07-joins/README.md",
-      "source_location": "L209",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -8662,7 +8662,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "07-joins/README.md",
-      "source_location": "L216",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -8728,7 +8728,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L101",
+      "source_location": "L107",
       "weight": 1.0
     },
     {
@@ -8739,7 +8739,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L108",
+      "source_location": "L114",
       "weight": 1.0
     },
     {
@@ -8750,7 +8750,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L117",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -8761,7 +8761,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "08-union-vs-union-all/README.md",
-      "source_location": "L125",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -8904,7 +8904,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "09-cte/examples.sql",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -8926,7 +8926,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "09-cte/README.md",
-      "source_location": "L121",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -8937,7 +8937,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "09-cte/README.md",
-      "source_location": "L128",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -8948,7 +8948,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "09-cte/README.md",
-      "source_location": "L137",
+      "source_location": "L161",
       "weight": 1.0
     },
     {
@@ -8959,18 +8959,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "09-cte/README.md",
-      "source_location": "L145",
-      "weight": 1.0
-    },
-    {
-      "source": "09_cte_readme_09_cte_common_table_expression",
-      "target": "09_cte_readme_cheat_recap",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "09-cte/README.md",
-      "source_location": "L151",
+      "source_location": "L169",
       "weight": 1.0
     },
     {
@@ -8986,13 +8975,24 @@
     },
     {
       "source": "09_cte_readme_09_cte_common_table_expression",
+      "target": "09_cte_readme_cheat_recap",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "09-cte/README.md",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "09_cte_readme_09_cte_common_table_expression",
       "target": "09_cte_readme_2_examples",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "09-cte/README.md",
-      "source_location": "L27",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -9014,23 +9014,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
       "source": "10_indexes_examples",
       "target": "10_indexes_examples_dbo_orders_10",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "10-indexes/examples.sql",
-      "source_location": "L23",
-      "weight": 1.0
-    },
-    {
-      "source": "10_indexes_examples",
-      "target": "10_indexes_examples_ix_orders10_date",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -9052,13 +9041,24 @@
     },
     {
       "source": "10_indexes_examples",
+      "target": "10_indexes_examples_ix_orders10_date",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "10-indexes/examples.sql",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "10_indexes_examples",
       "target": "10_indexes_examples_ix_employees10_idname",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L31",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -9096,13 +9096,24 @@
     },
     {
       "source": "10_indexes_readme_10_clustered_vs_non_clustered_index",
+      "target": "10_indexes_readme_3_comparison",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "10-indexes/README.md",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "10_indexes_readme_10_clustered_vs_non_clustered_index",
       "target": "10_indexes_readme_4_query_breakdown",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/README.md",
-      "source_location": "L110",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -9113,7 +9124,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/README.md",
-      "source_location": "L121",
+      "source_location": "L124",
       "weight": 1.0
     },
     {
@@ -9124,7 +9135,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/README.md",
-      "source_location": "L130",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -9135,7 +9146,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/README.md",
-      "source_location": "L147",
+      "source_location": "L150",
       "weight": 1.0
     },
     {
@@ -9146,7 +9157,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/README.md",
-      "source_location": "L157",
+      "source_location": "L160",
       "weight": 1.0
     },
     {
@@ -9179,18 +9190,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/README.md",
-      "source_location": "L93",
-      "weight": 1.0
-    },
-    {
-      "source": "10_indexes_readme_10_clustered_vs_non_clustered_index",
-      "target": "10_indexes_readme_3_comparison",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "10-indexes/README.md",
-      "source_location": "L99",
+      "source_location": "L96",
       "weight": 1.0
     },
     {
@@ -9223,7 +9223,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L115",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -9234,7 +9234,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L122",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -9245,7 +9245,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L131",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -9256,7 +9256,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "11-group-by-aggregates/README.md",
-      "source_location": "L139",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -9322,7 +9322,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "12-null-handling/README.md",
-      "source_location": "L144",
+      "source_location": "L152",
       "weight": 1.0
     },
     {
@@ -9333,7 +9333,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "12-null-handling/README.md",
-      "source_location": "L150",
+      "source_location": "L158",
       "weight": 1.0
     },
     {
@@ -9344,7 +9344,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "12-null-handling/README.md",
-      "source_location": "L160",
+      "source_location": "L168",
       "weight": 1.0
     },
     {
@@ -9355,7 +9355,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "12-null-handling/README.md",
-      "source_location": "L168",
+      "source_location": "L176",
       "weight": 1.0
     },
     {
@@ -9366,7 +9366,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "12-null-handling/README.md",
-      "source_location": "L175",
+      "source_location": "L183",
       "weight": 1.0
     },
     {
@@ -9432,7 +9432,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L204",
+      "source_location": "L211",
       "weight": 1.0
     },
     {
@@ -9443,7 +9443,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L210",
+      "source_location": "L217",
       "weight": 1.0
     },
     {
@@ -9454,7 +9454,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L219",
+      "source_location": "L226",
       "weight": 1.0
     },
     {
@@ -9465,18 +9465,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L227",
-      "weight": 1.0
-    },
-    {
-      "source": "13_order_by_top_distinct_readme_13_order_by_top_distinct_ordered_limited_unique_lists",
-      "target": "13_order_by_top_distinct_readme_cheat_recap",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L238",
+      "source_location": "L234",
       "weight": 1.0
     },
     {
@@ -9492,13 +9481,24 @@
     },
     {
       "source": "13_order_by_top_distinct_readme_13_order_by_top_distinct_ordered_limited_unique_lists",
+      "target": "13_order_by_top_distinct_readme_cheat_recap",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "13-order-by-top-distinct/README.md",
+      "source_location": "L245",
+      "weight": 1.0
+    },
+    {
+      "source": "13_order_by_top_distinct_readme_13_order_by_top_distinct_ordered_limited_unique_lists",
       "target": "13_order_by_top_distinct_readme_2_examples",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "13-order-by-top-distinct/README.md",
-      "source_location": "L32",
+      "source_location": "L34",
       "weight": 1.0
     },
     {
@@ -9542,7 +9542,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "14-case-expression/README.md",
-      "source_location": "L134",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -9553,7 +9553,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "14-case-expression/README.md",
-      "source_location": "L140",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -9564,7 +9564,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "14-case-expression/README.md",
-      "source_location": "L149",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -9575,7 +9575,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "14-case-expression/README.md",
-      "source_location": "L157",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -9652,7 +9652,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L143",
+      "source_location": "L147",
       "weight": 1.0
     },
     {
@@ -9663,7 +9663,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L149",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -9674,7 +9674,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L158",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -9685,7 +9685,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "15-exists-vs-in/README.md",
-      "source_location": "L166",
+      "source_location": "L170",
       "weight": 1.0
     },
     {
@@ -9751,7 +9751,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "16-window-functions/README.md",
-      "source_location": "L179",
+      "source_location": "L204",
       "weight": 1.0
     },
     {
@@ -9762,7 +9762,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "16-window-functions/README.md",
-      "source_location": "L185",
+      "source_location": "L210",
       "weight": 1.0
     },
     {
@@ -9773,7 +9773,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "16-window-functions/README.md",
-      "source_location": "L194",
+      "source_location": "L219",
       "weight": 1.0
     },
     {
@@ -9784,7 +9784,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "16-window-functions/README.md",
-      "source_location": "L203",
+      "source_location": "L228",
       "weight": 1.0
     },
     {
@@ -9795,7 +9795,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "16-window-functions/README.md",
-      "source_location": "L208",
+      "source_location": "L233",
       "weight": 1.0
     },
     {
@@ -9817,7 +9817,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "16-window-functions/README.md",
-      "source_location": "L35",
+      "source_location": "L37",
       "weight": 1.0
     },
     {
@@ -9833,13 +9833,24 @@
     },
     {
       "source": "17_temp_tables_vs_variables_examples",
+      "target": "17_temp_tables_vs_variables_examples_ix_stage17_sal",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "17-temp-tables-vs-variables/examples.sql",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "17_temp_tables_vs_variables_examples",
       "target": "17_temp_tables_vs_variables_examples_share17",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "17-temp-tables-vs-variables/examples.sql",
-      "source_location": "L21",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -9851,17 +9862,6 @@
       "confidence_score": 1.0,
       "source_file": "17-temp-tables-vs-variables/examples.sql",
       "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "17_temp_tables_vs_variables_examples",
-      "target": "17_temp_tables_vs_variables_examples_ix_stage17_sal",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "17-temp-tables-vs-variables/examples.sql",
-      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -9960,7 +9960,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/examples.sql",
-      "source_location": "L15",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -10004,7 +10004,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/README.md",
-      "source_location": "L116",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -10015,7 +10015,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/README.md",
-      "source_location": "L122",
+      "source_location": "L133",
       "weight": 1.0
     },
     {
@@ -10026,7 +10026,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/README.md",
-      "source_location": "L134",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -10037,7 +10037,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/README.md",
-      "source_location": "L142",
+      "source_location": "L153",
       "weight": 1.0
     },
     {
@@ -10048,7 +10048,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/README.md",
-      "source_location": "L148",
+      "source_location": "L159",
       "weight": 1.0
     },
     {
@@ -10070,7 +10070,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/README.md",
-      "source_location": "L35",
+      "source_location": "L39",
       "weight": 1.0
     },
     {
@@ -10202,7 +10202,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/examples.sql",
-      "source_location": "L14",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -10213,7 +10213,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/examples.sql",
-      "source_location": "L28",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -10345,7 +10345,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L113",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -10356,7 +10356,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L119",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -10367,7 +10367,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L129",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -10378,7 +10378,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L137",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -10400,7 +10400,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "19-stored-procedures/README.md",
-      "source_location": "L36",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -10433,7 +10433,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/examples.sql",
-      "source_location": "L21",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -10444,7 +10444,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/examples.sql",
-      "source_location": "L28",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -10576,7 +10576,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L175",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -10587,7 +10587,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L182",
+      "source_location": "L203",
       "weight": 1.0
     },
     {
@@ -10598,7 +10598,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L191",
+      "source_location": "L212",
       "weight": 1.0
     },
     {
@@ -10609,7 +10609,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/README.md",
-      "source_location": "L199",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -10884,7 +10884,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/examples.sql",
-      "source_location": "L7",
+      "source_location": "L11",
       "weight": 1.0
     },
     {
@@ -10895,7 +10895,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/examples.sql",
-      "source_location": "L8",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -10917,7 +10917,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/README.md",
-      "source_location": "L134",
+      "source_location": "L149",
       "weight": 1.0
     },
     {
@@ -10928,7 +10928,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/README.md",
-      "source_location": "L140",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -10939,7 +10939,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/README.md",
-      "source_location": "L149",
+      "source_location": "L164",
       "weight": 1.0
     },
     {
@@ -10950,7 +10950,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/README.md",
-      "source_location": "L157",
+      "source_location": "L172",
       "weight": 1.0
     },
     {
@@ -10961,7 +10961,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/README.md",
-      "source_location": "L165",
+      "source_location": "L180",
       "weight": 1.0
     },
     {
@@ -10983,7 +10983,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "21-triggers/README.md",
-      "source_location": "L37",
+      "source_location": "L41",
       "weight": 1.0
     },
     {
@@ -11120,13 +11120,24 @@
     },
     {
       "source": "23_normalization_examples",
+      "target": "23_normalization_examples_team23",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "23-normalization/examples.sql",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "23_normalization_examples",
       "target": "23_normalization_examples_staff23",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "23-normalization/examples.sql",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -11137,7 +11148,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "23-normalization/examples.sql",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -11149,17 +11160,6 @@
       "confidence_score": 1.0,
       "source_file": "23-normalization/examples.sql",
       "source_location": "L8",
-      "weight": 1.0
-    },
-    {
-      "source": "23_normalization_examples",
-      "target": "23_normalization_examples_team23",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "23-normalization/examples.sql",
-      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -11181,7 +11181,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "23-normalization/README.md",
-      "source_location": "L113",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -11192,7 +11192,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "23-normalization/README.md",
-      "source_location": "L119",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -11203,7 +11203,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "23-normalization/README.md",
-      "source_location": "L127",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -11214,7 +11214,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "23-normalization/README.md",
-      "source_location": "L135",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
@@ -11456,7 +11456,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -11467,7 +11467,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L25",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -11500,7 +11500,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L104",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -11511,7 +11511,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L110",
+      "source_location": "L115",
       "weight": 1.0
     },
     {
@@ -11522,7 +11522,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L122",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -11533,7 +11533,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L130",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -11544,7 +11544,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L152",
+      "source_location": "L157",
       "weight": 1.0
     },
     {
@@ -11566,7 +11566,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/README.md",
-      "source_location": "L34",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -11588,7 +11588,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L19",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -11599,7 +11599,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/examples.sql",
-      "source_location": "L44",
+      "source_location": "L54",
       "weight": 1.0
     },
     {
@@ -11621,29 +11621,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L243",
-      "weight": 1.0
-    },
-    {
-      "source": "27_data_types_numbers_dates_readme_27_data_types_numbers_dates_specials_identity_sequence_xml_bits",
-      "target": "27_data_types_numbers_dates_readme_6_interview_scenario_questions",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L259",
-      "weight": 1.0
-    },
-    {
-      "source": "27_data_types_numbers_dates_readme_27_data_types_numbers_dates_specials_identity_sequence_xml_bits",
-      "target": "27_data_types_numbers_dates_readme_cheat_recap",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "27-data-types-numbers-dates/README.md",
-      "source_location": "L269",
+      "source_location": "L261",
       "weight": 1.0
     },
     {
@@ -11655,6 +11633,28 @@
       "confidence_score": 1.0,
       "source_file": "27-data-types-numbers-dates/README.md",
       "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "27_data_types_numbers_dates_readme_27_data_types_numbers_dates_specials_identity_sequence_xml_bits",
+      "target": "27_data_types_numbers_dates_readme_6_interview_scenario_questions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "27-data-types-numbers-dates/README.md",
+      "source_location": "L277",
+      "weight": 1.0
+    },
+    {
+      "source": "27_data_types_numbers_dates_readme_27_data_types_numbers_dates_specials_identity_sequence_xml_bits",
+      "target": "27_data_types_numbers_dates_readme_cheat_recap",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "27-data-types-numbers-dates/README.md",
+      "source_location": "L287",
       "weight": 1.0
     },
     {
@@ -13089,7 +13089,7 @@
     },
     {
       "source": "query_testing_results_summary",
-      "target": "query_testing_results_summary_query_testing_results_2026_09_23t14_14_12",
+      "target": "query_testing_results_summary_query_testing_results_2026_09_23t15_52_43",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13348,7 +13348,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L31",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -13370,7 +13370,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L16",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -13381,7 +13381,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "10-indexes/examples.sql",
-      "source_location": "L28",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -13392,7 +13392,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "17-temp-tables-vs-variables/examples.sql",
-      "source_location": "L8",
+      "source_location": "L10",
       "weight": 1.0
     },
     {
@@ -13403,7 +13403,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L25",
+      "source_location": "L33",
       "weight": 1.0
     },
     {
@@ -13414,7 +13414,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "26-query-optimization/examples.sql",
-      "source_location": "L10",
+      "source_location": "L12",
       "weight": 1.0
     },
     {
@@ -13458,7 +13458,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/examples.sql",
-      "source_location": "L17",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -13469,7 +13469,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "18-views/examples.sql",
-      "source_location": "L17",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -13480,7 +13480,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "20-functions/examples.sql",
-      "source_location": "L22",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -13491,7 +13491,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "03-keys/examples.sql",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -13502,10 +13502,10 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "04-constraints/examples.sql",
-      "source_location": "L6",
+      "source_location": "L8",
       "weight": 1.0
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "74ca49319081fa5192890eaadf2e15fff88040ff"
+  "built_at_commit": "f4e7d8a144d15ae936a8d9b462f17ae8e7c5f911"
 }

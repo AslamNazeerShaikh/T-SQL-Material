@@ -26,7 +26,7 @@ EXISTS there."*
 
 ```sql
 CREATE TABLE #Staff (Id INT, Name VARCHAR(20), Bonus INT NULL);
-INSERT INTO #Staff VALUES (1,'Asha',100),(2,'Dev',NULL),(3,'Ravi',200);
+INSERT INTO #Staff VALUES (1, 'Asha', 100), (2, 'Dev', NULL), (3, 'Ravi', 200);
 ```
 
 ## 2. Examples
@@ -85,8 +85,14 @@ Output: 0 rows (UNKNOWN never true).
 Example 4 — `COALESCE` / `ISNULL`:
 
 ```sql
-SELECT Name, COALESCE(Bonus, 0) AS SafeBonus FROM #Staff;
-SELECT Name, ISNULL(Bonus, 0) AS SafeBonus FROM #Staff;
+SELECT
+    Name,
+    COALESCE(Bonus, 0) AS SafeBonus
+FROM #Staff;
+SELECT
+    Name,
+    ISNULL(Bonus, 0) AS SafeBonus
+FROM #Staff;
 ```
 
 Input: 3 rows above.
@@ -102,7 +108,9 @@ Output (3 rows, both queries):
 Example 5 — NULL poisons math:
 
 ```sql
-SELECT NULL + 100 AS M, 'Hi ' + NULL AS C;
+SELECT
+    NULL + 100 AS M,
+    'Hi ' + NULL AS C;
 ```
 
 Input: none (literals).
@@ -129,7 +137,7 @@ Output: 0 rows.
 
 ```sql
 SELECT s.* FROM #Staff s
-WHERE NOT EXISTS (SELECT 1 FROM (VALUES (1)) v(x) WHERE v.x = s.Id);
+WHERE NOT EXISTS (SELECT 1 FROM (VALUES (1)) v (x) WHERE v.x = s.Id);
 ```
 
 Input: 3 rows above.

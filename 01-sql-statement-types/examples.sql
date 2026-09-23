@@ -15,9 +15,9 @@ DELETE FROM dbo.Employees_01 WHERE Id = 10;
 SELECT * FROM dbo.Employees_01;
 
 -- DDL: ALTER + TRUNCATE (rollback-able inside explicit transaction)
-ALTER TABLE dbo.Employees_01 ADD Salary DECIMAL(18,2);
+ALTER TABLE dbo.Employees_01 ADD Salary DECIMAL(18, 2);
 BEGIN TRANSACTION;
-    TRUNCATE TABLE dbo.Employees_01;
+TRUNCATE TABLE dbo.Employees_01;
 ROLLBACK;
 SELECT * FROM dbo.Employees_01; -- rows still here: TRUNCATE was rolled back
 
@@ -28,10 +28,10 @@ SELECT * FROM dbo.Employees_01; -- rows still here: TRUNCATE was rolled back
 
 -- TCL savepoint demo
 BEGIN TRANSACTION;
-    INSERT INTO dbo.Employees_01 (Id, Name) VALUES (99, 'Temp');
-    SAVE TRANSACTION BeforeDelete;
-    DELETE FROM dbo.Employees_01 WHERE Id = 99;
-    ROLLBACK TRANSACTION BeforeDelete; -- undo only the delete
+INSERT INTO dbo.Employees_01 (Id, Name) VALUES (99, 'Temp');
+SAVE TRANSACTION BeforeDelete;
+DELETE FROM dbo.Employees_01 WHERE Id = 99;
+ROLLBACK TRANSACTION BeforeDelete; -- undo only the delete
 COMMIT;
 SELECT * FROM dbo.Employees_01;
 

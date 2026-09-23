@@ -28,7 +28,7 @@ turn login checks true. Full-stack I stack params, least rights, and checks."*
 
 ```sql
 CREATE TABLE #Emp (Id INT, Name VARCHAR(30), Salary INT);
-INSERT INTO #Emp VALUES (1,'Asha',90000),(2,'Dev',80000);
+INSERT INTO #Emp VALUES (1, 'Asha', 90000), (2, 'Dev', 80000);
 ```
 
 ## 2. Examples

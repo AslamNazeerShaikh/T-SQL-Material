@@ -21,8 +21,8 @@ CREATE TABLE dbo.Employees (Id INT, Name VARCHAR(100), Salary INT);
 -- Input rows used below:
 -- (1,'John',80000),(2,'Sara',90000),(3,'Mike',45000)
 
-CREATE CLUSTERED INDEX IX_Employees_Id ON dbo.Employees(Id);
-CREATE NONCLUSTERED INDEX IX_Employees_Name ON dbo.Employees(Name);
+CREATE CLUSTERED INDEX IX_Employees_Id ON dbo.Employees (Id);
+CREATE NONCLUSTERED INDEX IX_Employees_Name ON dbo.Employees (Name);
 ```
 
 Input `dbo.Employees`:
@@ -65,7 +65,10 @@ Output (1 row):
 Example 3 — covering `INCLUDE(Salary)`:
 
 ```sql
-SELECT Name, Salary FROM dbo.Employees WHERE Name = 'Sara';
+SELECT
+    Name,
+    Salary
+FROM dbo.Employees WHERE Name = 'Sara';
 ```
 
 Input: 3 rows above.
@@ -141,7 +144,7 @@ CREATE TABLE dbo.Orders (
     OrderId INT NOT NULL CONSTRAINT PK_Orders PRIMARY KEY NONCLUSTERED,
     OrderDate DATE NOT NULL
 );
-CREATE CLUSTERED INDEX IX_Orders_Date ON dbo.Orders(OrderDate);
+CREATE CLUSTERED INDEX IX_Orders_Date ON dbo.Orders (OrderDate);
 ```
 
 ## 7. Composite, covering recap + limits (asked follow-ups)
