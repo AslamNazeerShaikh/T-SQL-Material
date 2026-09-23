@@ -127,6 +127,10 @@ XACT_ABORT ON voids both — books never half-move.
 3. "Same read twice mid-deal shifts — rung?" → REPEATABLE READ (phantoms still slip).
 4. "1205 in logs each noon — cure?" → Same-order locks, short deals, index the link fields, retry victims.
 5. "ACID one line each?" → All-or-none / rules kept / solo feel / sealed lasts.
+6. "Who blocks whom right now?" → `sys.dm_exec_requests WHERE blocking_session_id <> 0`
+   (blocker vs blocked + wait type/resource); `DBCC OPENTRAN` sniffs the oldest open deal.
+7. "Reads must never wait writers — pick?" → SNAPSHOT/RCSI (versioned, optimistic);
+   write-heavy fights stay pessimistic locking.
 
 ## 6. Ladder explicit + RCSI + lock-vs-latch (asked follow-ups)
 
@@ -139,11 +143,40 @@ XACT_ABORT ON voids both — books never half-move.
   (blink-short, never waited on like locks). Blocking = one waits (auto-clears);
   deadlock = circle (1205 kills one) — §5 cures both.
 
+## 7. Concurrency picks + blast severities + HA twins (asked follow-ups)
+
+- Pessimistic vs optimistic (who pays for the fight):
+
+| Point (metric) | Pessimistic (locks) | Optimistic (versions) |
+|---|---|---|
+| Shape | Lock first, ask never | Read free, check at seal |
+| Rungs | UNCOMMITTED → SERIALIZABLE | SNAPSHOT / RCSI |
+| Blocks (level) | Readers wait writers | Readers never wait writers |
+| Best fight (case) | Hot write clashes | Read-heavy, rare clashes |
+
+- Blast severity inside a deal (what the engine does):
+
+| Severity (level) | Engine does (action) | Code shape (pattern) |
+|---|---|---|
+| 11–16 (user blasts) | CATCH catches, deal state via `XACT_STATE()` | TRY/CATCH + `IF XACT_STATE() <> 0 ROLLBACK;` |
+| 17–19 (soft engine) | Deal may be dead (-1: roll-only) | Check `XACT_STATE()` pre-COMMIT, never seal blind |
+| ≥ 20 (hard engine) | Link dies at once | Reconnect + retry full deal |
+
+- Copy-vs-copy (HA/DR twins interviewers pair):
+
+| Point (metric) | Mirroring (hot standby) | Replication (copies) | Log shipping (log replays) |
+|---|---|---|---|
+| Speed (freshness) | Live | Near-live per article | Lagged (job ticks) |
+| Failover (auto?) | Auto (witness) | Manual | Manual |
+| Best case (use) | One DB must survive | Spread reads/reports | Cheap DR across sites |
+
 ## Cheat recap
 
 ```text
 Deal = win-or-lose whole | ACID all-none, clean, solo, sealed
 Rungs: UNCOMMITTED < COMMITTED < SNAPSHOT < REPEATABLE < SERIALIZABLE
 NOLOCK fast dirt, never money | 1205 retry full deal | short + same-order stops locks
+Pessimistic locks hot writes | optimistic versions read-heavy | sev≥20 kills link
+Mirror auto-hot | replication spreads | log-ship cheap DR
 Mechanics: 01-statements-in-detail.md §5
 ```

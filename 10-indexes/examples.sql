@@ -37,5 +37,25 @@ CREATE NONCLUSTERED INDEX IX_Employees10_IdName ON dbo.Employees_10 (Id, Name);
 SELECT * FROM dbo.Employees_10 WHERE Id = 1 AND Name = 'John';
 DROP INDEX IX_Employees10_IdName ON dbo.Employees_10;
 
+-- Filtered index: small + sharp (used only when the query matches the filter).
+-- Needs QUOTED_IDENTIFIER + ANSI_NULLS ON at CREATE time (Msg 1934 otherwise).
+-- SSMS sets both ON; sqlcmd defaults them OFF — set explicitly, stays F5-clean.
+SET QUOTED_IDENTIFIER ON;
+SET ANSI_NULLS ON;
+CREATE NONCLUSTERED INDEX IX_Employees10_HighPaid
+    ON dbo.Employees_10 (Name) WHERE Salary >= 80000;
+SELECT Name FROM dbo.Employees_10 WHERE Salary >= 80000 AND Name = 'Sara';  -- matches filter: rides the small index
+SELECT Name FROM dbo.Employees_10 WHERE Name = 'Sara';                      -- no filter match: ignores it, uses IX_Employees10_Name
+DROP INDEX IX_Employees10_HighPaid ON dbo.Employees_10;
+
+-- Missing-index ask (live shape — run on a real DB, validate before creating):
+-- SELECT migs.user_seeks AS Seeks, mid.statement AS TableName,
+--        mid.equality_columns, mid.inequality_columns, mid.included_columns
+-- FROM sys.dm_db_missing_index_details AS mid
+-- JOIN sys.dm_db_missing_index_groups AS mig ON mid.index_handle = mig.index_handle
+-- JOIN sys.dm_db_missing_index_group_stats AS migs ON mig.index_group_handle = migs.group_handle
+-- ORDER BY migs.user_seeks DESC;
+-- Rule: high seeks first, prove with plan, never over-index (writes pay per index).
+
 DROP TABLE dbo.Employees_10;
 DROP TABLE dbo.Orders_10;

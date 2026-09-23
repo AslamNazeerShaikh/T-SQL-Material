@@ -27,4 +27,11 @@ SET TRANSACTION ISOLATION LEVEL READ COMMITTED;  -- back to default
 -- Sitting B: BEGIN TRAN; UPDATE #Acct22 SET Bal=Bal WHERE Id=2; WAITFOR DELAY '00:00:05'; UPDATE #Acct22 SET Bal=Bal WHERE Id=1; COMMIT;
 -- Cure: same lock order (1 then 2), short deals, indexed keys, retry full deal on 1205.
 
+-- Who blocks whom right now (live: blocker vs blocked + wait):
+SELECT blocking_session_id AS Blocker, session_id AS Blocked,
+       wait_type, wait_time, wait_resource
+FROM sys.dm_exec_requests
+WHERE blocking_session_id <> 0;
+-- Oldest open deal sniff (live): DBCC OPENTRAN;
+
 DROP TABLE #Acct22;

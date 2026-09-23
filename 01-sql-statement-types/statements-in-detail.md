@@ -245,10 +245,35 @@ REVOKE SELECT ON Demo_Emp TO ReportReader;
 SELECT * FROM fn_my_permissions('Demo_Emp', 'OBJECT');
 ```
 
+**Logins, users, roles — the chain DCL hangs on:**
+
+| Point (metric) | Login (server) | User (database) | Role (database) |
+|---|---|---|---|
+| Lives in (place) | `master` / server level | one database | one database |
+| Made with (verb) | `CREATE LOGIN` | `CREATE USER ... FOR LOGIN` | `CREATE ROLE` + `ALTER ROLE ... ADD MEMBER` |
+| Gets rights (how) | Almost never directly | Almost never directly | `GRANT`/`DENY` to the role |
+| Why it exists | Prove who knocks | Map the knock to a DB face | One rights bundle for many faces |
+
+```sql
+-- Least-privilege shape (server → database → role → rights)
+CREATE LOGIN ReportLogin WITH PASSWORD = 'Str0ng!Passw0rd';
+CREATE USER ReportUser FOR LOGIN ReportLogin;
+CREATE ROLE ReportReader AUTHORIZATION dbo;
+ALTER ROLE ReportReader ADD MEMBER ReportUser;
+GRANT SELECT ON Demo_Emp TO ReportReader;   -- read one table, nothing else
+
+-- Audit who holds what (run live in the database)
+SELECT p.name AS Who, p.type_desc AS Kind, perm.permission_name AS Right,
+       perm.state_desc AS State, OBJECT_NAME(perm.major_id) AS OnObject
+FROM sys.database_permissions AS perm
+JOIN sys.database_principals AS p ON p.principal_id = perm.grantee_principal_id;
+```
+
 **Limitations:**
 
 - `DENY` beats `GRANT` always — one stray DENY (often via role nesting) locks out a user and is painful to trace.
 - Rights are per-object and pile up; without roles the matrix becomes unmanageable — always grant to roles, never to users.
+- Never hand app code `sa` or `db_owner` — a leaked string then owns everything; roles with least rights cap the blast.
 - DCL is access control, not hiding: it cannot mask columns or rows — that needs Dynamic Data Masking / Row-Level Security on top.
 - Ownership chains can silently bypass checks inside procedures — convenient, but review who owns what.
 

@@ -131,6 +131,11 @@ Amt read off leaf (no table trip) → GROUP sums few rows. Wrapped twin
 3. "Added index, still scans — why?" → Func/type fence, stale stats, star-drag lookups, or sniffed plan.
 4. "Star in prod view — harm?" → Blob drag + lookup bloats; name tight columns + covering INCLUDE.
 5. "Prove the win?" → Plan before/after (cost %, seeks), Query Store trend.
+6. "Which 5 queries burn most CPU?" → `sys.dm_exec_query_stats` + `CROSS APPLY
+   sys.dm_exec_sql_text` ranked by AvgCPU/AvgReads/AvgDuration (§7 shape).
+7. "Same proc fast for one id, slow for next — cause?" → Sniffed plan or
+   parameter-sensitive shape: test odd inputs, `OPTION (RECOMPILE)` /
+   `OPTIMIZE FOR UNKNOWN`, park the good plan in Query Store.
 
 ## 6. Senior tuning pack (experienced-round asks)
 
@@ -154,10 +159,69 @@ Amt read off leaf (no table trip) → GROUP sums few rows. Wrapped twin
 - Spills (short memory grants → tempdb), CXPACKET (parallel waits), MAXDOP caps —
   read the warnings, fix shapes first, knobs last.
 
+## 7. Ops pack — DMVs, Query Store, XEvents, partitions (experienced-round asks)
+
+- Top-burn queries (live shape — needs `VIEW SERVER STATE`):
+
+```sql
+SELECT TOP 5
+    total_worker_time / NULLIF(execution_count, 0) AS AvgCPU,
+    total_logical_reads / NULLIF(execution_count, 0) AS AvgReads,
+    total_elapsed_time / NULLIF(execution_count, 0) AS AvgDuration,
+    SUBSTRING(qt.text, 1, 200) AS QueryText
+FROM sys.dm_exec_query_stats AS qs
+CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) AS qt
+ORDER BY AvgCPU DESC;
+```
+
+- Missing indexes: `sys.dm_db_missing_index_details/groups/group_stats`
+  ranked by `user_seeks` — full shape in `10-indexes/examples.sql`. High seeks
+  first, prove with plan, never over-index.
+- Implicit-conversion hunt: open the actual plan XML and search
+  `CONVERT_IMPLICIT` — then match app types to column types (fence gone, seek back).
+- Plan cache + sniff: identical text reuses plans (params, not string-paste —
+  pasted text bloats cache). First-call values stamp the plan; later values
+  misfit → copy params to locals, `OPTION (OPTIMIZE FOR (@p = 5))`,
+  `OPTION (RECOMPILE)` per-call (CPU tax), plan guides last resort.
+  Parameter-sensitive shapes (one query, many best plans) get the same cures +
+  a forced good plan in Query Store.
+- Query Store trend (needs Query Store ON — live shape):
+
+```sql
+SELECT q.query_id, p.plan_id, rs.avg_duration
+FROM sys.query_store_query AS q
+JOIN sys.query_store_plan AS p ON q.query_id = p.query_id
+JOIN sys.query_store_runtime_stats AS rs ON p.plan_id = rs.plan_id
+ORDER BY rs.avg_duration DESC;
+-- Force the good plan: EXEC sys.sp_query_store_force_plan @query_id = 1, @plan_id = 2;
+```
+
+- Extended Events trace (server-permission template — Profiler is dead road):
+
+```sql
+-- CREATE EVENT SESSION TrackSlow26 ON SERVER
+-- ADD EVENT sqlserver.sql_statement_completed (WHERE duration > 1000000)
+-- ADD TARGET package0.event_file (SET filename = N'C:\Temp\Slow26.xel');
+-- ALTER EVENT SESSION TrackSlow26 ON SERVER STATE = START;
+```
+
+- Partitioning skeleton (giants by date/id — prune scans, swap loads, archive
+  per partition; runnable on `PRIMARY` in `examples.sql`):
+
+```sql
+CREATE PARTITION FUNCTION PF_Ord26 (DATE)
+    AS RANGE RIGHT FOR VALUES ('2026-01-01', '2026-07-01');
+CREATE PARTITION SCHEME PS_Ord26 AS PARTITION PF_Ord26 ALL TO ([PRIMARY]);
+CREATE TABLE dbo.OrdPart26 (Id INT, ODate DATE, Amt INT) ON PS_Ord26 (ODate);
+SELECT $PARTITION.PF_Ord26(ODate) AS P, COUNT(*) AS N
+FROM dbo.OrdPart26 GROUP BY $PARTITION.PF_Ord26(ODate);
+```
+
 ## Cheat recap
 
 ```text
 Plan first (Ctrl+M) | index WHERE-JOIN-ORDER | bare columns seek, funcs fence
 No head-% | no star | match types | fresh stats | prove before/after
 sniff→locals/RECOMPILE | BETWEEN half-open | hints rare | Query Store parks wins.
+Ops: top-burn DMV | missing-index seeks | CONVERT_IMPLICIT hunt | XEvents replaces Profiler | partition by date, $PARTITION proves prune.
 ```

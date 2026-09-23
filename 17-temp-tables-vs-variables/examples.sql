@@ -25,4 +25,14 @@ INSERT INTO ##Share17 VALUES (1);
 SELECT * FROM ##Share17;
 DROP TABLE ##Share17;
 
+-- TempDB health (lives here: all three homes above allocate in tempdb).
+-- How full is it right now, by what kind of use:
+SELECT SUM(unallocated_extent_page_count) * 8 / 1024 AS FreeMB,
+       SUM(version_store_reserved_page_count) * 8 / 1024 AS VersionStoreMB,
+       SUM(internal_object_reserved_page_count) * 8 / 1024 AS InternalObjMB,
+       SUM(user_object_reserved_page_count) * 8 / 1024 AS UserObjMB
+FROM sys.dm_db_file_space_usage;
+-- Ops rules: pre-size data+log (no autogrow storms), fast disk, one data file
+-- per core up to 8 (allocation-page contention), DROP #temp fast.
+
 DROP TABLE #Stage17; DROP TABLE #Copy17;

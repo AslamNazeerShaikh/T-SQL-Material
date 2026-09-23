@@ -110,6 +110,20 @@ Loop-var + 50 rows → `@var` (no create/index cost). One clear filter → CTE
 3. "Clone shape, zero rows, fast?" → `SELECT INTO ... WHERE 1 = 2`, then add keys.
 4. "Share mid-work with one more sitting?" → `##temp`, DROP right after.
 5. "Same CTE read twice — cost?" → Runs twice (inlined). Stage to `#temp` instead.
+6. "TempDB screams mid-batch — first checks?" → `sys.dm_db_file_space_usage`:
+   version-store vs internal vs user split; free stuck #temp (DROP fast),
+   pre-size files, one data file per core to 8, fast disk.
+
+## 6. TempDB ops (asked follow-ups)
+
+- All three homes allocate in tempdb — `#temp`, `##temp`, `@var` spills,
+  version store, sorts, spills from starved memory grants.
+- `sys.dm_db_file_space_usage` splits use: free vs version-store vs internal
+  objects (sorts/spills) vs user objects (your #temp) — `examples.sql` demo
+  reads it live.
+- Rules: pre-size data + log files (autogrow storms stall all), SSD-grade disk,
+  one tempdb data file per CPU core up to 8 (kills allocation-page contention),
+  DROP `#temp` the blink you're done (open #temp pins space).
 
 ## Cheat recap
 
@@ -117,4 +131,5 @@ Loop-var + 50 rows → `@var` (no create/index cost). One clear filter → CTE
 #temp sitting + indexes, big/twice | ##temp shared, DROP fast
 @var batch, tiny, no extra index | CTE one query, no table
 SELECT INTO WHERE 1=2 clones shape (keeps IDENTITY, skips keys)
+TempDB: file-space-usage split | pre-size | 1 file/core to 8 | DROP fast
 ```

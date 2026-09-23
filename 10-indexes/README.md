@@ -137,6 +137,7 @@ Non-clustered index — separate structure: key + row locator. Many per table. G
 3. "Range query on dates is slow — index choice?" → Clustered (or well-chosen non-clustered) on the date for ordered range scans.
 4. "Name lookups fast but SELECT * still slow?" → Key lookups; add `INCLUDE` covering columns or reassess clustered key.
 5. "GUID PK, inserts fragmented — why?" → Random wide clustered key → page splits + bloat in all non-clustered indexes. Use `INT IDENTITY` or `NEWSEQUENTIALID()`.
+6. "Only 5% of rows are active, yet the index is huge — shrink?" → Filtered index `WHERE Status = 'Active'`; queries must match the filter to ride it.
 
 ```sql
 -- PK explicitly nonclustered + separate clustered index
@@ -157,6 +158,18 @@ CREATE CLUSTERED INDEX IX_Orders_Date ON dbo.Orders (OrderDate);
 - Heap (no clustered) lookups ride RIDs; forwarded rows rot heaps — a clustered
   key usually wins for churned tables.
 
+## 8. Filtered index + missing-index DMVs (asked follow-ups)
+
+- Filtered = index on a slice: `CREATE NONCLUSTERED INDEX IX ON T(Name)
+  WHERE Salary >= 80000;` — small, cheap to keep, picked only when the query's
+  `WHERE` matches the filter (§`examples.sql` demo: matching query rides it,
+  plain `Name = 'Sara'` ignores it).
+- Build trap: needs `QUOTED_IDENTIFIER ON` + `ANSI_NULLS ON` at CREATE time
+  (else Msg 1934) — `examples.sql` sets both explicitly.
+- Missing-index DMVs (`sys.dm_db_missing_index_details/groups/group_stats`)
+  rank what the engine wished for by `user_seeks` — take high seeks first,
+  prove with the plan, and never over-index (each index taxes every write).
+
 ## Cheat recap
 
 ```text
@@ -164,4 +177,5 @@ Clustered → max 1, row order, range/PK access
 Non-clustered → many, separate key+locator, filters
 PK defaults clustered but PK ≠ clustered. Keep clustered key narrow/static.
 Composite leftmost law | max 999 non-clustered | heaps ride RIDs.
+Filtered = slice index, query must match filter | missing-index DMVs rank by seeks, prove before creating.
 ```

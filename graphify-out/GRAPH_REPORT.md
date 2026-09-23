@@ -1,16 +1,16 @@
 # Graph Report - T-SQL-Study  (2026-09-23)
 
 ## Corpus Check
-- 91 files · ~59,859 words
+- 91 files · ~61,982 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 605 nodes · 532 edges · 91 communities (58 shown, 30 thin omitted)
+- 694 nodes · 621 edges · 92 communities (59 shown, 30 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `315f7962`
+- Built from commit: `61538ae4`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -100,21 +100,22 @@
 - 24-like-pattern-matching/examples.sql
 - 25-dynamic-sql-injection/examples.sql
 - Security Policy
+- bash
 - run_all.py
 - query-testing — live verification against SQL Server 2025
 - summary.md
 
 ## God Nodes (most connected - your core abstractions)
-1. `System Functions by Category (MS-Learn Map + Popular Picks)` - 14 edges
-2. `What You Must Do When Invoked` - 12 edges
-3. `DDL, DML, DQL, DCL, TCL — Full Detail` - 12 edges
-4. `02 — Character Data Types in SQL Server` - 11 edges
-5. `/graphify` - 10 edges
-6. `01 — Types of SQL / T-SQL Statements` - 10 edges
-7. `10 — Clustered vs Non-Clustered Index` - 10 edges
-8. `05 — Query vs Subquery` - 9 edges
-9. `07 — SQL Joins` - 9 edges
-10. `09 — CTE (Common Table Expression)` - 9 edges
+1. `bash` - 89 edges
+2. `System Functions by Category (MS-Learn Map + Popular Picks)` - 14 edges
+3. `What You Must Do When Invoked` - 12 edges
+4. `DDL, DML, DQL, DCL, TCL — Full Detail` - 12 edges
+5. `02 — Character Data Types in SQL Server` - 11 edges
+6. `10 — Clustered vs Non-Clustered Index` - 11 edges
+7. `/graphify` - 10 edges
+8. `01 — Types of SQL / T-SQL Statements` - 10 edges
+9. `22 — Transactions + ACID (Deals, Locks, Deadlocks)` - 10 edges
+10. `26 — Query Optimization Basics (Plans, Seeks, Sargability)` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - None detected - all connections are within the same source files.
@@ -122,15 +123,15 @@
 ## Import Cycles
 - None detected.
 
-## Communities (91 total, 30 thin omitted)
+## Communities (92 total, 30 thin omitted)
 
 ### Community 0 - "What You Must Do When Invoked"
 Cohesion: 0.08
 Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 1 - "opencode.json"
-Cohesion: 0.12
-Nodes (16): chmod 777 *, rm -rf *, sudo *, enabled, headers, type, url, Authorization (+8 more)
+Cohesion: 0.15
+Nodes (12): enabled, headers, type, url, Authorization, instructions, lsp, mcp (+4 more)
 
 ### Community 2 - "03 — Types of Keys in SQL Server"
 Cohesion: 0.13
@@ -153,8 +154,8 @@ Cohesion: 0.18
 Nodes (10): 01 — Types of SQL / T-SQL Statements, 1. Categories, 2. Sample table, 3. Examples, 4. Query breakdown, 5. DELETE vs TRUNCATE vs DROP, 6. Edge cases, 7. Interview scenario questions (+2 more)
 
 ### Community 7 - "10 — Clustered vs Non-Clustered Index"
-Cohesion: 0.18
-Nodes (10): 10 — Clustered vs Non-Clustered Index, 1. Sample setup, 2. Definitions, 3. Comparison, 4. Query breakdown, 5. Edge cases, 6. Interview scenario questions, 7. Composite, covering recap + limits (asked follow-ups) (+2 more)
+Cohesion: 0.17
+Nodes (11): 10 — Clustered vs Non-Clustered Index, 1. Sample setup, 2. Definitions, 3. Comparison, 4. Query breakdown, 5. Edge cases, 6. Interview scenario questions, 7. Composite, covering recap + limits (asked follow-ups) (+3 more)
 
 ### Community 8 - "05 — Query vs Subquery"
 Cohesion: 0.20
@@ -201,12 +202,12 @@ Cohesion: 0.20
 Nodes (9): 1. Sample tables, 21 — Triggers (Auto-Run Rules on Write), 2. Examples (shapes — triggers can't sit on #temp; make in test DB), 3. Query breakdown (audit AFTER), 4. Edge cases, 5. Interview scenario questions, 6. Nesting + TRIGGER_NESTLEVEL (asked follow-ups), Cheat recap (+1 more)
 
 ### Community 19 - "22 — Transactions + ACID (Deals, Locks, Deadlocks)"
-Cohesion: 0.20
-Nodes (9): 1. Sample tables, 22 — Transactions + ACID (Deals, Locks, Deadlocks), 2. Examples, 3. Query breakdown (money move), 4. Edge cases, 5. Interview scenario questions, 6. Ladder explicit + RCSI + lock-vs-latch (asked follow-ups), Cheat recap (+1 more)
+Cohesion: 0.18
+Nodes (10): 1. Sample tables, 22 — Transactions + ACID (Deals, Locks, Deadlocks), 2. Examples, 3. Query breakdown (money move), 4. Edge cases, 5. Interview scenario questions, 6. Ladder explicit + RCSI + lock-vs-latch (asked follow-ups), 7. Concurrency picks + blast severities + HA twins (asked follow-ups) (+2 more)
 
 ### Community 20 - "26 — Query Optimization Basics (Plans, Seeks, Sargability)"
-Cohesion: 0.20
-Nodes (9): 1. Sample table, 26 — Query Optimization Basics (Plans, Seeks, Sargability), 2. Examples, 3. Query breakdown (seek path), 4. Edge cases, 5. Interview scenario questions, 6. Senior tuning pack (experienced-round asks), Cheat recap (+1 more)
+Cohesion: 0.18
+Nodes (10): 1. Sample table, 26 — Query Optimization Basics (Plans, Seeks, Sargability), 2. Examples, 3. Query breakdown (seek path), 4. Edge cases, 5. Interview scenario questions, 6. Senior tuning pack (experienced-round asks), 7. Ops pack — DMVs, Query Store, XEvents, partitions (experienced-round asks) (+2 more)
 
 ### Community 21 - "27 — Data Types: Numbers, Dates, Specials (IDENTITY, SEQUENCE, XML, Bits)"
 Cohesion: 0.20
@@ -249,8 +250,8 @@ Cohesion: 0.22
 Nodes (8): 15 — EXISTS vs IN (Match Tests + Anti-Joins), 1. Sample tables, 2. Examples, 3. Query breakdown (EXISTS short-circuit), 4. Edge cases, 5. Interview scenario questions, Cheat recap, Definition (say this in the interview)
 
 ### Community 31 - "17 — Temp Tables vs Table Variables (vs CTE)"
-Cohesion: 0.22
-Nodes (8): 17 — Temp Tables vs Table Variables (vs CTE), 1. Sample flow, 2. Comparison, 3. Query breakdown (pick logic), 4. Edge cases, 5. Interview scenario questions, Cheat recap, Definition (say this in the interview)
+Cohesion: 0.20
+Nodes (9): 17 — Temp Tables vs Table Variables (vs CTE), 1. Sample flow, 2. Comparison, 3. Query breakdown (pick logic), 4. Edge cases, 5. Interview scenario questions, 6. TempDB ops (asked follow-ups), Cheat recap (+1 more)
 
 ### Community 32 - "19 — Stored Procedures (Saved Work + Params)"
 Cohesion: 0.22
@@ -348,6 +349,10 @@ Nodes (3): dbo.Dept18, dbo.Emp18, dbo.vw_ITStaff18
 Cohesion: 0.25
 Nodes (7): Ground Rules for Testing, No Secrets in Contributions, Reporting a Vulnerability, Scope, Security Policy, Supported Versions, What happens next
 
+### Community 88 - "bash"
+Cohesion: 0.02
+Nodes (89): apt install *, apt purge *, apt remove *, aws sts get-caller-identity, az account get-access-token *, brew install *, brew uninstall *, cat ~/.aws/* (+81 more)
+
 ### Community 89 - "run_all.py"
 Cohesion: 0.39
 Nodes (8): base_cmd(), discover(), main(), Run every <NN-topic>/examples.sql against the SQL Server container, one by one.…, Returns (returncode, stdout, stderr)., reset_db(), run_file(), run_sqlcmd()
@@ -357,20 +362,24 @@ Cohesion: 0.33
 Nodes (5): Outputs, Prerequisites (run once, manually), query-testing — live verification against SQL Server 2025, Usage, Workflow for doc fixes
 
 ## Knowledge Gaps
-- **418 isolated node(s):** `$schema`, `instructions`, `edit`, `rm -rf *`, `sudo *` (+413 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 495 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **507 isolated node(s):** `$schema`, `instructions`, `edit`, `rm -rf *`, `rm -r *` (+502 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 584 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **30 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
+- **Why does `bash` connect `bash` to `opencode.json`?**
+  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+- **Why does `permission` connect `opencode.json` to `bash`?**
+  _High betweenness centrality (0.004) - this node is a cross-community bridge._
 - **What connects `$schema`, `instructions`, `edit` to the rest of the system?**
-  _418 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _507 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `What You Must Do When Invoked` be split into smaller, more focused modules?**
   _Cohesion score 0.08 - nodes in this community are weakly interconnected._
-- **Should `opencode.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
 - **Should `03 — Types of Keys in SQL Server` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
 - **Should `System Functions by Category (MS-Learn Map + Popular Picks)` be split into smaller, more focused modules?**
   _Cohesion score 0.13333333333333333 - nodes in this community are weakly interconnected._
+- **Should `bash` be split into smaller, more focused modules?**
+  _Cohesion score 0.02247191011235955 - nodes in this community are weakly interconnected._

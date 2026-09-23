@@ -1,8 +1,8 @@
 {
   ".opencode/opencode.json": {
-    "mtime": 1790177756.2389135,
-    "seen": 1790177785.547189,
-    "ast_hash": "5ccc10f696816394a4e6a96361bad245",
+    "mtime": 1790178933.8553152,
+    "seen": 1790179532.709934,
+    "ast_hash": "7456ca51ec22c8f1d1956e90da3cc910",
     "semantic_hash": ""
   },
   ".opencode/plugins/graphify.js": {
@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "01-sql-statement-types/statements-in-detail.md": {
-    "mtime": 1789926418.517714,
-    "seen": 1789936117.931322,
-    "ast_hash": "bd93b3730a39d05032ecf94ea4eda258",
+    "mtime": 1790179451.5480773,
+    "seen": 1790179532.709959,
+    "ast_hash": "ba330aa8e09d90a2bd3123448cd5a367",
     "semantic_hash": ""
   },
   "02-character-data-types/README.md": {
@@ -180,9 +180,9 @@
     "semantic_hash": ""
   },
   "10-indexes/README.md": {
-    "mtime": 1790158817.0723534,
-    "seen": 1790158967.993286,
-    "ast_hash": "9ca07ea90e1a8847ebef340c26c53cfa",
+    "mtime": 1790179464.3357537,
+    "seen": 1790179532.709963,
+    "ast_hash": "7f64940d0ca96c3c6fb1129c33c9c7ff",
     "semantic_hash": ""
   },
   "11-group-by-aggregates/README.md": {
@@ -222,9 +222,9 @@
     "semantic_hash": ""
   },
   "17-temp-tables-vs-variables/README.md": {
-    "mtime": 1790158837.033855,
-    "seen": 1790158967.993288,
-    "ast_hash": "5a96af605dceb5a50d3b21f01bf4f2fc",
+    "mtime": 1790179475.1283188,
+    "seen": 1790179532.7099662,
+    "ast_hash": "94558eb06fd7487f8ef68dfdcc673532",
     "semantic_hash": ""
   },
   "18-views/README.md": {
@@ -282,9 +282,9 @@
     "semantic_hash": ""
   },
   "22-transactions-acid/README.md": {
-    "mtime": 1790158848.5206115,
-    "seen": 1790158967.993292,
-    "ast_hash": "a2ea06953d486bf6da1aaecab25aedc1",
+    "mtime": 1790179483.3482978,
+    "seen": 1790179532.70997,
+    "ast_hash": "bddf71eb3c5f6c63e38094eb0ca5f27e",
     "semantic_hash": ""
   },
   "23-normalization/README.md": {
@@ -306,9 +306,9 @@
     "semantic_hash": ""
   },
   "26-query-optimization/README.md": {
-    "mtime": 1790158858.0599327,
-    "seen": 1790158967.993293,
-    "ast_hash": "24cee51e0ccf7f967a116b7fca9edf76",
+    "mtime": 1790179497.1298285,
+    "seen": 1790179532.709971,
+    "ast_hash": "a7e3daa763287e65e96fc986e283cd2d",
     "semantic_hash": ""
   },
   "27-data-types-numbers-dates/README.md": {
@@ -396,9 +396,9 @@
     "semantic_hash": ""
   },
   "10-indexes/examples.sql": {
-    "mtime": 1790158701.401998,
-    "seen": 1790158967.9932659,
-    "ast_hash": "9175f1dd83db8776b6c27ecacd065e83",
+    "mtime": 1790179455.9477973,
+    "seen": 1790179532.709944,
+    "ast_hash": "703fd23852c9cd53ed8ff7882968ab31",
     "semantic_hash": ""
   },
   "11-group-by-aggregates/examples.sql": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "17-temp-tables-vs-variables/examples.sql": {
-    "mtime": 1790158702.5143735,
-    "seen": 1790158967.993269,
-    "ast_hash": "02863ac7ac6f1dd840d229fe50e8ae11",
+    "mtime": 1790179468.7860954,
+    "seen": 1790179532.7099462,
+    "ast_hash": "ae5b68886138f18d46f21a6225bc9754",
     "semantic_hash": ""
   },
   "18-views/examples.sql": {
@@ -486,9 +486,9 @@
     "semantic_hash": ""
   },
   "22-transactions-acid/examples.sql": {
-    "mtime": 1790158703.329514,
-    "seen": 1790158967.993272,
-    "ast_hash": "5be48fd6c152ca76e81bfc6c087f8815",
+    "mtime": 1790179486.0819461,
+    "seen": 1790179532.70995,
+    "ast_hash": "161d556db674630ad5a7bca33b1c3cff",
     "semantic_hash": ""
   },
   "23-normalization/examples.sql": {
@@ -510,9 +510,9 @@
     "semantic_hash": ""
   },
   "26-query-optimization/examples.sql": {
-    "mtime": 1790158703.6914003,
-    "seen": 1790158967.9932742,
-    "ast_hash": "ab677d5f57834235ec4e54953475a917",
+    "mtime": 1790179511.2522929,
+    "seen": 1790179532.709951,
+    "ast_hash": "16ad8244524f12e87ea1ca147aeb5e2c",
     "semantic_hash": ""
   },
   "27-data-types-numbers-dates/examples.sql": {
