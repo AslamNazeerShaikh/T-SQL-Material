@@ -66,7 +66,7 @@ Use the **machine's own timezone**; offset and abbreviation are dynamic and must
 ```text
 --- Start ---
 UTC: 2026-09-23T14:54:02Z [UTC] | Local: 2026-09-23 08:24:02 PM +05:30 [IST]
-<what started>
+Topic/Task: <what started>
 ```
 
 ### END
@@ -74,7 +74,7 @@ UTC: 2026-09-23T14:54:02Z [UTC] | Local: 2026-09-23 08:24:02 PM +05:30 [IST]
 ```text
 --- End ---
 UTC: 2026-09-23T14:54:10Z [UTC] | Local: 2026-09-23 08:24:10 PM +05:30 [IST]
-<what ended> | Status=Ok
+Topic/Task: <what ended> | Status=Ok
 ```
 
 Use `Status=Fail` when the task fails. Do not put status on the timestamp line.
